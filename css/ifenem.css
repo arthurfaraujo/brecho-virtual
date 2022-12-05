@@ -1,0 +1,152 @@
+div#barra-cima{
+    background-color: green;
+    border: 1px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+}
+div#barra-baixo{
+    background-color: green;
+    border: 1px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+div#titulo{
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 20px
+}
+body{
+    font-family: Verdana, sans-serif;
+    background-color: rgb(219, 219, 219);
+}
+div#assunto{
+    background-color: white;
+    width: 70%;
+    margin: auto;    
+    line-height: 24px;
+    justify-content: center;
+}
+.titulo{
+    text-align: center;
+}
+.conteudo{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-indent: 40px
+}
+#re{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-indent: 40px;
+    color:rgb(82, 82, 82);
+}
+.re{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-indent: 40px;
+    color:rgb(82, 82, 82);
+}
+#dialogo{
+  list-style: none;
+}
+nav{
+    background-color: darkgreen;
+    padding: 5px;
+    color: white;    
+    display: flex;
+    justify-content:  center;
+    flex-wrap: wrap;
+}
+.nav{
+    cursor: pointer;
+    margin-right: 8px;
+    border-right: 1px solid white;
+    padding-right: 10px;
+}
+.nav:hover{
+    text-decoration: underline;
+}
+a:link{
+    text-decoration: none;
+    color: white; 
+}
+a:visited{
+    text-decoration: none;
+    color: white;
+}
+#paginas{
+    width: 15%;
+    margin: auto;
+}
+#exer{
+    display: flex;
+}
+.questao{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.alternativa{
+    font-size: 14px;
+    line-height: 18px;
+}
+.info{
+    border-left: 1px solid white;
+    color: aliceblue;
+    margin-left: 40px;
+    padding-left: 20px;
+    line-height: 5px;
+}
+.sub-info{
+    margin-top: 0px;
+}
+#cent{
+    vertical-align: top;
+    display: flex;
+}
+summary{
+    font-size: smaller;
+    font-weight: bold;
+}
+.email{
+    font-size: small;
+}
+#sobre{
+    height: 2cm;
+}
+#logo{
+    width: 140px;
+}
+#div-logo{
+    border-right: 1px solid white;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-right: 20px;
+}
+.inicio{
+    display: flex;
+    justify-content: center;
+}
+.assunto-inicio{
+    display: block;
+    text-align: center;
+    margin-right: 40px;
+    color: aliceblue
+}
+.link-inicio{
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+#cont-inicio{
+    background-color: rgb(102, 102, 102);
+    border-radius: 20px;
+    width: 900px;
+    margin: auto;
+}
+#v-aula{
+    margin-left: 28%;
+}
+    
