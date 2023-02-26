@@ -10,10 +10,49 @@ screen = tela.set_mode(dimensoes)
 
 tela.set_caption("juguito")
 
-x, y = 400, 300
+class Personagem():
+    def __init__(self, tamX=30, tamY=30, cor=(200, 0, 250)):
+        self.pos = [305, 210]
+        self.cor = cor
+        self.tamanho = (tamX, tamY)
+        self.info = (self.pos, self.tamanho)
+        self.vel = 15
+        
+    def movimentar(self):
+        #movimentação em casos normais
+        if pygame.key.get_pressed()[K_a]:
+            self.pos[0] -= self.vel
+        if pygame.key.get_pressed()[K_d]:
+            self.pos[0] += self.vel
+        if pygame.key.get_pressed()[K_w]:
+            self.pos[1] -= self.vel
+        if pygame.key.get_pressed()[K_s]:
+            self.pos[1] += self.vel
+            
+        #movimentação em casos especiais (passando da borda)
+        if self.pos[1] >= 480 and pygame.key.get_pressed()[K_s]:
+            self.pos[1] = -40    
+        if self.pos[0] >= 640 and pygame.key.get_pressed()[K_d]:
+            self.pos[0] = -40
+        if self.pos[0] <= -40 and pygame.key.get_pressed()[K_a]:
+            self.pos[0] = 640
+        if self.pos[1] <= -40 and pygame.key.get_pressed()[K_w]:
+            self.pos[1] = 480
+    
+    def aparecer(self):
+        pygame.draw.rect(screen, self.cor, self.info)
+           
+class Tela():
+    def __init__():
+        pass  
+    
+                
 
-while True:
+pedro = Personagem(35, 35)
+
+while True:    
     pygame.time.Clock().tick(30)
+    
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
@@ -21,29 +60,9 @@ while True:
     
     screen.fill((0, 0, 0))
     
-    if pygame.key.get_pressed()[K_a]:
-        x -= 10
-    if pygame.key.get_pressed()[K_d]:
-        x += 10
-    if pygame.key.get_pressed()[K_w]:
-        y -= 10
-    if pygame.key.get_pressed()[K_s]:
-        y += 10
-        
-        
-        
-    if y == 480 and pygame.key.get_pressed()[K_s]:
-        y = -40    
-    if x == 640 and pygame.key.get_pressed()[K_d]:
-        x = -40
-    if x == -40 and pygame.key.get_pressed()[K_a]:
-        x = 640
-    if y == -40 and pygame.key.get_pressed()[K_w]:
-        y = 480
-                    
-    pygame.draw.rect(screen, (200, 0, 250), (x, y, 40, 40))
     
+    pedro.movimentar()  
         
-    
+    pedro.aparecer()    
     
     tela.update()
