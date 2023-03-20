@@ -1,0 +1,31 @@
+body{
+  font-family:'Courier New', Courier, monospace 
+}
+
+header{
+  display: flex;
+}
+
+#logo{
+  width: 15%;
+  margin: auto;
+}
+
+#total{
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 0.25%;
+  background-color: rgb(238, 238, 238);
+}
+
+#catalogo{
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 3rem;
+}
+
+#barra-de-ferramentas{
+  margin-bottom: 3rem;
+}

@@ -1,14 +1,21 @@
 {
   "produtos": [
     {"name": "calça de shopping", 
-    "preço": 10.00},
+    "preço": 10.00,
+    "imagem": "../img/calçashop.png"
+  },
     {"name": "camisa do omi aranha", 
-    "preço": 30.00},
+    "preço": 30.00,
+    "imagem": "../img/camisamiranha.jpeg" 
+  },
     {"name": "cueca do batman",
-    "preço": 150.00}, 
+    "preço": 150.00,
+    "imagem": "../img/cuecabatma.jpeg"
+  }, 
     {
       "name": "casa do presidente",
-      "preço": 10.00
+      "preço": 10.00,
+      "imagem": "../img/casa.jpeg"      
     }
   ]
 }
