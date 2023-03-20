@@ -15,12 +15,14 @@ for (var i in produtos.produtos) {
 
   nome.innerHTML = prodInfo.name;
   preço.innerHTML = 'R$ ' + prodInfo.preço;
-  //implementar a geração de imagens
+  imagem.src = prodInfo.imagem;
 
+  produto.appendChild(imagem);
   produto.appendChild(nome);
   produto.appendChild(preço);
 
   produto.classList.add("produto");
+  imagem.classList.add("imagem-produto");
 
   ul.appendChild(produto);
 }
