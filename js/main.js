@@ -1,4 +1,4 @@
-const data = await fetch('produtos.json');
+const data = await fetch('../data/produtos.json');
 var produtos = await data.json();
 console.log(produtos);
 
