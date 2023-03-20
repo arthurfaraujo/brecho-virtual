@@ -1,0 +1,14 @@
+{
+  "produtos": [
+    {"name": "calça de shopping", 
+    "preço": 10.00},
+    {"name": "camisa do omi aranha", 
+    "preço": 30.00},
+    {"name": "cueca do batman",
+    "preço": 150.00}, 
+    {
+      "name": "casa do presidente",
+      "preço": 10.00
+    }
+  ]
+}
