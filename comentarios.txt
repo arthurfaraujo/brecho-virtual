@@ -10,4 +10,10 @@ modulo morgan serve para monitorar os acessos gerando logs
 modulo nodemon reinicia o servidor ao fazer alguma mudança
 
 script{} no package.json serve para deixar mais fácil rodar o servidor
-ao criar um script que já roda o arquivo com nodemon 
+ao criar um script que já roda o arquivo com nodemon
+
+extensao thunder client pra poder fazer requisições post e etc
+
+server.use(express.json()) pra poder receber json no post
+
+get manda info mais simples/post serve para mandar info mais complexa
