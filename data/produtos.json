@@ -24,6 +24,11 @@
       "name": "oclin mil grau",
       "preço": 123.00,
       "imagem": "../img/oclinho.jpg"
+    },
+    {
+      "name": "casa de tauba",
+      "preço": 25.00,
+      "imagem": "../img/bioconstrucao_.jpg"
     }
   ]
 }
