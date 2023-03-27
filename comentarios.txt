@@ -4,3 +4,10 @@ import express from 'express'
 
 tipo modulo no package.json pra funcionar, 
 acredito que pra rodar de forma assíncrona como o fetch
+
+modulo morgan serve para monitorar os acessos gerando logs
+
+modulo nodemon reinicia o servidor ao fazer alguma mudança
+
+script{} no package.json serve para deixar mais fácil rodar o servidor
+ao criar um script que já roda o arquivo com nodemon 
