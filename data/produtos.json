@@ -22,7 +22,7 @@
     },
     {
       "name": "oclin mil grau",
-      "preço": 123,
+      "preço": 123.00,
       "imagem": "../img/oclinho.jpg"
     }
   ]
