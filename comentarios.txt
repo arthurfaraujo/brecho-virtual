@@ -17,3 +17,7 @@ extensao thunder client pra poder fazer requisições post e etc
 server.use(express.json()) pra poder receber json no post
 
 get manda info mais simples/post serve para mandar info mais complexa
+
+https://www.youtube.com/watch?v=LwvZeRj7CdQ
+https://www.youtube.com/watch?v=p6oubMfuNto
+https://www.youtube.com/watch?v=OFrnB7Bvznk
