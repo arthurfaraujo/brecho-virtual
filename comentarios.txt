@@ -1,0 +1,6 @@
+npm i pra baixar node_modules dentro de hello-api
+
+import express from 'express'
+
+tipo modulo no package.json pra funcionar, 
+acredito que pra rodar de forma assíncrona como o fetch
