@@ -29,6 +29,11 @@
       "name": "casa de tauba",
       "preço": 25.00,
       "imagem": "../img/bioconstrucao_.jpg"
+    },
+    {
+      "name": "idoso triste",
+      "preço": 15.0,
+      "imagem": "../img/idosotriste.jpeg"
     }
   ]
 }
