@@ -31,4 +31,3 @@ for (var i in produtos.produtos) {
 
 // quantidade de itens
 var total = produtos.produtos.length;
-document.getElementById("total").innerHTML = total + " itens";

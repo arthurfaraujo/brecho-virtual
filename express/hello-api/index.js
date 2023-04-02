@@ -1,28 +1,28 @@
-import express from 'express';
-import morgan from 'morgan';
+// Carregamento de  módulos
+  import express from 'express';
+  import morgan from 'morgan';
+  import { fileURLToPath } from 'url';
+  import path from 'path';
+  import ejs from 'ejs';
 
-const server = express();
+// Criação de constantes importantes
+  const __dirname = fileURLToPath(import.meta.url).replace('index.js', '');
+  const server = express();
 
-server.use(morgan('tiny'));
+// Configurações
+  server.use(morgan('tiny'));
+  server.use(express.static(path.join(__dirname, "public")));
 
-server.get('/', (req, res) => {
-  res.send('Viva a Anarquiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-});
+// Rotas
+  server.get('/', (req, res) => {
+    res.sendFile(__dirname + '/views/index.html')
+  });
 
-server.get('/hello/en', (req, res) => {
-  res.send('hello garbage')
-});
+  server.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/views/login.html')
+  });
 
-server.get('/hello/pt', (req, res) => {
-  res.send('oi imundo')
-});
-
-server.get('/teste/pt', (req, res) => {
-  const nome = req.query.nome; 
-  const idade =  req.query.idade;
-  res.send(`${nome}, ${idade}`);
-}); 
-
-server.listen(3000, () => {
-  console.log('O servidor está rodando')
-});
+// Ouvido do servidor
+  server.listen(3000, () => {
+    console.log('O servidor está rodando');
+  });
