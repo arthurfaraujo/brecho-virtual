@@ -3,7 +3,6 @@
   import morgan from 'morgan';
   import { fileURLToPath } from 'url';
   import path from 'path';
-  import ejs from 'ejs';
 
 // Criação de constantes importantes
   const __dirname = fileURLToPath(import.meta.url).replace('index.js', '');

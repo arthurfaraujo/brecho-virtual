@@ -3,7 +3,8 @@
     {
       "name": "calça de shopping", 
       "preço": 10.00,
-      "imagem": "../img/calçashop.png"
+      "imagem": "../img/calçashop.png",
+      "categoria": "Roupas"
     },
     {
       "name": "camisa do omi aranha", 

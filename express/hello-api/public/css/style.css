@@ -86,16 +86,16 @@ main {
   margin-top: 0;
 }
   
-.filters {
+.filtros-div {
   margin-bottom: 20px;
 }
   
-.filters label {
+.filtros-div label {
   font-weight: bold;
   margin-right: 10px;
 }
   
-.filters select {
+.filtros-div select {
   border: none;
   border-radius: 5px;
   padding: 5px;
@@ -140,7 +140,12 @@ main {
   color: #fff;
   font-size: 14px;
   padding: 10px;
-  } 
+} 
+
+#filtros {
+  background-color: #ab877a;
+  color: #fff;
+}
    
 footer {
   background-color: #8d6e63;
