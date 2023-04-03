@@ -9,32 +9,38 @@
     {
       "name": "camisa do omi aranha", 
       "preço": 30.00,
-      "imagem": "../img/camisamiranha.jpeg" 
+      "imagem": "../img/camisamiranha.jpeg",
+      "categoria": "Roupas" 
     },
     {
       "name": "cueca do batman",
       "preço": 150.00,
-      "imagem": "../img/cuecabatma.jpeg"
+      "imagem": "../img/cuecabatma.jpeg",
+      "categoria": "Roupas"
     }, 
     {
       "name": "casa do presidente",
       "preço": 10.00,
-      "imagem": "../img/casa.jpeg"      
+      "imagem": "../img/casa.jpeg",
+      "categoria": "Objetos"
     },
     {
       "name": "oclin mil grau",
       "preço": 123.00,
-      "imagem": "../img/oclinho.jpg"
+      "imagem": "../img/oclinho.jpg",
+      "categoria": "Acessórios"
     },
     {
       "name": "casa de tauba",
       "preço": 25.00,
-      "imagem": "../img/bioconstrucao_.jpg"
+      "imagem": "../img/bioconstrucao_.jpg",
+      "categoria": "Objetos"
     },
     {
       "name": "idoso triste",
       "preço": 15.0,
-      "imagem": "../img/idosotriste.jpeg"
+      "imagem": "../img/idosotriste.jpeg",
+      "categoria": "Objetos"
     }
   ]
 }

@@ -146,6 +146,9 @@ main {
   background-color: #ab877a;
   color: #fff;
 }
+.invisivel{
+  display: none;
+}
    
 footer {
   background-color: #8d6e63;
