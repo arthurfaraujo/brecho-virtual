@@ -2,7 +2,11 @@ body {
   background-color: #f5f5f5;
   font-family: Arial, sans-serif;
   margin: 0;
-  }
+}
+
+main h2 {
+  margin-top: 0%;
+}
   
 header {
   background-color: #795548;
@@ -82,10 +86,6 @@ main {
   width: 100%;
 }
   
-.produtos h2 {
-  margin-top: 0;
-}
-  
 .filtros-div {
   margin-bottom: 20px;
 }
@@ -123,7 +123,7 @@ main {
   height: 14em;
 }
  
-.produto h3 {
+.produto h3{
   margin-top: 0;
 }
  
@@ -155,4 +155,8 @@ footer {
   color: #fff;
   padding: 10px;
   text-align: center;
-}  
+}
+
+carrinho:hover {
+  cursor: pointer;
+}
