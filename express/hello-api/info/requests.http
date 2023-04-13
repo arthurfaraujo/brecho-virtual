@@ -1,0 +1,13 @@
+@host = http://localhost:3000
+
+### Post produto
+
+POST {{host}}/data/produtos
+Content-Type: application/json
+
+{
+  "name": "nome", 
+  "preço": preço(float),
+  "imagem": "caminho pra imagem",
+  "categoria": "categoria" 
+}
