@@ -1,46 +1,67 @@
 {
   "produtos": [
     {
-      "name": "calça de shopping", 
-      "preço": 10.00,
+      "id": "4c304aa4-4baa-44c8-8915-73e7ef991a81",
+      "nome": "calça de shopping",
+      "preço": 10,
       "imagem": "../img/calçashop.png",
       "categoria": "Roupas"
     },
     {
-      "name": "camisa do omi aranha", 
-      "preço": 30.00,
+      "id": "50e604cc-1010-4cb7-a928-b4448781d147",
+      "nome": "camisa do omi aranha",
+      "preço": 30,
       "imagem": "../img/camisamiranha.jpeg",
-      "categoria": "Roupas" 
+      "categoria": "Roupas"
     },
     {
-      "name": "cueca do batman",
-      "preço": 150.00,
+      "id": "e16389cd-cc9e-4f5f-bcfc-76ed505b14f2",
+      "nome": "cueca do batman",
+      "preço": 150,
       "imagem": "../img/cuecabatma.jpeg",
       "categoria": "Roupas"
-    }, 
+    },
     {
-      "name": "casa do presidente",
-      "preço": 10.00,
+      "id": "7c972e0c-acfa-4e19-9106-072cde084edb",
+      "nome": "casa do presidente",
+      "preço": 10,
       "imagem": "../img/casa.jpeg",
       "categoria": "Objetos"
     },
     {
-      "name": "oclin mil grau",
-      "preço": 123.00,
+      "id": "80d83151-341d-463c-9a1a-6af74ace67fc",
+      "nome": "oclin mil grau",
+      "preço": 123,
       "imagem": "../img/oclinho.jpg",
       "categoria": "Acessórios"
     },
     {
-      "name": "casa de tauba",
-      "preço": 25.00,
+      "id": "a7bb3700-59cd-4d86-950a-bcc37353beca",
+      "nome": "casa de tauba",
+      "preço": 25,
       "imagem": "../img/bioconstrucao_.jpg",
       "categoria": "Objetos"
     },
     {
-      "name": "idoso triste",
-      "preço": 15.0,
+      "id": "463f8c6a-b756-4a96-8292-e2e07d4ef7a5",
+      "nome": "idoso triste",
+      "preço": 15,
       "imagem": "../img/idosotriste.jpeg",
       "categoria": "Objetos"
+    },
+    {
+      "id": "be348203-3a5d-41ee-8cdd-166a96013981",
+      "nome": "pedro",
+      "preço": 100,
+      "imagem": "",
+      "categoria": "Orgânicos"
+    },
+    {
+      "id": "ad8e95ce-6faa-47f9-9c21-84dd9daf4121",
+      "nome": "baleia azul",
+      "preço": 500000,
+      "imagem": "",
+      "categoria": "Orgânicos"
     }
   ]
 }

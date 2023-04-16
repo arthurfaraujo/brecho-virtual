@@ -6,8 +6,17 @@ POST {{host}}/data/produtos
 Content-Type: application/json
 
 {
-  "name": "nome", 
-  "preço": preço(float),
-  "imagem": "caminho pra imagem",
-  "categoria": "categoria" 
+  "nome": "baleia azul",
+  "preço": 500000,
+  "imagem": "",
+  "categoria": "Orgânicos"
+}
+
+### Post conta
+POST {{host}}/cadastro
+Content-Type: application/json
+
+{
+  "username": "arthur",
+  "password": "1234"
 }

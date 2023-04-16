@@ -8,7 +8,7 @@ export function gerarTodosProdutos(lista, dados){
         var imagem = document.createElement('img');
         var botao = document.createElement('button');
         
-        nome.innerHTML = prodInfo.name;
+        nome.innerHTML = prodInfo.nome;
         preço.innerHTML = 'R$ ' + prodInfo.preço;
         imagem.src = prodInfo.imagem;
         botao.innerHTML = 'Comprar'
