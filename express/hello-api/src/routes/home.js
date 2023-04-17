@@ -1,8 +1,9 @@
 // importação de bibliotecas importantes
   import express from 'express';
-  import {readFile} from 'fs/promises';
+  import { readFile } from 'fs/promises';
   import { writeFile } from 'fs/promises';
-  import {v4 as uuid} from "uuid";
+  import { v4 as uuid } from "uuid";
+  import { HTTPError } from '../index.js'
 
 // criação de constantes importantes
   const contas = JSON.parse(await readFile('public/data/contas.json'));
@@ -35,19 +36,23 @@
   });
 
   rota.post('/cadastro', (req, res) => {
-      if (req.body) {
-        const id = uuid();
-        const username = req.body.username;
-        const password = req.body.password;
-
-        const conta = {id, username, password};
-
-        contas.contas.push(conta);
-
-        writeFile('public/data/contas.json', JSON.stringify(contas, null, 2));
+    const dados = req.boby;
+    for (const conta of contas.contas) {
+      if (dados.username == conta.username) {
+        throw new HTTPError('Cadastro inválido, nome já existe', 400);
       } else {
-        throw new HTTPError('Cadastro inválido', 400)
+        continue
       }
-  })
+    }    
+    const id = uuid();
+  
+    const conta = {id, ...req.body};
+  
+    contas.contas.push(conta);
+  
+    writeFile('public/data/contas.json', JSON.stringify(contas, null, 2));
+    
+    res.send("aaaa");
+  });
 
 export default rota;

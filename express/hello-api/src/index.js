@@ -1,7 +1,6 @@
 // Carregamento de  módulos
   import express from 'express';
   import morgan from 'morgan';
-  import {readFile} from 'fs/promises';
   import bdpa from 'body-parser';
   // Rotas
     import home from './routes/home.js';
@@ -10,8 +9,6 @@
 // Criação de constantes importantes
   const PORT = 3000;
   const server = express();
-  const produtos = JSON.parse(await readFile('public/data/produtos.json'));
-  const contas = JSON.parse(await readFile('public/data/contas.json')).contas;
 
 // Configurações
   // mostra o que está acontecendo no servidor
@@ -28,7 +25,7 @@
   server.use(bdpa.json());
 
   // Classe que trata erros
-  class HTTPError extends Error {
+  export class HTTPError extends Error {
     constructor(message, code) {
       super(message);
       this.code = code;
@@ -48,7 +45,7 @@
 
   // Outros
     server.use((err, req, res, next) => {
-      // console.error(err.stack);
+      console.error(err.stack);
       if (err instanceof HTTPError) {
         res.status(err.code).json({ message: err.message });
       } else {
