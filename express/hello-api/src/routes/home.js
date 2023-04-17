@@ -36,7 +36,7 @@
   });
 
   rota.post('/cadastro', (req, res) => {
-    const dados = req.boby;
+    const dados = req.body;
     for (const conta of contas.contas) {
       if (dados.username == conta.username) {
         throw new HTTPError('Cadastro inválido, nome já existe', 400);
