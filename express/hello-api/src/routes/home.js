@@ -39,12 +39,12 @@
     const dados = req.body;
 
     if ((dados.username != '') & (dados.password != '')){
-      console.log('passei 1');
+      // console.log('passei 1');
       for (const conta of contas.contas) {
         if (dados.username == conta.username) {
           throw new HTTPError('Cadastro inválido, nome já existe', 400);
         } else {
-          console.log('passei 2');
+          // console.log('passei 2');
           continue
         }
       }
