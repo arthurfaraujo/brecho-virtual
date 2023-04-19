@@ -17,8 +17,8 @@ POST {{host}}/cadastro
 Content-Type: application/json
 
 {
-  "username": "clietin",
-  "password": "1234"
+  "username": "",
+  "password": ""
 }
 
 ### Delete conta

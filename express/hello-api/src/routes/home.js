@@ -37,13 +37,21 @@
 
   rota.post('/cadastro', (req, res) => {
     const dados = req.body;
-    for (const conta of contas.contas) {
-      if (dados.username == conta.username) {
-        throw new HTTPError('Cadastro inválido, nome já existe', 400);
-      } else {
-        continue
+
+    if ((dados.username != '') & (dados.password != '')){
+      console.log('passei 1');
+      for (const conta of contas.contas) {
+        if (dados.username == conta.username) {
+          throw new HTTPError('Cadastro inválido, nome já existe', 400);
+        } else {
+          console.log('passei 2');
+          continue
+        }
       }
-    }    
+    } else {
+      throw new HTTPError('Nome de usuário e/ou senha vazio(s).', 400);
+    };
+
     const id = uuid();
   
     const conta = {id, ...req.body};
