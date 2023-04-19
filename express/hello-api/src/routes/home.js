@@ -21,7 +21,7 @@
   rota.post('/login', (req, res) => {
       const dados = {...req.body};
 
-      for (const conta of contas) {
+      for (const conta of contas.contas) {
         if ((dados.username == conta.username) & (conta.password == dados.password)) { 
           
           res.redirect('/');

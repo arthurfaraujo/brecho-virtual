@@ -1,3 +1,9 @@
 {
-  "contas": []
+  "contas": [
+    {
+      "id": "3f5214f8-8a2d-441a-b08e-c14fe11b6e6e",
+      "username": "clietin",
+      "password": "1234"
+    }
+  ]
 }
