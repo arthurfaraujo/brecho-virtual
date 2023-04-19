@@ -1,25 +1,19 @@
 @host = http://localhost:8080
 
-### Post produto
+### POST produto
 
-POST {{host}}/data/produtos
-Content-Type: application/json
 
-{
-  "nome": "baleia azul",
-  "preço": 500000,
-  "imagem": "",
-  "categoria": "Orgânicos"
-}
+### DELETE produto
 
-### Post conta
-POST {{host}}/cadastro
-Content-Type: application/json
 
-{
-  "username": "",
-  "password": ""
-}
+### GET produtos
 
-### Delete conta
-DELETE {{host}}/data/produtos?id=be348203-3a5d-41ee-8cdd-166a96013981
+
+### POST conta
+
+
+### DELETE conta
+
+
+### POST login
+
