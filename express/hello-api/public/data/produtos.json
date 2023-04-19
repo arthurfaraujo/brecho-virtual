@@ -48,20 +48,6 @@
       "preço": 15,
       "imagem": "../img/idosotriste.jpeg",
       "categoria": "Objetos"
-    },
-    {
-      "id": "be348203-3a5d-41ee-8cdd-166a96013981",
-      "nome": "pedro",
-      "preço": 100,
-      "imagem": "",
-      "categoria": "Orgânicos"
-    },
-    {
-      "id": "ad8e95ce-6faa-47f9-9c21-84dd9daf4121",
-      "nome": "baleia azul",
-      "preço": 500000,
-      "imagem": "",
-      "categoria": "Orgânicos"
     }
   ]
 }

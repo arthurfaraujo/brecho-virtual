@@ -22,4 +22,4 @@ Content-Type: application/json
 }
 
 ### Delete conta
-DELETE {{host}}/cadastro/?id=ac0d78df-ac65-43f9-90fc-9386f658b433
+DELETE {{host}}/data/produtos?id=be348203-3a5d-41ee-8cdd-166a96013981

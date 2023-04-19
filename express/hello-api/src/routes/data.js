@@ -26,4 +26,27 @@
     }
   });
 
+  rota.delete('/produtos', (req, res) => {
+    const id = req.query.id;
+
+    if (id) {
+      // console.log(id);
+      const posicao = produtos.produtos.findIndex((conta) => conta.id == id);
+
+      if (posicao == -1) {
+        throw new HTTPError('Código de produto inválido.', 400)
+      };
+
+      // console.log(posicao);
+      produtos.produtos.splice(posicao, 1);
+  
+      writeFile('public/data/produtos.json', JSON.stringify(produtos, null, 2));
+
+      res.json({message: 'Produto excluído com sucesso!'})
+      
+    } else {
+      throw new HTTPError('ID necessário para remoção.', 400);
+    };
+  });
+
 export default rota;
