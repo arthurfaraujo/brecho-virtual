@@ -1,4 +1,4 @@
-@host = http://localhost:3000
+@host = http://localhost:8080
 
 ### Post produto
 
@@ -17,6 +17,9 @@ POST {{host}}/cadastro
 Content-Type: application/json
 
 {
-  "username": "arthur",
+  "username": "clietin",
   "password": "1234"
 }
+
+### Delete conta
+DELETE {{host}}/cadastro/?id=ac0d78df-ac65-43f9-90fc-9386f658b433

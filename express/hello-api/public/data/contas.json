@@ -1,14 +1,3 @@
 {
-  "contas": [
-    {
-      "id": "fc6ea2ce-ea06-461b-8920-b8adc093433d",
-      "username": "pedro",
-      "password": "1234"
-    },
-    {
-      "id": "fbd91eb0-a036-414a-99a1-7df5da35f60b",
-      "username": "arthur",
-      "password": "1234"
-    }
-  ]
+  "contas": []
 }
