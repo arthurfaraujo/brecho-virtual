@@ -1,50 +1,40 @@
 // importação de bibliotecas importantes
   import express from 'express';
-  import {readFile} from 'fs/promises';
-  import { writeFile } from 'fs/promises';
-  import {v4 as uuid} from "uuid";
+  import modProd from '../modulos/dados.js'
   import { HTTPError } from '../index.js';
 
-// criação de contantes importantes 
-  const produtos = JSON.parse(await readFile('public/data/produtos.json'));
+// criação de contantes importantes
+  const produtos = await modProd.read('public/data/produtos.json');
   const rota = express.Router();
+
 
 // rotas
   rota.get('/produtos', (req, res) => {
-      res.json(produtos);
+      res.json(produtos.leitura);
   });
 
   rota.post('/produtos', (req, res) => {
-    if (req.body) {
-      const id = uuid();
-      const produto = req.body;
+    const produto = {...req.body};
 
-      produtos.produtos.push({id, ...produto});
-
-      writeFile('public/data/produtos.json', JSON.stringify(produtos, null, 2));
+    if (Object.values(produto).length !== 4) {
+      throw new HTTPError('Produto inválido', 400);
     } else {
-      throw new HTTPError('Cadastro de produto inválido', 400)
+      modProd.create(produtos, produto);
     }
+    
+    
+    //modProd.create(produtos, req.body);
   });
-
+  
   rota.delete('/produtos', (req, res) => {
     const id = req.query.id;
-
+    
     if (id) {
-      // console.log(id);
-      const posicao = produtos.produtos.findIndex((conta) => conta.id == id);
-
-      if (posicao == -1) {
-        throw new HTTPError('Código de produto inválido.', 400)
-      };
-
-      // console.log(posicao);
-      produtos.produtos.splice(posicao, 1);
-  
-      writeFile('public/data/produtos.json', JSON.stringify(produtos, null, 2));
-
-      res.json({message: 'Produto excluído com sucesso!'})
-      
+      try {
+        modProd.erase(produtos, id).catch(err => {throw new HTTPError(err, 400)});
+      } catch (e) {
+        console.log(e)
+      }
     } else {
       throw new HTTPError('ID necessário para remoção.', 400);
     };

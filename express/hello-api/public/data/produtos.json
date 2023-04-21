@@ -1,5 +1,5 @@
 {
-  "produtos": [
+  "lista": [
     {
       "id": "4c304aa4-4baa-44c8-8915-73e7ef991a81",
       "nome": "calça de shopping",
@@ -48,13 +48,6 @@
       "preço": 15,
       "imagem": "../img/idosotriste.jpeg",
       "categoria": "Objetos"
-    },
-    {
-      "id": "9707277c-39c7-431d-9e71-324510615437",
-      "nome": "produto 1",
-      "preço": 100,
-      "imagem": "url-img",
-      "categoria": "Categoria 1"
     }
   ]
 }

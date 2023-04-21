@@ -5,16 +5,15 @@ POST {{host}}/data/produtos
 Content-Type: application/json
 
 {
-    "nome": "produto 1",
-    "preço": 100,
-    "imagem": "url-img",
-    "categoria": "Categoria 1"
-}
+    "nome": "idoso triste",
+    "preço": 15,
+    "imagem": "../img/idosotriste.jpeg",
+    "categoria": "Objetos"
+} 
 
 
 ### DELETE produto
-DELETE {{host}}/data/produtos?id=id-produto
-
+DELETE {{host}}/data/produtos?id=f73e7be9-6267-4cf8-a2d4-b5622714b63b
 
 ### GET produtos
 GET {{host}}/data/produtos
