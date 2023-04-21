@@ -25,7 +25,7 @@ async function erase(procurado, id) {
     const posicao = procurado.leitura.lista.findIndex((item) => item.id == id);
 
     if (posicao == -1) {
-      throw 'ID não encontrado.';
+      return posicao;
     } else {
       procurado.leitura.lista.splice(posicao, 1);    
       write(procurado.caminho, procurado.leitura);

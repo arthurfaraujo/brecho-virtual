@@ -9,11 +9,11 @@
 
 
 // rotas
-  rota.get('/produtos', (req, res) => {
+  rota.get('/produtos', (req, res, next) => {
       res.json(produtos.leitura);
   });
 
-  rota.post('/produtos', (req, res) => {
+  rota.post('/produtos', (req, res, next) => {
     const produto = {...req.body};
 
     if (Object.values(produto).length !== 4) {
@@ -26,18 +26,22 @@
     //modProd.create(produtos, req.body);
   });
   
-  rota.delete('/produtos', (req, res) => {
+  rota.delete('/produtos', async (req, res, next) => {
     const id = req.query.id;
     
-    if (id) {
-      try {
-        modProd.erase(produtos, id).catch(err => {throw new HTTPError(err, 400)});
-      } catch (e) {
-        console.log(e)
-      }
-    } else {
-      throw new HTTPError('ID necessário para remoção.', 400);
-    };
+    try{
+      if (id) {      
+        const posicao = modProd.erase(produtos, id);
+        console.log(posicao);
+        if (posicao) {
+          throw new HTTPError('ID não encontrado.', 400)
+        }
+      } else {
+        throw new HTTPError('ID necessário para remoção.', 400);
+      };
+    } catch(e) {
+      next(e);
+    }
   });
 
 export default rota;

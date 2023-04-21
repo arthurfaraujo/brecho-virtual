@@ -46,7 +46,7 @@
   // Outros
     server.use((err, req, res, next) => {
       console.error(err.stack);
-      if (err instanceof HTTPError) {
+      if (err && err instanceof HTTPError) {
         res.status(err.code).json({ message: err.message });
       } else {
         res.status(500).json({ message: 'Something broke!' });
