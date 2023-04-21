@@ -1,19 +1,44 @@
 @host = http://localhost:8080
 
 ### POST produto
+POST {{host}}/data/produtos
+Content-Type: application/json
+
+{
+    "nome": "produto 1",
+    "preço": 100,
+    "imagem": "url-img",
+    "categoria": "Categoria 1"
+}
 
 
 ### DELETE produto
+DELETE {{host}}/data/produtos?id=id-produto
 
 
 ### GET produtos
+GET {{host}}/data/produtos
 
 
 ### POST conta
+POST {{host}}/cadastro
+Content-Type: application/json
+
+{
+    "nome": "art",
+    "senha": "123"
+}
 
 
 ### DELETE conta
+DELETE {{host}}/cadastro?id=id-conta
 
 
 ### POST login
+POST {{host}}/login
+Content-Type: application/json
 
+{
+    "nome": "art",
+    "senha": "123"
+}

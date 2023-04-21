@@ -3,6 +3,7 @@
   import {readFile} from 'fs/promises';
   import { writeFile } from 'fs/promises';
   import {v4 as uuid} from "uuid";
+  import { HTTPError } from '../index.js';
 
 // criação de contantes importantes 
   const produtos = JSON.parse(await readFile('public/data/produtos.json'));

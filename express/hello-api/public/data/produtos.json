@@ -48,6 +48,13 @@
       "preço": 15,
       "imagem": "../img/idosotriste.jpeg",
       "categoria": "Objetos"
+    },
+    {
+      "id": "9707277c-39c7-431d-9e71-324510615437",
+      "nome": "produto 1",
+      "preço": 100,
+      "imagem": "url-img",
+      "categoria": "Categoria 1"
     }
   ]
 }

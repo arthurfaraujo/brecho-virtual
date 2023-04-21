@@ -22,26 +22,26 @@
       const dados = {...req.body};
 
       for (const conta of contas.contas) {
-        if ((dados.username == conta.username) & (conta.password == dados.password)) { 
+        if ((dados.nome == conta.nome) & (conta.senha == dados.senha)) {
           
           res.redirect('/');
+          
+          return 0;
     
-        } else {
-          // throw new HTTPError('Dados inválidos para login', 400)
-          continue
         }
-      }
-      throw new HTTPError('Usuário não encontrado', 400);
+      };
+      // ta chegando nesse erro e nao era pra chegar
+      throw new HTTPError('Usuário e/ou senha incorreto(s).', 400);
       
   });
 
   rota.post('/cadastro', (req, res) => {
     const dados = req.body;
 
-    if ((dados.username != '') & (dados.password != '')){
+    if ((dados.nome != '') & (dados.senha != '')){
       // console.log('passei 1');
       for (const conta of contas.contas) {
-        if (dados.username == conta.username) {
+        if (dados.nome == conta.nome) {
           throw new HTTPError('Cadastro inválido, nome já existe', 400);
         } else {
           // console.log('passei 2');
