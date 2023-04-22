@@ -13,7 +13,7 @@ Content-Type: application/json
 
 
 ### DELETE produto
-DELETE {{host}}/data/produtos?id=463f8c6a-b756-4a96-8292-e2e07d4ef7a5
+DELETE {{host}}/data/produtos?id=9f2e77fe-8395-4536-8be0-f708be42f959
 
 ### GET produtos
 GET {{host}}/data/produtos

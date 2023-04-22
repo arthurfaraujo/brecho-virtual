@@ -31,7 +31,7 @@
     
     try{
       if (id) {      
-        const posicao = modProd.erase(produtos, id);
+        const posicao = await modProd.erase(produtos, id);
         console.log(posicao);
         if (posicao) {
           throw new HTTPError('ID não encontrado.', 400)
