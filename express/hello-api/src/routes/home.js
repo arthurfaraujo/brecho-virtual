@@ -47,29 +47,19 @@
         }
     });
 
-  rota.delete('/cadastro', (req, res) => {
-    const id = req.query.id;
+    rota.delete('/cadastro', async (req, res, next) => {
+        const id = req.query.id;
 
-    if (id) {
-      // console.log(id);
-      const posicao = contas.contas.findIndex((conta) => conta.id == id);
-
-      if (posicao == -1) {
-        throw new HTTPError('Código de conta inválido.', 400)
-      };
-
-      // console.log(posicao);
-      contas.contas.splice(posicao, 1);
-  
-      writeFile('public/data/contas.json', JSON.stringify(contas, null, 2));
-
-      res.json({message: 'Conta excluída com sucesso!'})
-      
-    } else {
-      throw new HTTPError('ID necessário para remoção.', 400);
-    };
+        try {
+            const posicao = await rcd.erase(dadosConta, id);
     
-
-  }); 
+            if (posicao == -1) {
+                throw new HTTPError('Código de conta inválido.', 400)
+            }    
+            res.json({message: 'Conta excluída com sucesso!'});            
+        } catch (e) {
+            next(e)
+        }
+    }); 
 
 export default rota;
