@@ -13,13 +13,17 @@
       res.json(produtos.leitura);
   });
 
-  rota.post('/produtos', (req, res, next) => {
+  rota.post('/produtos', async (req, res, next) => {
     const produto = {...req.body};
-
-    if (Object.values(produto).length !== 4) {
-      throw new HTTPError('Produto inválido', 400);
-    } else {
-      modProd.create(produtos, produto);
+    try{
+        if (Object.values(produto).length != 4) {
+          throw new HTTPError('Produto inválido', 400);
+        } else {
+          modProd.create(produtos, produto);
+          res.json({message: 'Produto criado com sucesso!'})
+        }
+    } catch(e) {
+        next(e)
     }
     
     

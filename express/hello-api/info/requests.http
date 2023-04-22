@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
     "nome": "idoso triste",
-    "preço": 15,
+    "preço": 100,
     "imagem": "../img/idosotriste.jpeg",
     "categoria": "Objetos"
 } 
