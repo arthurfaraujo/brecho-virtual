@@ -1,7 +1,6 @@
 import {readFile} from 'fs/promises';
 import { writeFile } from 'fs/promises';
 import {v4 as uuid} from 'uuid';
-import {HTTPError} from '../index.js';
 
 async function read(caminho) {
     const leitura = JSON.parse(await readFile(caminho));
@@ -32,5 +31,7 @@ async function erase(procurado, id) {
       return 0;
     } 
 }
+
+
 
 export default {read, create, erase}

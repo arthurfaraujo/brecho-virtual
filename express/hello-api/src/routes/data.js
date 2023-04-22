@@ -1,10 +1,10 @@
 // importação de bibliotecas importantes
   import express from 'express';
-  import modProd from '../modulos/dados.js'
+  import rcd from '../modulos/rcd.js'
   import { HTTPError } from '../index.js';
 
 // criação de contantes importantes
-  const produtos = await modProd.read('public/data/produtos.json');
+  const produtos = await rcd.read('public/data/produtos.json');
   const rota = express.Router();
 
 
@@ -16,10 +16,10 @@
   rota.post('/produtos', async (req, res, next) => {
     const produto = {...req.body};
     try{
-        if (Object.values(produto).length != 4) {
+        if (Object.values(produto).length < 4) {
           throw new HTTPError('Produto inválido', 400);
         } else {
-          modProd.create(produtos, produto);
+          rcd.create(produtos, produto);
           res.json({message: 'Produto criado com sucesso!'})
         }
     } catch(e) {
@@ -27,7 +27,7 @@
     }
     
     
-    //modProd.create(produtos, req.body);
+    //rcd.create(produtos, req.body);
   });
   
   rota.delete('/produtos', async (req, res, next) => {
@@ -35,8 +35,8 @@
     
     try{
       if (id) {      
-        const posicao = await modProd.erase(produtos, id);
-        console.log(posicao);
+        const posicao = await rcd.erase(produtos, id);
+        //console.log(posicao);
         if (posicao) {
           throw new HTTPError('ID não encontrado.', 400)
         }

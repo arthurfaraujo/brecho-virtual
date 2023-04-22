@@ -1,6 +1,6 @@
 export function gerarTodosProdutos(lista, dados){
-    for (var i in dados.produtos) {
-        var prodInfo = dados.produtos[i];
+    for (var i in dados.lista) {
+        var prodInfo = dados.lista[i];
         // console.log(prodInfo);
         var produto = document.createElement('li');
         var preço = document.createElement('p');

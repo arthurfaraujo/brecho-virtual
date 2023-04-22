@@ -11,46 +11,50 @@
   const server = express();
 
 // Configurações
-  // mostra o que está acontecendo no servidor
-  server.use(morgan('tiny'));
+    // mostra o que está acontecendo no servidor
+        server.use(morgan('tiny'));
 
-  // define a pasta de arquivos estáticos
-  server.use(express.static('public'));
+    // define a pasta de arquivos estáticos
+        server.use(express.static('public'));
 
-  // define o ejs como motor de visualização de páginas
-  server.set('view engine', 'ejs');
+    // define o ejs como motor de visualização de páginas
+        server.set('view engine', 'ejs');
 
-  // configura o body-parser
-  server.use(bdpa.urlencoded({extended: false}));
-  server.use(bdpa.json());
-
-  // Classe que trata erros
-  export class HTTPError extends Error {
-    constructor(message, code) {
-      super(message);
-      this.code = code;
-    }
-  }
+    // configura o body-parser
+        server.use(bdpa.urlencoded({extended: false}));
+        server.use(bdpa.json());
+  
+    // Classe que trata erros
+        export class HTTPError extends Error {
+            constructor(message, code) {
+                super(message);
+                this.code = code;
+            }
+        }
 
 // Rotas
-  server.use('/', home);
+    server.use('/', home);
 
-  server.use('/data', data);
+    server.use('/data', data);
 
 // Manipular erros sem quebrar o servidor
-  // 404
+// 404
     server.use((req, res, next) => {
-      res.status(404).json({ message: 'Content not found!' });
+        res.status(404).json({ message: 'Content not found!' });
     });
 
-  // Outros
+    server.use((req, res, next) => {
+        console.log('oi')
+    })
+
+// Outros
     server.use((err, req, res, next) => {
-      console.error(err.stack);
-      if (err && err instanceof HTTPError) {
-        res.status(err.code).json({ message: err.message });
-      } else {
-        res.status(500).json({ message: 'Something broke!' });
-      }
+        console.error(err.stack);
+        if (err && err instanceof HTTPError) {
+            res.status(err.code).json({ message: err.message });
+        } else {
+            res.status(500).json({ message: 'Something broke!' });
+        }
     });
 
 // Botando o servidor pra rodar e escutar na porta PORT

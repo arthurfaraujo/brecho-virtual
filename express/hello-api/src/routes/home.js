@@ -1,67 +1,51 @@
 // importação de bibliotecas importantes
-  import express from 'express';
-  import { readFile } from 'fs/promises';
-  import { writeFile } from 'fs/promises';
-  import { v4 as uuid } from "uuid";
-  import { HTTPError } from '../index.js'
+    import express from 'express';
+    import rcd from '../modulos/rcd.js';
+    import user from '../modulos/user.js';
+    import { HTTPError } from '../index.js';
 
 // criação de constantes importantes
-  const contas = JSON.parse(await readFile('public/data/contas.json'));
-  const rota = express.Router();
+    const dadosConta = await rcd.read('public/data/contas.json');
+    const contas = dadosConta.leitura.lista;
+    const rota = express.Router();
 
 // rotas
-  rota.get('/', (req, res) => {
-      res.render('index.ejs');
-  });
+    rota.get('/', (req, res) => {
+        res.render('index.ejs');
+    });
 
-  rota.get('/login', (req, res) => {
-      res.render('login.ejs');
-  });
+    rota.get('/login', (req, res) => {
+        res.render('login.ejs');
+        //res.json({message: 'Deu certo!'});
+    });
 
-  rota.post('/login', (req, res) => {
-      const dados = {...req.body};
+    rota.post('/login', async (req, res, next) => {
+        const dados = {...req.body}
+        try {
+            const usuario = await user.autenticate(dados, contas);
+            if (usuario == 1) {
+                throw new HTTPError('Usuário e/ou senha incorreto(s).', 400);
+            } else {
+                res.redirect(`/?id=${usuario}`);
+            }            
+        } catch(e) {
+            next(e)
+        }        
+    });
 
-      for (const conta of contas.contas) {
-        if ((dados.nome == conta.nome) & (conta.senha == dados.senha)) {
-          
-          res.redirect('/');
-          
-          return 0;
-    
+    rota.post('/cadastro', async (req, res, next) => {
+        const dados = {...req.body};
+        try {
+            const nomeExiste = await user.checkname(dados.nome, contas);
+            if (nomeExiste == 1) {
+                throw new HTTPError('Nome de usuário já existe.', 400);
+            }    
+            rcd.create(dadosConta, dados);            
+            res.json({message: "Cadastro realizado com sucesso!"});
+        } catch(e) {
+            next(e)
         }
-      };
-      // ta chegando nesse erro e nao era pra chegar
-      throw new HTTPError('Usuário e/ou senha incorreto(s).', 400);
-      
-  });
-
-  rota.post('/cadastro', (req, res) => {
-    const dados = req.body;
-
-    if ((dados.nome != '') & (dados.senha != '')){
-      // console.log('passei 1');
-      for (const conta of contas.contas) {
-        if (dados.nome == conta.nome) {
-          throw new HTTPError('Cadastro inválido, nome já existe', 400);
-        } else {
-          // console.log('passei 2');
-          continue
-        }
-      }
-    } else {
-      throw new HTTPError('Nome de usuário e/ou senha vazio(s).', 400);
-    };
-
-    const id = uuid();
-  
-    const conta = {id, ...req.body};
-  
-    contas.contas.push(conta);
-  
-    writeFile('public/data/contas.json', JSON.stringify(contas, null, 2));
-    
-    res.json({message: "Cadastro realizado com sucesso!"});
-  });
+    });
 
   rota.delete('/cadastro', (req, res) => {
     const id = req.query.id;
@@ -86,6 +70,6 @@
     };
     
 
-  });
+  }); 
 
 export default rota;
