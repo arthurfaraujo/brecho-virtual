@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # forçar o fechamento do servidor através do kill
-retorno=$(lsof -i :8080)
+retorno=$(lsof -i :8080 | grep -E "node")
 
-RETORNO=$(grep -E "node" $retorno)
-KILL=${RETORNO:5:9}
+KILL=${retorno:4:10}
 kill $KILL

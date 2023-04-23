@@ -42,7 +42,8 @@
         }
       } else {
         throw new HTTPError('ID necessário para remoção.', 400);
-      };
+      }
+      res.json({message: 'Produto removido com sucesso!'});
     } catch(e) {
       next(e);
     }

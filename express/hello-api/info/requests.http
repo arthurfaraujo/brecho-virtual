@@ -13,7 +13,7 @@ Content-Type: application/json
 
 
 ### DELETE produto
-DELETE {{host}}/data/produtos?id=9f2e77fe-8395-4536-8be0-f708be42f959
+DELETE {{host}}/data/produtos?id=
 
 ### GET produtos
 GET {{host}}/data/produtos
@@ -24,13 +24,13 @@ POST {{host}}/cadastro
 Content-Type: application/json
 
 {
-    "nome": "art",
+    "nome": "artchucks",
     "senha": "123"
 }
 
 
 ### DELETE conta
-DELETE {{host}}/cadastro?id=id-conta
+DELETE {{host}}/cadastro?id=
 
 
 ### POST login

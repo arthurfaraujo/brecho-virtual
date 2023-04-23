@@ -48,13 +48,6 @@
       "preço": 15,
       "imagem": "../img/idosotriste.jpeg",
       "categoria": "Objetos"
-    },
-    {
-      "id": "9b29fa20-d3bb-4101-8f6a-838e07660776",
-      "nome": "idoso triste",
-      "preço": 100,
-      "imagem": "../img/idosotriste.jpeg",
-      "categoria": "Objetos"
     }
   ]
 }
