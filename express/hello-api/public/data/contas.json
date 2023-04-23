@@ -1,11 +1,6 @@
 {
   "lista": [
     {
-      "id": "3f5214f8-8a2d-441a-b08e-c14fe11b6e6e",
-      "nome": "clietin",
-      "senha": "1234"
-    },
-    {
       "id": "f86defb7-5e59-4809-b85b-9f1242d09c82",
       "nome": "a",
       "senha": "1"
@@ -23,6 +18,11 @@
     {
       "id": "bbbdffab-c070-4007-8d3d-e612bf323d59",
       "nome": "artchucks",
+      "senha": "123"
+    },
+    {
+      "id": "9551ea1d-9910-434f-9f82-25e67f883b1c",
+      "nome": "ar",
       "senha": "123"
     }
   ]

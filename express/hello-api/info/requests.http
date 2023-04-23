@@ -5,7 +5,6 @@ POST {{host}}/data/produtos
 Content-Type: application/json
 
 {
-    "nome": "idoso triste",
     "preço": 100,
     "imagem": "../img/idosotriste.jpeg",
     "categoria": "Objetos"
@@ -13,7 +12,7 @@ Content-Type: application/json
 
 
 ### DELETE produto
-DELETE {{host}}/data/produtos?id=
+DELETE {{host}}/data/produtos?id=19e3fcdb-c64f-44d8-b5c4-1f59f0b42ad8
 
 ### GET produtos
 GET {{host}}/data/produtos
@@ -24,13 +23,13 @@ POST {{host}}/cadastro
 Content-Type: application/json
 
 {
-    "nome": "artchucks",
+    "nome": "ar",
     "senha": "123"
 }
 
 
 ### DELETE conta
-DELETE {{host}}/cadastro?id=
+DELETE {{host}}/cadastro?id=3f5214f8-8a2d-441a-b08e-c14fe11b6e6e
 
 
 ### POST login
@@ -38,6 +37,6 @@ POST {{host}}/login
 Content-Type: application/json
 
 {
-    "nome": "art",
+    "nome": "a",
     "senha": "123"
 }
