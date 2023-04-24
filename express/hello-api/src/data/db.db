@@ -1,0 +1,26 @@
+----------------------------------------
+--- Criação da tabela Usuário
+---------------------------------------- 
+CREATE TABLE usuario (
+    cod_usr     CHAR(36)    PRIMARY KEY,
+    e_mail      VARCHAR(60)      UNIQUE,
+    senha       VARCHAR(8),
+    nome        VARCHAR(80),
+    telefone    INT(11),
+    UF          CHAR(2),
+    cidade      VARCHAR(50),
+    rua         VARCHAR(90),
+    numero      INT(5)
+);
+
+---------------------------------------- 
+
+------------------------------------------------
+--- Criação da tabela Marca
+------------------------------------------------
+CREATE TABLE marca (
+    cod_mar    INT(5) PRIMARY KEY AUTOINCREMENT,
+    nome VARCHAR(40)
+);
+
+------------------------------------------------
