@@ -23,8 +23,9 @@ Vou adicionar a pasta do git.
 
 ## Desenvolvido com
 
-*Front-end:* HTML, CSS e JavaScript.
-*Back-end:* JavaScript, Node.js, Express, sqlite, body-parser, uuid.
+**Front-end:** HTML, CSS e JavaScript.
+
+**Back-end:** JavaScript, Node.js, Express, sqlite, body-parser, uuid.
 
 ## Requisitos para rodar localmente
 - Node.js;
