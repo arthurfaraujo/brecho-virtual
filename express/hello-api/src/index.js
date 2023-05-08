@@ -3,7 +3,7 @@
   import morgan from 'morgan';
   import bdpa from 'body-parser';
   // Rotas
-    import home from './routes/home.js';
+    import home from './routes/routes.js';
 
 // Criação de constantes importantes
   const PORT = 8080;
