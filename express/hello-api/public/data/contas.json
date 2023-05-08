@@ -1,11 +1,6 @@
 {
   "lista": [
     {
-      "id": "f86defb7-5e59-4809-b85b-9f1242d09c82",
-      "nome": "a",
-      "senha": "1"
-    },
-    {
       "id": "e80ffd94-566e-4879-9340-d50db9c40aeb",
       "nome": "artu",
       "senha": "senhatopdemais123"
@@ -24,6 +19,11 @@
       "id": "9551ea1d-9910-434f-9f82-25e67f883b1c",
       "nome": "ar",
       "senha": "123"
+    },
+    {
+      "id": "8c928350-423b-4d69-a99b-bc11d987420f",
+      "nome": "luiz",
+      "senha": "senha"
     }
   ]
 }
