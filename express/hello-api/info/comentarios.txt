@@ -20,4 +20,5 @@ get manda info mais simples/post serve para mandar info mais complexa
 
 https://www.youtube.com/watch?v=LwvZeRj7CdQ
 https://www.youtube.com/watch?v=p6oubMfuNto
-https://www.youtube.com/watch?v=OFrnB7Bvznk
+https://www.youtube.com/watch?v=OFrnB7Bvznk0
+https://www.npmjs.com/package/sqlite-async
