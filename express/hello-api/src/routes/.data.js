@@ -1,7 +1,7 @@
 // importação de bibliotecas importantes
   import express from 'express';
   import rcd from '../modulos/rcd.js'
-  import { HTTPError } from '../index.js';
+  // import { HTTPError } from '../index.js';
 
 // criação de contantes importantes
   const produtos = await rcd.read('public/data/produtos.json');

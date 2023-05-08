@@ -4,7 +4,6 @@
   import bdpa from 'body-parser';
   // Rotas
     import home from './routes/home.js';
-    import data from './routes/data.js';
 
 // Criação de constantes importantes
   const PORT = 8080;
@@ -23,39 +22,10 @@
     // configura o body-parser
         server.use(bdpa.urlencoded({extended: false}));
         server.use(bdpa.json());
-  
-    // Classe que trata erros
-        export class HTTPError extends Error {
-            constructor(message, code) {
-                super(message);
-                this.code = code;
-            }
-        }
 
 // Rotas
-    server.use('/', home);
+    server.use(home);
 
-    server.use('/data', data);
-
-// Manipular erros sem quebrar o servidor
-// 404
-    server.use((req, res, next) => {
-        res.status(404).json({ message: 'Content not found!' });
-    });
-
-    server.use((req, res, next) => {
-        console.log('oi')
-    })
-
-// Outros
-    server.use((err, req, res, next) => {
-        console.error(err.stack);
-        if (err && err instanceof HTTPError) {
-            res.status(err.code).json({ message: err.message });
-        } else {
-            res.status(500).json({ message: 'Something broke!' });
-        }
-    });
 
 // Botando o servidor pra rodar e escutar na porta PORT
   server.listen(PORT, () => {
