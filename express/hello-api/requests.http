@@ -13,7 +13,7 @@ Content-Type: application/json
 
 
 ### DELETE produto
-DELETE {{host}}/data/produtos?id=45fbc8f7-388f-4572-ba78-5370c8a40a72
+DELETE {{host}}/data/produtos?id=3896da62-f04d-46c5-943c-012f21a987a8
 
 ### GET produtos
 GET {{host}}/data/produtos
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 
 ### DELETE conta
-DELETE {{host}}/cadastro?id=f86defb7-5e59-4809-b85b-9f1242d09c82
+DELETE {{host}}/cadastro?id=ff849298-dbb0-483e-a6b0-4824b06866a0
 
 
 ### POST login
