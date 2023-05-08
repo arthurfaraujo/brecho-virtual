@@ -26,7 +26,6 @@
 // Rotas
     server.use(home);
 
-
 // Botando o servidor pra rodar e escutar na porta PORT
   server.listen(PORT, () => {
     console.log(`Server is running and listening at port ${PORT}`);
