@@ -1,4 +1,4 @@
-import { geraCategorias, ocultarProdutosCategoria, gerarTodosProdutos } from "./módulos/modulos.js";
+import { geraCategorias, ocultarProdutosCategoria, gerarTodosProdutos } from "./modulos/modulos.js";
 const data = await fetch('/data/produtos');
 var produtos = await data.json();
 
