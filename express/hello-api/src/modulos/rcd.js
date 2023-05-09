@@ -2,7 +2,7 @@ import {readFile} from 'fs/promises';
 import { writeFile } from 'fs/promises';
 import {v4 as uuid} from 'uuid';
 
-async function read(caminho) {
+export async function read(caminho) {
     const leitura = JSON.parse(await readFile(caminho));
     const dados = {leitura, caminho};
     return dados;

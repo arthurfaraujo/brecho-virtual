@@ -1,7 +1,7 @@
 // importação de bibliotecas importantes
     import express from 'express';
     import rcd from '../modulos/rcd.js';
-    import user from '../modulos/user.js';
+    import user from '../modulos/autenticate.js';
 
 // criação de constantes importantes
     const dadosConta = await rcd.read('public/data/contas.json');
