@@ -1,16 +1,28 @@
 {
-  "type": "module",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "express-handlebars": "^7.0.6",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.22",
-    "sqlite-async": "^1.2.0",
-    "uuid": "^9.0.0"
-  },
-  "scripts": {
-    "dev": "nodemon src/index.js"
-  }
+    "name": "brecho-virtual",
+    "version": "1.0.0",
+    "description": "Sistema web de um brechó virtual.",
+    "main": "src/index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/slordian/brecho-virtual"
+    },
+    "author": "slordian",
+    "license": "MIT",
+    "private": false,
+    "type": "module",
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "express-handlebars": "^7.0.6",
+        "morgan": "^1.10.0",
+        "nodemon": "^2.0.22",
+        "sqlite-async": "^1.2.0",
+        "uuid": "^9.0.0"
+    },
+    "scripts": {
+        "listen": "node src/index.js",
+        "dev": "nodemon src/index.js"
+    }
 }
