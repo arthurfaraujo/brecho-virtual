@@ -1,6 +1,6 @@
 import database from '../database/database.js';
 
-async function readAll() {
+export async function readAll() {
     const db = await database.connect();
 
     const request = `select * from marca;`;
@@ -9,3 +9,26 @@ async function readAll() {
 
     return marcas;
 }
+
+async function create(name) {
+    const db = await database.connect();
+
+    const request = `insert into marca (nome) values (?);`;
+
+    const { lastID } = await db.run(request, [name]);
+
+    return lastID;
+}
+
+export async function read(codigo) {
+    const db = await database.connect();
+
+    const request = `select * from marca
+    where cod_mar = ?;`;
+
+    const marcas = await db.get(request, [codigo]);
+
+    return marcas;
+}
+
+export default { read, readAll }
