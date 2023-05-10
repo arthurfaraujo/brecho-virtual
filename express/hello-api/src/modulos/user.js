@@ -1,4 +1,4 @@
-import Database from '../database/database.js';
+import database from '../database/database.js';
 
 const users = [
     {
@@ -69,7 +69,7 @@ for (const user of users) {
 }
 
 async function create(user) {
-    const db = await Database.connect();
+    const db = await database.connect();
 
     const { cod_usr, email, senha, nome, telefone, UF:uf, cidade, rua, 'número':numero } = user;
 
@@ -92,3 +92,5 @@ async function read(id) {
 
     return usuario;
 }
+
+export default { read, create };

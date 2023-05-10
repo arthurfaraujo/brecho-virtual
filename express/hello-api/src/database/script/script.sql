@@ -88,7 +88,7 @@ CREATE TABLE peca (
     cod_dep     INTEGER           NOT NULL,
     cod_cat     INTEGER           NOT NULL,
     cod_sub     INTEGER           NOT NULL,
-    cod_mar     INTEGER           NOT NULL,
+    cod_mar     INTEGER,
     cod_usr_cr  CHAR(36),
 
     FOREIGN KEY (cod_usr_cr)
