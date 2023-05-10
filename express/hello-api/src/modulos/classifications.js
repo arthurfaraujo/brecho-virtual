@@ -10,6 +10,7 @@ export async function create(classif) {
     return lastID;
 }
 
-create([1, 2, 3]);
+// TODO: Criar as funções de leitura
+// TODO: Criar as classificações para criar as peças
 
 export default create;
