@@ -1,7 +1,7 @@
 // importação de bibliotecas importantes
     import express from 'express';
     import rcd from '../modulos/rcd.js';
-    import user from '../modulos/autenticate.js';
+    import user from '../modulos/autentication.js';
 
 // criação de constantes importantes
     const dadosConta = await rcd.read('public/data/contas.json');
@@ -19,7 +19,7 @@
 
 // rotas home
     rota.get('/', (req, res) => {
-        res.render('index.ejs');
+        res.redirect('index.html');
     });
 
     rota.get('/login', (req, res) => {
