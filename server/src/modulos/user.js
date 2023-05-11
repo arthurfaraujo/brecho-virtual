@@ -1,5 +1,6 @@
 import database from '../database/database.js';
 
+// função de criação de usuário
 export async function create(user) {
     const db = await database.connect();
 
