@@ -10,7 +10,7 @@ CREATE TABLE usuario (
     UF          CHAR(2)        NOT NULL,
     cidade      VARCHAR(50)    NOT NULL,
     rua         VARCHAR(90)    NOT NULL,
-    numero      INTEGER(5)         NOT NULL
+    numero      INTEGER(5)     NOT NULL
 );
 
 -----------------------||-----------------------

@@ -10,13 +10,13 @@ async function create(name) {
     return lastID;
 }
 
-export async function read(codigo) {
+export async function read(cod_mar) {
     const db = await database.connect();
 
     const query = `select * from marca
     where cod_mar = ?;`;
 
-    const brands = await db.get(query, [codigo]);
+    const brands = await db.get(query, [cod_mar]);
 
     return brands;
 }

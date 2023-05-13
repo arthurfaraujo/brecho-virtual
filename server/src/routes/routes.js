@@ -1,7 +1,10 @@
 // importação de bibliotecas importantes
     import express from 'express';
     import rcd from '../modulos/rcd.js';
-    import user from '../modulos/autentication.js';
+    import auth from '../modulos/autentication.js';
+    import user from '../modulos/user.js';
+    import brand from '../modulos/brands.js';
+    import clothes from '../modulos/clothing.js';
 
 // criação de constantes importantes
     const dadosConta = await rcd.read('public/data/contas.json');
@@ -22,6 +25,18 @@
         res.render('index.ejs');
     });
 
+    rota.get('/usuarios', async (req, res) => {
+        res.json(await user.readAll());
+    })
+
+    rota.get('/marcas', async (req, res) => {
+        res.json(await brand.readAll());
+    })
+
+    rota.get('/pecas', async (req, res) => {
+        res.json(await clothes.readAll())
+    })
+
     rota.get('/login', (req, res) => {
         res.render('login.ejs');
         //res.json({message: 'Deu certo!'});
@@ -30,7 +45,7 @@
     rota.post('/login', async (req, res, next) => {
         const dados = {...req.body}
         try {
-            const usuario = await user.autenticate(dados, contas);
+            const usuario = await auth.autenticate(dados, contas);
             if (usuario == 1) {
                 throw new HTTPError('Usuário e/ou senha incorreto(s).', 400);
             } else {
@@ -44,7 +59,7 @@
     rota.post('/cadastro', async (req, res, next) => {
         const dados = {...req.body};
         try {
-            const nomeExiste = await user.checkname(dados.nome, contas);
+            const nomeExiste = await auth.checkname(dados.nome, contas);
             if (nomeExiste == 1) {
                 throw new HTTPError('Nome de usuário já existe.', 400);
             }    

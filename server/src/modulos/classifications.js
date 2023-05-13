@@ -1,13 +1,15 @@
 import database from "../database/database.js";
 
 export async function create(classif) {
-  const db = await database.connect();
+    const db = await database.connect();
 
-  const query = `insert into classificacao values (?, ?, ?)`;
+    const query = `insert into classificacao values (?, ?, ?)`;
 
-  const { lastID } = await db.run(query, classif);
+    const { departamento, categoria, subcategoria } = classif;
 
-  return lastID;
+    const { lastID } = await db.run(query, [departamento, categoria, subcategoria]);
+
+    return lastID;
 }
 
 export async function read(classif) {
@@ -21,20 +23,23 @@ export async function read(classif) {
                       where cf.cod_dep = ? and
                       cf.cod_cat = ? and
                       cf.cod_sub = ?;`;
-  
-    const { dep, cat, sub } = await db.get(query, classif);
+
+    const { departamento, categoria, subcategoria } = classif;
+    
+    const { dep, cat, sub } = await db.get(query, [departamento, 
+    categoria, subcategoria]);
   
     return [dep, cat, sub];
 }
 
 export async function readAll() {
-  const db = await database.connect();
+    const db = await database.connect();
 
-  const query = `select * from classificacao;`;
+    const query = `select * from classificacao;`;
 
-  const classifs = await db.all(query);
+    const classifs = await db.all(query);
 
-  return classifs;
+    return classifs;
 }
 
 // TODO: Criar as classificações para criar as peças
