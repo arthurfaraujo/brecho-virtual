@@ -1,4 +1,4 @@
-import database from "../database/database.js";
+import database from "../database/js/database.js";
 
 export async function create(classif) {
     const db = await database.connect();

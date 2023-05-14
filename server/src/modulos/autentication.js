@@ -7,14 +7,4 @@ async function autenticate(dados, contas) {
     return 1;
 };
 
-async function checkname(nome, contas) {
-    for (const conta of contas) {
-        if (conta.nome == nome) {
-            return 1;
-        }
-    }
-
-    return 0;
-}
-
-export default {autenticate, checkname};
+export default { autenticate };

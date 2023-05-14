@@ -1,15 +1,13 @@
 // importação de bibliotecas importantes
     import express from 'express';
-    import rcd from '../modulos/rcd.js';
+    import data from '../database/bdsimples/js/create.js';
     import auth from '../modulos/autentication.js';
     import user from '../modulos/user.js';
     import brand from '../modulos/brands.js';
     import clothes from '../modulos/clothing.js';
+    import {v4 as uuid} from 'uuid';
 
 // criação de constantes importantes
-    const dadosConta = await rcd.read('public/data/contas.json');
-    const contas = dadosConta.leitura.lista;
-    const produtos = await rcd.read('public/data/produtos.json');
     const rota = express.Router();
 
 // classe de erros específica para erros http
@@ -24,18 +22,6 @@
     rota.get('/', (req, res) => {
         res.render('index.ejs');
     });
-
-    rota.get('/usuarios', async (req, res) => {
-        res.json(await user.readAll());
-    })
-
-    rota.get('/marcas', async (req, res) => {
-        res.json(await brand.readAll());
-    })
-
-    rota.get('/pecas', async (req, res) => {
-        res.json(await clothes.readAll())
-    })
 
     rota.get('/login', (req, res) => {
         res.render('login.ejs');
@@ -59,11 +45,7 @@
     rota.post('/cadastro', async (req, res, next) => {
         const dados = {...req.body};
         try {
-            const nomeExiste = await auth.checkname(dados.nome, contas);
-            if (nomeExiste == 1) {
-                throw new HTTPError('Nome de usuário já existe.', 400);
-            }    
-            rcd.create(dadosConta, dados);            
+            const lastid = await data.createU(dados);            
             res.json({message: "Cadastro realizado com sucesso!"});
         } catch(e) {
             next(e)
@@ -74,11 +56,7 @@
         const id = req.query.id;
 
         try {
-            const posicao = await rcd.erase(dadosConta, id);
-    
-            if (posicao == -1) {
-                throw new HTTPError('Código de conta inválido.', 400)
-            }    
+            const changes = await data.dU(id);   
             res.json({message: 'Conta excluída com sucesso!'});            
         } catch (e) {
             next(e)
@@ -86,44 +64,34 @@
     });
     
 // rotas data
-    rota.get('/data/produtos', (req, res, next) => {
-        res.json(produtos.leitura);
+    rota.get('/data/produtos', async (req, res, next) => {
+        try {
+            res.json(await data.rAllP());
+        } catch (e) {
+            next(e)
+        }
     });
 
     rota.post('/data/produtos', async (req, res, next) => {
-    const produto = {...req.body};
-    try{
-        if (Object.values(produto).length < 4) {
-            throw new HTTPError('Produto inválido', 400);
-        } else {
-            rcd.create(produtos, produto);
-            res.json({message: 'Produto criado com sucesso!'})
+        const id = uuid();
+        const produto = {id, ...req.body};
+        try{
+            const lastid = await data.createP(produto);
+            res.json({message: 'Produto criado com sucesso!'});
+        } catch(e) {
+            next(e)
         }
-    } catch(e) {
-        next(e)
-    }
-    
-    
-    //rcd.create(produtos, req.body);
     });
 
     rota.delete('/data/produtos', async (req, res, next) => {
-    const id = req.query.id;
-    
-    try{
-        if (id) {      
-        const posicao = await rcd.erase(produtos, id);
-        //console.log(posicao);
-        if (posicao) {
-            throw new HTTPError('ID não encontrado.', 400)
+        const id = req.query.id;
+        
+        try{
+            const changes = await data.dP(id);
+            res.json({message: 'Produto removido com sucesso!'});
+        } catch(e) {
+            next(e);
         }
-        } else {
-        throw new HTTPError('ID necessário para remoção.', 400);
-        }
-        res.json({message: 'Produto removido com sucesso!'});
-    } catch(e) {
-        next(e);
-    }
     });
 
 // Manipular erros sem quebrar o servidor
@@ -131,10 +99,6 @@
         rota.use((req, res, next) => {
             res.status(404).json({ message: 'Content not found!' });
         });
-
-        rota.use((req, res, next) => {
-            console.log('oi')
-        })
 
     // Outros
         rota.use((err, req, res, next) => {

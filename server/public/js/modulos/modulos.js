@@ -1,6 +1,6 @@
 export function gerarTodosProdutos(lista, dados){
-    for (var i in dados.lista) {
-        var prodInfo = dados.lista[i];
+    for (const dado of dados) {
+        var prodInfo = dado;
         // console.log(prodInfo);
         var produto = document.createElement('li');
         var preço = document.createElement('p');
@@ -8,9 +8,9 @@ export function gerarTodosProdutos(lista, dados){
         var imagem = document.createElement('img');
         var botao = document.createElement('button');
         
-        nome.innerHTML = prodInfo.nome;
-        preço.innerHTML = 'R$ ' + prodInfo.preço;
-        imagem.src = prodInfo.imagem;
+        nome.innerHTML = prodInfo.name;
+        preço.innerHTML = 'R$ ' + prodInfo.price;
+        imagem.src = prodInfo.img;
         botao.innerHTML = 'Comprar'
         
         produto.appendChild(imagem);
@@ -19,7 +19,7 @@ export function gerarTodosProdutos(lista, dados){
         produto.appendChild(botao);
         
         produto.classList.add("produto");
-        produto.classList.add(prodInfo.categoria.toLowerCase());
+        produto.classList.add(prodInfo.category.toLowerCase());
         imagem.classList.add("imagem-produto");
         lista.appendChild(produto);
     }

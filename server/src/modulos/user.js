@@ -1,4 +1,4 @@
-import database from '../database/database.js';
+import database from '../database/js/database.js';
 
 // função de criação de usuário
 export async function create(user) {

@@ -12,7 +12,6 @@ CREATE TABLE usuario (
     rua         VARCHAR(90)    NOT NULL,
     numero      INTEGER(5)     NOT NULL
 );
-
 -----------------------||-----------------------
 
 ------------------------------------------------
@@ -22,7 +21,6 @@ CREATE TABLE marca (
     cod_mar    INTEGER PRIMARY KEY AUTOINCREMENT,
     nome       VARCHAR(40)             NOT NULL
 );
-
 -----------------------||-----------------------
 
 ------------------------------------------------
@@ -32,7 +30,6 @@ CREATE TABLE departamento (
     cod_dep    INTEGER PRIMARY KEY AUTOINCREMENT,
     nome       varchar(40)             NOT NULL
 );
-
 -----------------------||-----------------------
 
 ------------------------------------------------
@@ -42,7 +39,6 @@ CREATE TABLE categoria (
     cod_cat    INTEGER PRIMARY KEY AUTOINCREMENT,
     nome       varchar(40)             NOT NULL
 );
-
 -----------------------||-----------------------
 
 ------------------------------------------------
@@ -52,7 +48,6 @@ CREATE TABLE subcategoria (
     cod_sub    INTEGER PRIMARY KEY AUTOINCREMENT,
     nome       varchar(40)             NOT NULL
 );
-
 -----------------------||-----------------------
 
 ------------------------------------------------
@@ -83,13 +78,12 @@ CREATE TABLE peca (
     preco       NUMERIC(8,2)     NOT NULL,
     nome        VARCHAR(80)      NOT NULL,
     cod_usr_cp  CHAR(36),
-    data_compra CHAR(10) 
-    CHECK (data_compra LIKE "__/__/____"),
-    cod_dep     INTEGER           NOT NULL,
-    cod_cat     INTEGER           NOT NULL,
-    cod_sub     INTEGER           NOT NULL,
+    cod_dep     INTEGER          NOT NULL,
+    cod_cat     INTEGER          NOT NULL,
+    cod_sub     INTEGER          NOT NULL,
     cod_mar     INTEGER,
     cod_usr_cr  CHAR(36),
+    data_compra CHAR(10),
 
     FOREIGN KEY (cod_usr_cr)
         REFERENCES usuario (cod_usr_cr)
@@ -104,7 +98,6 @@ CREATE TABLE peca (
     FOREIGN KEY (cod_dep)
         REFERENCES departamento (cod_dep)
 );
-
 -----------------------||-----------------------
 
 ------------------------------------------------
@@ -120,7 +113,6 @@ CREATE TABLE lista_desejo (
     FOREIGN KEY (cod_usr)
         REFERENCES usuario (cod_usr)
 );
-
 -----------------------||-----------------------
 
 ------------------------------------------------
@@ -134,5 +126,4 @@ CREATE TABLE foto_produto (
     FOREIGN KEY (cod_pec)
         REFERENCES peca (cod_pec)
 );
-
 -----------------------||-----------------------
