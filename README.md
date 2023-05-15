@@ -6,7 +6,14 @@ viés sustentável, pois a produção e descarte de roupas
 excessivos prejudica o meio-ambiente. 
 
 ## Screenshots
-Vou adicionar a pasta do git.
+<span align="center">
+  <img src="screenshots/home.png">
+</span>
+
+
+<span align="center">
+  <img src="screenshots/login.png">
+</span>
 
 ## Funcionalidades ~~a adicionar~~
 
