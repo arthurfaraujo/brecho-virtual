@@ -7,12 +7,12 @@ excessivos prejudica o meio-ambiente.
 
 ## Screenshots
 <span align="center">
-  <img src="screenshots/home.png">
+  <img src="screenshots/homebrecho.png">
 </span>
 
 
 <span align="center">
-  <img src="screenshots/login.png">
+  <img src="screenshots/loginbrecho.png">
 </span>
 
 ## Funcionalidades ~~a adicionar~~
