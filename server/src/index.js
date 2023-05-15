@@ -7,7 +7,7 @@
     import home from './routes/routes.js';
 
 // Criação de constantes importantes
-  const PORT = 8080;
+  const PORT = 3000;
   const server = express();
 
 // Configurações

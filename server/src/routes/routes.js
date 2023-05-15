@@ -2,7 +2,6 @@
     import { Router } from 'express';
     import product from '../db/models/Products.js';
     import user from '../db/models/Users.js';
-    import auth from '../db/autentication.js';
 
 // criação de constantes importantes
     const rota = Router();
@@ -26,9 +25,9 @@
     });
 
     rota.post('/login', async (req, res, next) => {
-        const dados = {...req.body}
+        const dados = {...req.body};
         try {
-            const usuario = await auth.autenticate(dados);
+            const usuario = await user.auth(dados);
             if (usuario == 1) {
                 throw new HTTPError('Usuário e/ou senha incorreto(s).', 400);
             } else {

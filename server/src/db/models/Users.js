@@ -52,4 +52,17 @@ async function remove(id) {
     return changes;
 }
 
-export default { create, read, readName, rAll, remove };
+async function auth(dados) {
+    const usr = await readName(dados.nome);
+    if (usr) {
+        if (dados.senha === usr.password) {
+            return 0;
+        } else {
+            return 1;
+        }
+    } else {
+        return 1;
+    }
+}
+
+export default { create, read, readName, rAll, remove, auth };
