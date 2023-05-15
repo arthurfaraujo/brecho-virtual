@@ -20,8 +20,7 @@ excessivos prejudica o meio-ambiente.
   - Lista de desejo de produtos.
 - Dados
   - Gerenciamento dos dados através de consultas:
-    - SQL: Utilizando SQLite para armazenar e consultar dados;
-    - Ao JSON: Tornando mais fácil o acesso do front-end aos dados.
+    - SQL: Utilizando SQLite para armazenar e consultar dados.
 
 ## Desenvolvido com
 
