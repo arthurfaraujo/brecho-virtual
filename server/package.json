@@ -27,7 +27,10 @@
         "listen": "node src/index.js",
         "dev": "nodemon src/index.js",
         "dbsim:reload": "yarn dbsim:drop && yarn dbsim:load",
-        "dbsim:load": "node src/db/load.js",
-        "dbsim:drop": "rm src/db/db.sqlite"
+        "dbsim:load": "node src/db/js/load.js",
+        "dbsim:drop": "rm src/db/db.sqlite",
+        "db:reload": "yarn db:drop && yarn db:load",
+        "db:load": "node src/database/js/load.js",
+        "db:drop": "rm src/database/db.sqlite"
     }
 }

@@ -85,8 +85,10 @@ CREATE TABLE peca (
     cod_usr_cr  CHAR(36),
     data_compra CHAR(10),
 
+    FOREIGN KEY (cod_usr_cp)
+        REFERENCES usuario (cod_usr_cp),
     FOREIGN KEY (cod_usr_cr)
-        REFERENCES usuario (cod_usr_cr)
+        REFERENCES usuario (cod_usr_cr),
     FOREIGN KEY (cod_mar)
         REFERENCES marca (cod_mar),
     FOREIGN KEY (cod_usr_cp)

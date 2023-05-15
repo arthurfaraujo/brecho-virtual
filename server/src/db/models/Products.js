@@ -1,4 +1,4 @@
-import database from '../database.js';
+import database from '../js/database.js';
 
 async function create(product) {
     const db = await database.connect()

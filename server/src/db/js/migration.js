@@ -24,4 +24,4 @@ async function up() {
     await db.run(userCreate);
 }
 
-export default up;
+export default { up };
