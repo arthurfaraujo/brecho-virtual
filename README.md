@@ -6,14 +6,9 @@ viés sustentável, pois a produção e descarte de roupas
 excessivos prejudica o meio-ambiente. 
 
 ## Screenshots
-<span align="center">
-  <img src="screenshots/homebrecho.png">
-</span>
+![Home](./screenshots/homebrecho.png)
 
-
-<span align="center">
-  <img src="screenshots/loginbrecho.png">
-</span>
+![LogIn](./screenshots/loginbrecho.png)
 
 ## Funcionalidades ~~a adicionar~~
 
