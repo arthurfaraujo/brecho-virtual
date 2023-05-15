@@ -8,7 +8,6 @@ excessivos prejudica o meio-ambiente.
 ## Screenshots
 ![Home](./screenshots/homebrecho.png)
 
-
 ![LogIn](./screenshots/loginbrecho.png)
 
 ## Funcionalidades ~~a adicionar~~
