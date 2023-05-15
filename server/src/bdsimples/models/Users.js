@@ -32,6 +32,16 @@ async function read(id) {
     return user;
 }
 
+async function readName(name) {
+    const db = await database.connect()
+
+    const query = `select * from user where name = ?;`;
+
+    const user = await db.get(query, [name]);
+
+    return user;
+}
+
 async function remove(id) {
     const db = await database.connect()
 
@@ -42,4 +52,4 @@ async function remove(id) {
     return changes;
 }
 
-export default { create, read, rAll, remove };
+export default { create, read, readName, rAll, remove };

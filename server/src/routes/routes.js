@@ -2,7 +2,7 @@
     import { Router } from 'express';
     import product from '../bdsimples/models/Products.js';
     import user from '../bdsimples/models/Users.js';
-    import auth from '../modulos/autentication.js';
+    import auth from '../bdsimples/autentication.js';
     import {v4 as uuid} from 'uuid';
 
 // criação de constantes importantes
@@ -29,11 +29,11 @@
     rota.post('/login', async (req, res, next) => {
         const dados = {...req.body}
         try {
-            const usuario = await auth.autenticate(dados, contas);
+            const usuario = await auth.autenticate(dados);
             if (usuario == 1) {
                 throw new HTTPError('Usuário e/ou senha incorreto(s).', 400);
             } else {
-                res.redirect(`/?id=${usuario}`);
+                res.redirect(`/`);
             }            
         } catch(e) {
             next(e)
