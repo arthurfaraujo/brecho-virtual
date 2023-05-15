@@ -1,5 +1,5 @@
 CREATE TABLE product (
-    id CHAR(36) PRIMARY KEY,
+    id CHAR(36) PRIMARY KEY NOT NULL,
     name VARCHAR(50),
     price NUMERIC(8,2),
     img VARCHAR(100),
@@ -7,7 +7,7 @@ CREATE TABLE product (
 );
 
 CREATE TABLE user (
-    id CHAR(36) PRIMARY KEY,
+    id CHAR(36) PRIMARY KEY NOT NULL,
     name VARCHAR(150) UNIQUE,
     password CHAR(8)
 );

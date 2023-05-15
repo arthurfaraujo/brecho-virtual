@@ -1,10 +1,8 @@
 // importação de bibliotecas importantes
     import express from 'express';
-    import data from '../database/bdsimples/js/create.js';
+    import product from '../bdsimples/models/Products.js';
+    import user from '../bdsimples/models/Users.js';
     import auth from '../modulos/autentication.js';
-    import user from '../modulos/user.js';
-    import brand from '../modulos/brands.js';
-    import clothes from '../modulos/clothing.js';
     import {v4 as uuid} from 'uuid';
 
 // criação de constantes importantes
@@ -43,9 +41,10 @@
     });
 
     rota.post('/cadastro', async (req, res, next) => {
-        const dados = {...req.body};
+        const id = uuid();
+        const dados = {id, ...req.body};
         try {
-            const lastid = await data.createU(dados);            
+            const lastid = await user.createU(dados);            
             res.json({message: "Cadastro realizado com sucesso!"});
         } catch(e) {
             next(e)
@@ -56,7 +55,11 @@
         const id = req.query.id;
 
         try {
-            const changes = await data.dU(id);   
+            const changes = await user.dU(id);
+            // console.log(changes);   
+            if (changes == 0) {
+                throw new HTTPError("Usuário não encontrado.", 400);
+            }
             res.json({message: 'Conta excluída com sucesso!'});            
         } catch (e) {
             next(e)
@@ -66,7 +69,8 @@
 // rotas data
     rota.get('/data/produtos', async (req, res, next) => {
         try {
-            res.json(await data.rAllP());
+            // console.log(await product.rAllP());
+            res.json(await product.rAllP());
         } catch (e) {
             next(e)
         }
@@ -76,7 +80,7 @@
         const id = uuid();
         const produto = {id, ...req.body};
         try{
-            const lastid = await data.createP(produto);
+            const lastid = await product.createP(produto);
             res.json({message: 'Produto criado com sucesso!'});
         } catch(e) {
             next(e)
@@ -87,7 +91,7 @@
         const id = req.query.id;
         
         try{
-            const changes = await data.dP(id);
+            const changes = await product.dP(id);
             res.json({message: 'Produto removido com sucesso!'});
         } catch(e) {
             next(e);

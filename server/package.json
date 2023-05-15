@@ -4,8 +4,8 @@
     "description": "Sistema web de um brechó virtual.",
     "main": "src/index.js",
     "repository": {
-      "type": "git",
-      "url": "https://github.com/slordian/brecho-virtual"
+        "type": "git",
+        "url": "https://github.com/slordian/brecho-virtual"
     },
     "author": "slordian",
     "license": "MIT",
@@ -15,6 +15,7 @@
         "body-parser": "^1.20.2",
         "ejs": "^3.1.9",
         "express": "^4.18.2",
+        "express-async-errors": "^3.1.1",
         "express-handlebars": "^7.0.6",
         "morgan": "^1.10.0",
         "nodemon": "^2.0.22",

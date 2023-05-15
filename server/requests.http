@@ -24,13 +24,13 @@ POST {{host}}/cadastro
 Content-Type: application/json
 
 {
-    "nome": "luiz",
+    "nome": "predo",
     "senha": "senha"
 }
 
 
 ### DELETE conta
-DELETE {{host}}/cadastro?id=9551ea1d-9910-434f-9f82-25e67f883b1c
+DELETE {{host}}/cadastro?id=e80ffd94-566e-4879-9340-d50db9c40aeb
 
 
 ### POST login

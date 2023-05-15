@@ -1,4 +1,5 @@
 // Carregamento de  módulos
+  import 'express-async-errors';  
   import express from 'express';
   import morgan from 'morgan';
   import bdpa from 'body-parser';
