@@ -3,7 +3,6 @@
     import product from '../bdsimples/models/Products.js';
     import user from '../bdsimples/models/Users.js';
     import auth from '../bdsimples/autentication.js';
-    import {v4 as uuid} from 'uuid';
 
 // criação de constantes importantes
     const rota = Router();
