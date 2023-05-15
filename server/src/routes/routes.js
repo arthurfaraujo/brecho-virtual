@@ -41,10 +41,9 @@
     });
 
     rota.post('/cadastro', async (req, res, next) => {
-        const id = uuid();
-        const dados = {id, ...req.body};
+        const dados = {...req.body};
         try {
-            const lastid = await user.createU(dados);            
+            const lastid = await user.create(dados);            
             res.json({message: "Cadastro realizado com sucesso!"});
         } catch(e) {
             next(e)
@@ -55,7 +54,7 @@
         const id = req.query.id;
 
         try {
-            const changes = await user.dU(id);
+            const changes = await user.remove(id);
             // console.log(changes);   
             if (changes == 0) {
                 throw new HTTPError("Usuário não encontrado.", 400);
@@ -70,17 +69,16 @@
     rota.get('/data/produtos', async (req, res, next) => {
         try {
             // console.log(await product.rAllP());
-            res.json(await product.rAllP());
+            res.json(await product.rAll());
         } catch (e) {
             next(e)
         }
     });
 
     rota.post('/data/produtos', async (req, res, next) => {
-        const id = uuid();
-        const produto = {id, ...req.body};
+        const produto = {...req.body};
         try{
-            const lastid = await product.createP(produto);
+            const lastid = await product.create(produto);
             res.json({message: 'Produto criado com sucesso!'});
         } catch(e) {
             next(e)
@@ -91,7 +89,7 @@
         const id = req.query.id;
         
         try{
-            const changes = await product.dP(id);
+            const changes = await product.remove(id);
             res.json({message: 'Produto removido com sucesso!'});
         } catch(e) {
             next(e);
