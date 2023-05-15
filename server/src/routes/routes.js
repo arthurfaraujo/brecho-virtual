@@ -1,12 +1,12 @@
 // importação de bibliotecas importantes
-    import express from 'express';
+    import { Router } from 'express';
     import product from '../bdsimples/models/Products.js';
     import user from '../bdsimples/models/Users.js';
     import auth from '../modulos/autentication.js';
     import {v4 as uuid} from 'uuid';
 
 // criação de constantes importantes
-    const rota = express.Router();
+    const rota = Router();
 
 // classe de erros específica para erros http
     class HTTPError extends Error {

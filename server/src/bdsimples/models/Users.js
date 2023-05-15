@@ -1,18 +1,18 @@
 import database from '../database.js';
 
-async function createU(user) {
+async function create(user) {
     const db = await database.connect();
 
-    const query = `insert into user values (?, ?, ?);`;
+    const query = `insert into user (name, password) values (?, ?);`;
 
-    const { id, nome, senha } = user;
+    const { nome, senha } = user;
 
-    const { lastID } = await db.run(query, [id, nome, senha]);
+    const { lastID } = await db.run(query, [nome, senha]);
 
     return lastID;
 }
 
-async function rAllU() {
+async function rAll() {
     const db = await database.connect()
 
     const query = `select * from user;`;
@@ -22,7 +22,7 @@ async function rAllU() {
     return users;
 }
 
-async function rU(id) {
+async function read(id) {
     const db = await database.connect()
 
     const query = `select * from user where id = ?;`;
@@ -32,7 +32,7 @@ async function rU(id) {
     return user;
 }
 
-async function dU(id) {
+async function remove(id) {
     const db = await database.connect()
 
     const query = `delete from user where id = ?;`;
@@ -42,4 +42,4 @@ async function dU(id) {
     return changes;
 }
 
-export default { createU, rU, rAllU, dU }
+export default { create, read, rAll, remove };

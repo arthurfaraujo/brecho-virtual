@@ -1,18 +1,18 @@
 import database from '../database.js';
 
-async function createP(product) {
+async function create(product) {
     const db = await database.connect()
 
-    const query = `insert into product values (?, ?, ?, ?, ?);`;
+    const query = `insert into product (name, price, img, category) values (?, ?, ?, ?);`;
 
-    const { id, nome, 'preço':price, imagem, categoria } = product;
+    const { nome, 'preço':price, imagem, categoria } = product;
 
-    const { lastID } = await db.run(query, [id, nome, price, imagem, categoria]);
+    const { lastID } = await db.run(query, [nome, price, imagem, categoria]);
 
     return lastID;
 }
 
-async function rAllP() {
+async function rAll() {
     const db = await database.connect();
 
     const query = `select * from product;`;
@@ -22,7 +22,7 @@ async function rAllP() {
     return products;
 }
 
-async function rP(id) {
+async function read(id) {
     const db = await database.connect()
 
     const query = `select * from product where id = ?;`;
@@ -32,7 +32,7 @@ async function rP(id) {
     return products;
 }
 
-async function dP(id) {
+async function remove(id) {
     const db = await database.connect()
 
     const query = `delete from product where id = ?;`;
@@ -42,4 +42,4 @@ async function dP(id) {
     return changes;
 }
 
-export default { createP, rP, rAllP, dP };
+export default { create, read, rAll, remove };

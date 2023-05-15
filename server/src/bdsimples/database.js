@@ -1,5 +1,5 @@
 import { Database } from 'sqlite-async';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 const dbpath = resolve(process.cwd(), 'src', 'bdsimples', 'db.sqlite');
 

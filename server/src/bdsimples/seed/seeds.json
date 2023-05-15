@@ -1,0 +1,64 @@
+{
+    "users": [
+        {
+          "nome": "artu",
+          "senha": "senhatopdemais123"
+        },
+        {
+          "nome": "artchucks",
+          "senha": "123"
+        },
+        {
+          "nome": "ar",
+          "senha": "123"
+        },
+        {
+          "nome": "luiz",
+          "senha": "senha"
+        }
+    ],
+    "products": [
+        {
+          "nome": "calça de shopping",
+          "preço": 10,
+          "imagem": "../img/calçashop.png",
+          "categoria": "Roupas"
+        },
+        {
+          "nome": "camisa do omi aranha",
+          "preço": 30,
+          "imagem": "../img/camisamiranha.jpeg",
+          "categoria": "Roupas"
+        },
+        {
+          "nome": "cueca do batman",
+          "preço": 150,
+          "imagem": "../img/cuecabatma.jpeg",
+          "categoria": "Roupas"
+        },
+        {
+          "nome": "casa do presidente",
+          "preço": 10,
+          "imagem": "../img/casa.jpeg",
+          "categoria": "Objetos"
+        },
+        {
+          "nome": "oclin mil grau",
+          "preço": 123,
+          "imagem": "../img/oclinho.jpg",
+          "categoria": "Acessórios"
+        },
+        {
+          "nome": "casa de tauba",
+          "preço": 25,
+          "imagem": "../img/bioconstrucao_.jpg",
+          "categoria": "Objetos"
+        },
+        {
+          "nome": "idoso chorano",
+          "preço": 100,
+          "imagem": "../img/idosotriste.jpeg",
+          "categoria": "Objetos"
+        }
+    ]
+}
