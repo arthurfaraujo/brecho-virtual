@@ -35,17 +35,26 @@ Vou adicionar a pasta do git.
 ## Para rodar localmente 
 Clone o projeto:
 ``` 
-git clone https://github.com/slordian/taylor-s-thrifting.git
+git clone https://github.com/slordian/brecho-virtual.git
 ```
 
 Em seguida entre na pasta onde o repositório foi clonado:
 ```
-cd caminho/da/pasta
+cd caminho/da/pasta/brecho-virtual
 ```
 
-e execute o comando: 
+Entre na pasta server:
+```
+cd server
+```
+
+E execute o comando: 
 ```
 npm install
+``` 
+ou 
+```
+yarn
 ```
 
 Depois disso, para rodar o servidor, entre na pasta express e depois em hello-api e execute:
