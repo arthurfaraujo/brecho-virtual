@@ -90,6 +90,10 @@
         
         try{
             const changes = await product.remove(id);
+            // console.log(changes);   
+            if (changes == 0) {
+                throw new HTTPError("Produto não encontrado.", 400);
+            }
             res.json({message: 'Produto removido com sucesso!'});
         } catch(e) {
             next(e);
