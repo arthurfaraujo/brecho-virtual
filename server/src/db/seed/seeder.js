@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 async function up() {
-    const seeds = JSON.parse(readFileSync(resolve('src', 'bdsimples', 'seed', 'seeds.json')));
+    const seeds = JSON.parse(readFileSync(resolve('src', 'db', 'seed', 'seeds.json')));
 
     for (const seed of seeds.products) {
         await product.create(seed);

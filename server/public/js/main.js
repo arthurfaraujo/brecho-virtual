@@ -1,11 +1,12 @@
-import { geraCategorias, ocultarProdutosCategoria, gerarTodosProdutos } from "./modulos/modulos.js";
+import { geraCategorias, gerarTodosProdutos } from "./modulos/modulos.js";
 const data = await fetch('/data/produtos');
 var produtos = await data.json();
 
 const ul = document.getElementById('catalogo');
+const select = document.getElementById('filtros');
 
 gerarTodosProdutos(ul, produtos);
-geraCategorias(filtros, produtos, ul);
+geraCategorias(produtos, select);
 
 //ocultarProdutosCategoria(ul, 'Objetos')
 

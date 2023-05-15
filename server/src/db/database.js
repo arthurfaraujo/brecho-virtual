@@ -1,7 +1,7 @@
 import { Database } from 'sqlite-async';
 import { resolve } from 'node:path';
 
-const dbpath = resolve(process.cwd(), 'src', 'bdsimples', 'db.sqlite');
+const dbpath = resolve(process.cwd(), 'src', 'db', 'db.sqlite');
 
 async function connect() {
     return await Database.open(dbpath);

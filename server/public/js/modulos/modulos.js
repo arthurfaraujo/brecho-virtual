@@ -24,53 +24,28 @@ export function gerarTodosProdutos(lista, dados){
         lista.appendChild(produto);
     }
 }
-  
-export function ocultarProdutosCategoria(lista, categoria){
-    var produtos = lista.children;
 
-    for (var produto of produtos){
-        var classes = [...produto.classList]
-        if (classes.includes(categoria.toLowerCase())){
-            produto.classList.toggle('invisivel')
-        }
-        
-    }
-}
+export function geraCategorias(produtos, destino){
+    let categoryViews;
+    let categories = [];
 
-export function mostrarProdutosCategoria(lista, categoria){
-    var produtos = lista.children;
-
-    for (var produto of produtos){
-        var classes = [...produto.classList]
-        if (classes.includes(categoria.toLowerCase())){
-            produto.classList.toggle('invisivel')
-        }
-        
-    }
-}
-
-export function geraCategorias(filtros, dados, lista){
-    let categorias = [];
-    for (var i in dados.produtos) {
-        var prodInfo = dados.produtos[i].categoria;
-        // console.log(prodInfo);
-        if ((prodInfo) && (!(categorias.includes(prodInfo)))){
-            var filtro = document.createElement('option');
-            filtro.innerHTML = prodInfo;
-
-            //filtro.addEventListener('click', ocultarProdutosCategoria(lista, prodInfo))
-
-    
-            filtros.appendChild(filtro);
-            console.log(filtro);
-            filtro.addEventListener("click", function(){
-                
-            });
-            categorias.push(prodInfo);
-        } else {
+    for (const produto of produtos) {
+        if (categories.includes(produto.category)) {
+            console.log('oi1');
             continue
+        } else {
+            console.log('oi2');
+            categories.push(produto.category);
+
+            let categoryView = `
+            <option>
+                ${produto.category}
+            </option>
+            `;
+            categoryViews += categoryView;
         }
-    }   
+    }
+    destino.innerHTML = categoryViews;
 }
 
 function aaa(){

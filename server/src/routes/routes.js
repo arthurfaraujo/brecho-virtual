@@ -1,8 +1,8 @@
 // importação de bibliotecas importantes
     import { Router } from 'express';
-    import product from '../bdsimples/models/Products.js';
-    import user from '../bdsimples/models/Users.js';
-    import auth from '../bdsimples/autentication.js';
+    import product from '../db/models/Products.js';
+    import user from '../db/models/Users.js';
+    import auth from '../db/autentication.js';
 
 // criação de constantes importantes
     const rota = Router();
