@@ -6,14 +6,9 @@ viés sustentável, pois a produção e descarte de roupas
 excessivos prejudica o meio-ambiente. 
 
 ## Screenshots
-<span align="center">
-  <img src="screenshots/home.png">
-</span>
+![Home](./screenshots/homebrecho.png)
 
-
-<span align="center">
-  <img src="screenshots/login.png">
-</span>
+![LogIn](./screenshots/loginbrecho.png)
 
 ## Funcionalidades ~~a adicionar~~
 
@@ -25,8 +20,7 @@ excessivos prejudica o meio-ambiente.
   - Lista de desejo de produtos.
 - Dados
   - Gerenciamento dos dados através de consultas:
-    - SQL: Utilizando SQLite para armazenar e consultar dados;
-    - Ao JSON: Tornando mais fácil o acesso do front-end aos dados.
+    - SQL: Utilizando SQLite para armazenar e consultar dados.
 
 ## Desenvolvido com
 
