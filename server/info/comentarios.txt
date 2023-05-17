@@ -24,3 +24,5 @@ https://www.youtube.com/watch?v=OFrnB7Bvznk0
 https://www.npmjs.com/package/sqlite-async
 
 fazer as migrations com o banco padrão, bem como as seeds.
+fazer um front-ent de cadastro de usuarios e produtos 
+a partir do front de login (ctrl c ctrl v)
