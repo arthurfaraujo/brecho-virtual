@@ -5,7 +5,6 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #686868;
     overflow-x: hidden;
 }
 
@@ -43,10 +42,10 @@ nav {
 .nav-list {
     max-width: 35%;
     margin-right: 5%;
-    list-style-type: none;
     display: flex;
     justify-content: space-between;
-    transition:  .3s ease-in;
+    list-style-type: none;
+    transition:  .25s ease-in;
 }
 
 .nav-list > li {
@@ -72,7 +71,6 @@ nav {
     cursor: pointer;
     display: none;
 }
-
 @media (max-width: 600px) {
     .nav-list {
         position: absolute;

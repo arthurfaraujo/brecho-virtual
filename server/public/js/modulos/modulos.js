@@ -47,7 +47,3 @@ export function geraCategorias(produtos, destino){
     }
     destino.innerHTML = categoryViews;
 }
-
-function aaa(){
-    console.log('aaa')
-}

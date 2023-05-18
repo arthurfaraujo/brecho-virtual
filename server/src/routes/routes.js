@@ -16,7 +16,7 @@
 
 // rotas home
     rota.get('/', (req, res) => {
-        res.render('index.ejs');
+        res.render('home.ejs');
     });
 
     rota.get('/login', (req, res) => {
