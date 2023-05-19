@@ -6,6 +6,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
+    background-color: rgb(255, 234, 207);
 }
 
 a {
@@ -48,6 +49,7 @@ nav {
     transition:  .25s ease-in;
 }
 
+
 .nav-list > li {
     margin-left: 9%;
     font-weight: bold;
@@ -71,6 +73,57 @@ nav {
     cursor: pointer;
     display: none;
 }
+
+main {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 235, 217);
+    width: 90%;
+    margin: auto;
+    height: 90%;
+}
+
+.grid-produtos {
+    margin-top: 30px;
+    width: 80%;
+    gap: 30px 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-items: center;
+}
+
+.produto {
+    cursor: pointer;
+    width: 75%;
+    height: 90%;
+    text-align: center;
+}
+
+/* .produto-imagem {
+    width: 100%;
+    height: 100%;
+} */
+
+.produto-imagem > img {
+    width: 100%;
+    max-height: 100%;
+}
+
+.produto > h3, .produto > p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.produto > button {
+    margin-top: 10px;
+    background-color: #a97d6c;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+}
+
 @media (max-width: 600px) {
     .nav-list {
         position: absolute;

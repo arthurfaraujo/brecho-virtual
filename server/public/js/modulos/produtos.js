@@ -4,18 +4,20 @@
 
 function genProduct(product) {
     const html = `
-    <li class="produto ${product.category}">
-        <img src="${product.img}" class="imagem-produto">
+    <div class="produto ${product.category}">
+        <div class="produto-imagem">
+            <img src="${product.img}" class="imagem-produto">
+        </div>
         <h3>${product.name}</h3>
         <p>R$ ${product.price}</p>
         <button>Comprar</button>
-    </li>
+    </div>
     `
     return html;
 }
 
 function insertProduct(product) {
-    const catalog = document.querySelector('.catalogo');
+    const catalog = document.querySelector('.grid-produtos');
     const productView = genProduct(product);
 
     catalog.insertAdjacentHTML('beforeend', productView);
