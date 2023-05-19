@@ -62,6 +62,10 @@
             next(e)
         }
     });
+
+    rota.get('/cadastro/produto', async (req, res, next) => {
+        res.render('cadastro_produto.ejs');
+    })
     
 // rotas data
     rota.get('/data/produtos', async (req, res, next) => {
