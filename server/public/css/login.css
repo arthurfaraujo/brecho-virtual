@@ -7,26 +7,42 @@ body {
     background-color: #f6ebe0;
     color: #725442;
     font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container {
-    margin: 25vh auto;
+.form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    height: 25%;
+    margin: auto;
     padding: 30px;
-    max-width: 400px;
-    background-color: #e2c9a5;
-    border-radius: 10px;
+    max-width: 600px;
+    /* background-color: #e2c9a5; */
+    /* border-radius: 10px; */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
+.form-div {
+    background-color: #e2c9a5;
+    padding: 10px;
+}
+
 h1 {
-    font-size: 36px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
     text-align: center;
 }
 
-form {
+.form-div > form {
     display: grid;
-    grid-gap: 20px;
+    letter-spacing: 2px;
+    letter-spacing: 2px;
+    /* grid-gap: 20px; */
 }
 
 label {
@@ -34,19 +50,21 @@ label {
     font-weight: bold;
 }
 
-input[type="text"],
-input[type="password"] {
-    padding: 10px;
-    border-radius: 5px;
+.input-nome,
+.input-senha {
+    padding: 5px;
+    border-radius: 2px;
     border: none;
-    font-size: 18px;
+    font-size: 15px;
     color: #6e4f3d;
     background-color: #f6eee0;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-input[type="submit"] {
+.input-submit {
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 2px;
     border: none;
     font-size: 18px;
     font-weight: bold;
@@ -54,8 +72,4 @@ input[type="submit"] {
     background-color: #6e4f3d;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-}
-
-button[type="submit"]:hover {
-    background-color: #c6a375;
 }
