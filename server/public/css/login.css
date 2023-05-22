@@ -17,19 +17,21 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 50%;
-    height: 25%;
+    width: 600px;
+    height: 400px;
     margin: auto;
-    padding: 30px;
     max-width: 600px;
-    /* background-color: #e2c9a5; */
+    background-color: #9f9f9f;
+    overflow-x: hidden;
     /* border-radius: 10px; */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
 }
 
 .form-div {
     background-color: #e2c9a5;
     padding: 10px;
+    height: 100%;
+    max-height: 100%;
 }
 
 h1 {
