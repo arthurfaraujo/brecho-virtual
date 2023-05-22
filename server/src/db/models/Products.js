@@ -5,9 +5,9 @@ async function create(product) {
 
     const query = `insert into product (name, price, img, category) values (?, ?, ?, ?);`;
 
-    const { nome, 'preço':price, imagem, categoria } = product;
+    const { nome:name, "preço":price, imagem:img, categoria:category } = {...product};
 
-    const { lastID } = await db.run(query, [nome, price, imagem, categoria]);
+    const { lastID } = await db.run(query, [name, price, img, category]);
 
     return lastID;
 }

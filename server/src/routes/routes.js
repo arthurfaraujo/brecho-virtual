@@ -38,7 +38,7 @@
         }        
     });
 
-    rota.post('/cadastro', async (req, res, next) => {
+    rota.post('/cadastro/usuario', async (req, res, next) => {
         const dados = {...req.body};
         try {
             const lastid = await user.create(dados);            
@@ -48,7 +48,7 @@
         }
     });
 
-    rota.delete('/cadastro', async (req, res, next) => {
+    rota.delete('/cadastro/usuario', async (req, res, next) => {
         const id = req.query.id;
 
         try {
@@ -63,8 +63,19 @@
         }
     });
 
-    rota.get('/cadastro/produto', async (req, res, next) => {
+    rota.get('/cadastro/produto', (req, res, next) => {
         res.render('cadastro_produto.ejs');
+    })
+
+    rota.post('/cadastro/produto', async (req, res,) => {
+        const dados = {...req.body};
+        
+        try {
+            const lastid = await product.create(dados);            
+            res.json({message: "Cadastro realizado com sucesso!"});
+        } catch(e) {
+            next(e)
+        }
     })
     
 // rotas data
@@ -73,16 +84,6 @@
             // console.log(await product.rAllP());
             res.json(await product.rAll());
         } catch (e) {
-            next(e)
-        }
-    });
-
-    rota.post('/data/produtos', async (req, res, next) => {
-        const produto = {...req.body};
-        try{
-            const lastid = await product.create(produto);
-            res.json({message: 'Produto criado com sucesso!'});
-        } catch(e) {
             next(e)
         }
     });
