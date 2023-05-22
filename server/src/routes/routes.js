@@ -21,7 +21,6 @@
 
     rota.get('/login', (req, res) => {
         res.render('login.ejs');
-        //res.json({message: 'Deu certo!'});
     });
 
     rota.post('/login', async (req, res, next) => {
@@ -69,7 +68,7 @@
 
     rota.post('/cadastro/produto', async (req, res,) => {
         const dados = {...req.body};
-        
+
         try {
             const lastid = await product.create(dados);            
             res.json({message: "Cadastro realizado com sucesso!"});
@@ -92,8 +91,7 @@
         const id = req.query.id;
         
         try{
-            const changes = await product.remove(id);
-            // console.log(changes);   
+            const changes = await product.remove(id);   
             if (changes == 0) {
                 throw new HTTPError("Produto não encontrado.", 400);
             }
@@ -106,7 +104,7 @@
 // Manipular erros sem quebrar o servidor
     // 404
         rota.use((req, res, next) => {
-            res.status(404).json({ message: 'Content not found!' });
+            res.status(404).json({ message: 'Página não encontrada!' });
         });
 
     // Outros
@@ -115,7 +113,7 @@
             if (err && err instanceof HTTPError) {
                 res.status(err.code).json({ message: err.message });
             } else {
-                res.status(500).json({ message: 'Something broke!' });
+                res.status(500).json({ message: 'Algo deu muito errado!' });
             }
         });
 
