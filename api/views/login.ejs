@@ -7,18 +7,17 @@
         <link rel="stylesheet" href="/css/login.css">
     </head>
     <body>
-        <div class="form">
-            <div class="form-image">
-                <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fblogamelhorescolha.com%2Fmoda-sustentavel-como-unir-sustentabilidade-e-estilo%2F&psig=AOvVaw2oKf8GOap8ECJbOvUupUJV&ust=1684847003995000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNCP6bH-iP8CFQAAAAAdAAAAABAD" 
-                alt="moda sustentável">
+        <div class="container">
+            <div class="cont-image" style="background-image: url(/img/moda-sustentavel.jpg);">
+                
             </div>
-            <div class="form-div">
+            <div class="cont-form">
                 <h1>Entrar</h1>
-                <form action="/login" method="POST">
-                    <label for="username">Usuário</label>
-                    <input type="text" class="input-nome" name="nome" required>
-                    <label for="password">Senha</label>
-                    <input type="password" class="input-senha" name="senha" required>
+                <form action="/login" method="POST" autocomplete="off">
+                    <label for="nome">Usuário</label>
+                    <input type="text" class="input-nome" name="nome" placeholder="Exemplo: artu" required>
+                    <label for="senha">Senha</label>
+                    <input type="password" class="input-senha" name="senha" placeholder="Exemplo: aw@kso8s" required>
                     <input type="submit" class="input-submit " value="Entrar">
                 </form>
             </div>
