@@ -3,14 +3,14 @@
 ------------------------------------------------
 CREATE TABLE usuario (
     cod_usr     INTEGER PRIMARY KEY AUTOINCREMENT,
-    e_mail      VARCHAR(60)      UNIQUE,
-    senha       VARCHAR(8)     NOT NULL,
-    nome        VARCHAR(80)    NOT NULL,
+    e_mail      VARCHAR(60)    UNIQUE NOT NULL,
+    senha       VARCHAR(8)            NOT NULL,
+    nome        VARCHAR(80)           NOT NULL,
     telefone    INTEGER(11),
-    UF          CHAR(2)        NOT NULL,
-    cidade      VARCHAR(50)    NOT NULL,
-    rua         VARCHAR(90)    NOT NULL,
-    numero      INTEGER(5)     NOT NULL
+    UF          CHAR(2),
+    cidade      VARCHAR(50),
+    rua         VARCHAR(90),
+    numero      INTEGER(5) 
 );
 -----------------------||-----------------------
 

@@ -1,7 +1,6 @@
 // const response = await fetch('/data/produtos');
 // const products = await response.json();
 
-
 function genProduct(product) {
     const html = `
     <div class="produto ${product.category}">

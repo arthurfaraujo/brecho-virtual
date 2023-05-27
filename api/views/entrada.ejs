@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Acesso</title>
+        <link rel="stylesheet" href="css/login.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="invisible cont-cad">
+                <h1>Cadastro</h1>
+                <form action="/cadastro" method="POST" autocomplete="off">
+                    <label for="nome">E-mail</label>
+                    <input
+                        type="text"
+                        class="input input-nome"
+                        name="nome"
+                        placeholder="Exemplo: artu@gmail.com"
+                        required
+                    />
+                    <label for="nome">Usuário</label>
+                    <input
+                        type="text"
+                        class="input input-nome"
+                        name="nome"
+                        placeholder="Exemplo: artu"
+                        required
+                    />
+                    <label for="senha">Senha</label>
+                    <input
+                        type="password"
+                        class="input input-senha"
+                        name="senha"
+                        placeholder="Exemplo: aw@kSo8s"
+                        required
+                    />
+                    <input type="submit" class="submit" value="Entrar" />
+                </form>
+                <p>
+                    Já tem conta? <span class="botao-cad">Acesse!</span>
+                </p>
+            </div>
+            <div
+                class="cont-image"
+                style="background-image: url(/img/moda-sustentavel.jpg)"
+            ></div>
+            <div class="cont-log">
+                <h1>Acesso</h1>
+                <form action="/login" method="POST" autocomplete="off">
+                    <label for="nome">Usuário</label>
+                    <input
+                        type="text"
+                        class="input input-nome"
+                        name="nome"
+                        placeholder="Exemplo: artu"
+                        required
+                    />
+                    <label for="senha">Senha</label>
+                    <input
+                        type="password"
+                        class="input input-senha"
+                        name="senha"
+                        placeholder="Exemplo: aw@kSo8s"
+                        required
+                    />
+                    <input type="submit" class="submit" value="Entrar" />
+                </form>
+                <p>
+                    Não tem conta? <span class="botao-log">Cadastre-se!</span>
+                </p>
+            </div>
+        </div>
+        <script src="js/modulos/form.js" type="module" loading="lazy"></script>
+    </body>
+</html>

@@ -19,8 +19,8 @@
         res.render('home.ejs');
     });
 
-    rota.get('/login', (req, res) => {
-        res.render('login.ejs');
+    rota.get('/entrada', (req, res) => {
+        res.render('entrada.ejs');
     });
 
     rota.post('/login', async (req, res, next) => {
