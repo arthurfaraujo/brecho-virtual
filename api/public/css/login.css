@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #ffce9db3;
+    background-color: #ffa54b9f;
     color: #725442;
     font-family: sans-serif;
     height: 100vh;
@@ -15,10 +15,10 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: minmax(300px, 400px);
+    grid-template-rows: minmax(300px, 450px);
     grid-template-columns: minmax(100px, 350px) minmax(100px, 350px);
-    grid-template-areas: 'img login';
     margin: 100px;
+    /* overflow-y: hidden; */
     /* background-color: #000000; */
     /* border-radius: 10px; */
     /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
@@ -38,6 +38,7 @@ body {
 .cont-cad {
     /* height: 500px; */
     padding-right: 10px;
+    /* transition: display 0.3s; */
 }
 
 /* .cont-log {
@@ -49,25 +50,29 @@ body {
     background-color: #f0d1a6;
     height: 100%;
     max-height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
     /* grid-area: login; */
     text-align: center;
+    transition: display 0.3s;
 }
 
 .cont-log > form, 
 .cont-cad > form {
+    /* margin: auto; */
     text-align: left;
     display: grid;
     letter-spacing: 2px;
-    letter-spacing: 2px;
-    padding: 20px;
+    /* padding: 20px; */
     height: 70%;
+    width: 100%;
     /* grid-gap: 20px; */
     /* background-color: aqua; */
 }
 
 h1 {
     margin-top: 10px;
-    /* margin-bottom: 5px; */
+    margin-bottom: 20px;
     letter-spacing: 2px;
     text-align: center;
 }
@@ -88,7 +93,6 @@ label {
 } */
 
 .input {
-    width: 100%;
     height: 35px;
     padding-left: 10px;
     border-radius: 3px;
@@ -103,6 +107,7 @@ label {
 
 .submit {
     /* padding: 10px; */
+    height: 40px;
     border-radius: 2px;
     border: none;
     font-size: 18px;
@@ -110,6 +115,7 @@ label {
     color: #f6eee0;
     background-color: #9a755f;
     cursor: pointer;
+    margin-bottom: 20px;
     transition: all 0.2s ease-in-out;
 }
 
@@ -125,5 +131,6 @@ label {
 }
 
 .invisible {
+    transition: 0.3s;
     display: none;
 }
