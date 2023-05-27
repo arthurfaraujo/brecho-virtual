@@ -25,10 +25,10 @@
     "scripts": {
         "listen": "node src/index.js",
         "dev": "nodemon src/index.js",
-        "dbsim:reload": "yarn dbsim:drop && yarn dbsim:load",
+        "dbsim:reload": "npm run dbsim:drop && npm run dbsim:load",
         "dbsim:load": "node src/db/js/load.js",
         "dbsim:drop": "rm src/db/db.sqlite",
-        "db:reload": "yarn db:drop && yarn db:load",
+        "db:reload": "npm run db:drop && npm run db:load",
         "db:load": "node src/database/js/load.js",
         "db:drop": "rm src/database/db.sqlite"
     }

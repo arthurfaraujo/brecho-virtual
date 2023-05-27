@@ -7,7 +7,7 @@ CREATE TABLE usuario (
     senha       VARCHAR(8)            NOT NULL,
     nome        VARCHAR(80)           NOT NULL,
     telefone    INTEGER(11),
-    UF          CHAR(2),
+    uf          CHAR(2),
     cidade      VARCHAR(50),
     rua         VARCHAR(90),
     numero      INTEGER(5) 
@@ -78,7 +78,7 @@ CREATE TABLE peca (
     preco       NUMERIC(8,2)     NOT NULL,
     nome        VARCHAR(80)      NOT NULL,
     cod_usr_cp  CHAR(36),
-    cod_cla     INTEGER
+    cod_cla     INTEGER,
     cod_mar     INTEGER,
     cod_usr_cr  INTEGER,
     data_compra CHAR(10),
@@ -91,7 +91,7 @@ CREATE TABLE peca (
         REFERENCES marca (cod_mar),
     FOREIGN KEY (cod_cla)
         REFERENCES classificacao (cod_cla)
-)
+);
 -----------------------||-----------------------
 
 ------------------------------------------------

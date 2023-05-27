@@ -1,6 +1,6 @@
 import database from '../database/js/database.js';
 
-export async function create(cloth) {
+async function create(cloth) {
     const db = await database.connect();
 
     const query = `insert into peca values (?, ?, ?, ?, ?, ?, 
@@ -17,7 +17,7 @@ export async function create(cloth) {
     return lastID;
 }
 
-export async function read(cod_pec) {
+async function read(cod_pec) {
     const db = await database.connect();
 
     const query = `select * from peca
@@ -28,7 +28,7 @@ export async function read(cod_pec) {
     return cloth;
 }
 
-export async function readAll() {
+async function readAll() {
     const db = await database.connect();
 
     const query = `select * from peca;`;

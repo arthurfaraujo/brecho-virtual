@@ -1,24 +1,24 @@
-import database from '../database/js/database.js';
+import database from '../js/database.js';
 
 // função de criação de usuário
-export async function create(user) {
+async function create(user) {
     const db = await database.connect();
 
-    const { cod_usr, email, senha, nome, telefone, 
+    const { email, senha, nome, telefone, 
     uf, cidade, rua, numero } = user;
 
     const query = `
-    insert into usuario values 
-    (?, ?, ?, ?, ?, ?, ?, ?, ?);
+    insert into usuario (e_mail, senha, nome, telefone, 
+    uf, cidade, rua, numero) values (?, ?, ?, ?, ?, ?, ?, ?);
     `;
 
-    const { lastID } = await db.run(query, [cod_usr, 
-    email, senha, nome, telefone, uf, cidade, rua, numero]);
+    const { lastID } = await db.run(query, [email,  nome, telefone, 
+    uf, cidade, rua, numero]);
 
     return lastID;
 }
 
-export async function read(cod_usr) {
+async function read(cod_usr) {
     const db = await database.connect();
 
     const query = `select * from usuario where cod_usr = ?`;
@@ -28,7 +28,7 @@ export async function read(cod_usr) {
     return usuario;
 }
 
-export async function readAll() {
+async function readAll() {
     const db = await database.connect();
 
     const query = `select * from usuario;`;

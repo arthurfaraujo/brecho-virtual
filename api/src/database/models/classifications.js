@@ -1,9 +1,10 @@
 import database from "../database/js/database.js";
 
-export async function create(classif) {
+async function create(classif) {
     const db = await database.connect();
 
-    const query = `insert into classificacao values (?, ?, ?)`;
+    const query = `insert into classificacao (cod_dep, cod_cla, 
+    cod_cat) values (?, ?, ?)`;
 
     const { departamento, categoria, subcategoria } = classif;
 
@@ -12,7 +13,7 @@ export async function create(classif) {
     return lastID;
 }
 
-export async function read(classif) {
+async function read(classif) {
     const db = await database.connect();
   
     const query = `select d.nome as dep, c.nome as cat, s.nome as sub
@@ -32,7 +33,7 @@ export async function read(classif) {
     return [dep, cat, sub];
 }
 
-export async function readAll() {
+async function readAll() {
     const db = await database.connect();
 
     const query = `select * from classificacao;`;
@@ -41,7 +42,5 @@ export async function readAll() {
 
     return classifs;
 }
-
-// TODO: Criar as classificações para criar as peças
 
 export default { create, read, readAll };

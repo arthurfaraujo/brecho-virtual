@@ -1,16 +1,18 @@
-import database from '../database.js';
+import database from '../js/database.js';
 
-async function create(name) {
+async function create(marca) {
     const db = await database.connect();
 
     const query = `insert into marca (nome) values (?);`;
 
-    const { lastID } = await db.run(query, [name]);
+    const { nome } = marca;
+
+    const { lastID } = await db.run(query, [nome]);
 
     return lastID;
 }
 
-export async function read(cod_mar) {
+async function read(cod_mar) {
     const db = await database.connect();
 
     const query = `select * from marca
@@ -21,7 +23,7 @@ export async function read(cod_mar) {
     return brands;
 }
 
-export async function readAll() {
+async function readAll() {
     const db = await database.connect();
 
     const query = `select * from marca;`;
@@ -31,4 +33,4 @@ export async function readAll() {
     return brands;
 }
 
-export default { read, readAll }
+export default { create, read, readAll }

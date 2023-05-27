@@ -1,7 +1,103 @@
 {
-    "usuario": [
+    "usuarios": [
         {
-            
+            "email": "ericka@hmail.com", 
+            "senha": "aS2k&kpO", 
+            "nome": "anulina", 
+            "telefone": 81973637832,
+            "uf": "SP", 
+            "cidade": "", 
+            "rua": "", 
+            "numero": "" 
+        },
+        {
+            "email": "fulano1@example.com",
+            "senha": "senha123",
+            "nome": "Fulano de Tal 1",
+            "telefone": 123456789,
+            "uf": "SP",
+            "cidade": "São Paulo",
+            "rua": "Rua Exemplo 1",
+            "numero": 123
+        },
+        {
+            "email": "fulano2@example.com",
+            "senha": "senha456",
+            "nome": "Fulano de Tal 2",
+            "telefone": 987654321,
+            "uf": "RJ",
+            "cidade": "Rio de Janeiro",
+            "rua": "Rua Exemplo 2",
+            "numero": 456
+        },
+        {
+            "email": "fulano3@example.com",
+            "senha": "senha789",
+            "nome": "Fulano de Tal 3",
+            "telefone": 111222333,
+            "uf": "MG",
+            "cidade": "Belo Horizonte",
+            "rua": "Rua Exemplo 3",
+            "numero": 789
+        },
+        {
+            "email": "fulano4@example.com",
+            "senha": "senhaabc",
+            "nome": "Fulano de Tal 4",
+            "telefone": 444555666,
+            "uf": "PR",
+            "cidade": "Curitiba",
+            "rua": "Rua Exemplo 4",
+            "numero": 987
+        }
+    ],
+    "marcas": [
+        { "nome": "Zara" },
+        { "nome": "H&M" },
+        { "nome": "Forever 21" },
+        { "nome": "C&A" },
+        { "nome": "Renner" },
+        { "nome": "Riachuelo" }
+    ],
+    "departamentos": [
+        { "nome": "Masculino" },
+        { "nome": "Feminino" },
+        { "nome": "Infantil" },
+        { "nome": "Unissex" },
+        { "nome": "Casa" }
+    ],
+    "categorias": [
+        { "nome": "Vestuário de banho" },
+        { "nome": "Esportivas" },
+        { "nome": "Íntimas" },
+        { "nome": "Roupas confortáveis" },
+        { "nome": "Roupas de cama" }, 
+        { "nome": "Roupas de sair" },
+        { "nome": "Acessórios" }
+    ],
+    "subcategorias": [
+        { "nome": "Camisetas" },
+        { "nome": "Calças" },
+        { "nome": "Sapatos" },
+        { "nome": "Tênis" },
+        { "nome": "Shorts" },
+        { "nome": "Bermudas" },
+        { "nome": "Cuecas" },
+        { "nome": "Calcinhas" },
+        { "nome": "Sungas" },
+        { "nome": "Biquínis" },
+        { "nome": "Moletons" },
+        { "nome": "Casacos" },
+        { "nome": "Lençóis" },
+        { "nome": "Fronhas" },
+        { "nome": "Óculos" },
+        { "nome": "Pulseiras" }
+    ],
+    "classificacoes": [
+        {
+            "cod_dep": 1,
+            "cod_cat": 4,
+            "cod_sub": 1
         }
     ]
     
