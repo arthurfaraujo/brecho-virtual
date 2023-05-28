@@ -60,7 +60,7 @@ async function up() {
             FOREIGN KEY (cod_dep)
                 REFERENCES departamento (cod_dep),
             FOREIGN KEY (cod_cat)
-                REFERENCES  categoria   (cod_cat),
+                REFERENCES categoria    (cod_cat),
             FOREIGN KEY (cod_sub)
                 REFERENCES subcategoria (cod_sub)
         );

@@ -1,11 +1,11 @@
-import database from "../database/js/database.js";
+import database from "../js/database.js";
 
 async function create(departamento) {
     const db = await database.connect();
 
     const query = `insert into departamento (nome) values (?)`;
 
-    const { nome } = classif;
+    const { nome } = departamento;
 
     const { lastID } = await db.run(query, [nome]);
 
