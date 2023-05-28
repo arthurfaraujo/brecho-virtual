@@ -12,23 +12,23 @@ async function up() {
     const seeds = JSON.parse(readFileSync(resolve(process.cwd(), 'src', 'database', 'js', 'seed', 'seeds.json')));
 
     for (const usuario of seeds.usuarios) {
-        users.create(usuario);
+        await users.create(usuario);
     }
 
     for (const marca of seeds.marcas) {
-        brands.create(marca);
+        await brands.create(marca);
     }
 
     for (const departamento of seeds.departamentos) {
-        departments.create(departamento);
+        await departments.create(departamento);
     }
 
     for (const categoria of seeds.categorias) {
-        categories.create(categoria);
+        await categories.create(categoria);
     }
 
     for (const subcategoria of seeds.subcategorias) {
-        subcategories.create(subcategoria);
+        await subcategories.create(subcategoria);
     }
 
     for (const classificacao of seeds.classificacoes) {

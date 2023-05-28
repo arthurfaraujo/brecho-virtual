@@ -96,28 +96,28 @@
     "classificacoes": [
         {
             "cod_dep": 1,
-            "cod_cat": 4,
-            "cod_sub": 1
-        },
-        {
-            "cod_dep": 2,
-            "cod_cat": 1,
-            "cod_sub": 10
-        },
-        {
-            "cod_dep": 3,
             "cod_cat": 2,
             "cod_sub": 4
         },
         {
+            "cod_dep": 2,
+            "cod_cat": 3,
+            "cod_sub": 8
+        },
+        {
+            "cod_dep": 3,
+            "cod_cat": 1,
+            "cod_sub": 9
+        },
+        {
             "cod_dep": 5,
             "cod_cat": 5,
-            "cod_sub": 13
+            "cod_sub": 14
         },
         {
             "cod_dep": 4,
             "cod_cat": 4,
-            "cod_sub": 11
+            "cod_sub": 12
         }
     ]    
 }

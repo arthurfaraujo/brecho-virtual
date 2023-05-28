@@ -29,7 +29,7 @@ async function up() {
     const departamento = `
         CREATE TABLE departamento (
             cod_dep    INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome       varchar(40)             NOT NULL
+            dep       varchar(40)             NOT NULL
         );
     `;
     await db.run(departamento);
@@ -37,7 +37,7 @@ async function up() {
     const categoria = `
         CREATE TABLE categoria (
             cod_cat    INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome       varchar(40)             NOT NULL
+            cat       varchar(40)             NOT NULL
         );
     `;
     await db.run(categoria);
@@ -45,7 +45,7 @@ async function up() {
     const subcategoria = `
         CREATE TABLE subcategoria (
             cod_sub    INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome       varchar(40)             NOT NULL
+            sub      varchar(40)             NOT NULL
         );
     `;
     await db.run(subcategoria);

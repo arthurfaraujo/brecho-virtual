@@ -3,7 +3,7 @@ import database from "../js/database.js";
 async function create(categoria) {
     const db = await database.connect();
 
-    const query = `insert into categoria (nome) values (?)`;
+    const query = `insert into categoria (cat) values (?)`;
 
     const { nome } = categoria;
 

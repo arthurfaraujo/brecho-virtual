@@ -16,18 +16,16 @@ async function create(classif) {
 async function read(classif) {
     const db = await database.connect();
   
-    const query = `select d.nome as dep, c.nome as cat, s.nome as sub
+    const query = `select d.dep, c.cat, s.sub
                       from classificacao cf
                       join departamento d on cf.cod_dep = d.cod_dep
-                      join categoria c on cf.cod_cat = c.cod_cat
+                      join categoria ca on cf.cod_cat = c.cod_cat
                       join subcategoria s on cf.cod_sub = s.cod_sub
-                      where cf.cod_dep = ? and
-                      cf.cod_cat = ? and
-                      cf.cod_sub = ?;`;
+                      where cf.cod_cla = ?;`;
 
-    const { cod_dep, cod_cat, cod_sub } = classif;
+    const { cod_cla } = classif;
     
-    const { dep, cat, sub } = await db.get(query, [cod_dep, cod_cat, cod_sub]);
+    const { dep, cat, sub } = await db.get(query, [cod_cla]);
   
     return [dep, cat, sub];
 }
@@ -49,7 +47,7 @@ async function readAllCod() {
 async function readAll() {
     const db = await database.connect();
 
-    const query = `select d.nome as dep, c.nome as cat, s.nome as sub
+    const query = `select d.dep, c.cat, s.sub
                     from classificacao cf
                     join departamento d on cf.cod_dep = d.cod_dep
                     join categoria c on cf.cod_cat = c.cod_cat

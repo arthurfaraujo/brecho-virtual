@@ -3,7 +3,7 @@ import database from "../js/database.js";
 async function create(departamento) {
     const db = await database.connect();
 
-    const query = `insert into departamento (nome) values (?)`;
+    const query = `insert into departamento (dep) values (?)`;
 
     const { nome } = departamento;
 
