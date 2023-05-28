@@ -21,7 +21,7 @@ async function up() {
     const marcas = `
         CREATE TABLE marca (
             cod_mar    INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome       VARCHAR(40)             NOT NULL
+            mar       VARCHAR(40)             NOT NULL
         );
     `;
     await db.run(marcas);

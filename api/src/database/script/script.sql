@@ -19,7 +19,7 @@ CREATE TABLE usuario (
 ------------------------------------------------
 CREATE TABLE marca (
     cod_mar    INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome       VARCHAR(40)             NOT NULL
+    mar       VARCHAR(40)             NOT NULL
 );
 -----------------------||-----------------------
 
@@ -28,7 +28,7 @@ CREATE TABLE marca (
 ------------------------------------------------
 CREATE TABLE departamento (
     cod_dep    INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome       varchar(40)             NOT NULL
+    dep       varchar(40)             NOT NULL
 );
 -----------------------||-----------------------
 
@@ -37,7 +37,7 @@ CREATE TABLE departamento (
 ------------------------------------------------
 CREATE TABLE categoria (
     cod_cat    INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome       varchar(40)             NOT NULL
+    cat       varchar(40)             NOT NULL
 );
 -----------------------||-----------------------
 
@@ -46,7 +46,7 @@ CREATE TABLE categoria (
 ------------------------------------------------
 CREATE TABLE subcategoria (
     cod_sub    INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome       varchar(40)             NOT NULL
+    sub       varchar(40)             NOT NULL
 );
 -----------------------||-----------------------
 

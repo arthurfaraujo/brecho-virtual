@@ -47,7 +47,7 @@ async function readAllCod() {
 async function readAll() {
     const db = await database.connect();
 
-    const query = `select d.dep, c.cat, s.sub
+    const query = `select cf.cod_cla, d.dep, c.cat, s.sub
                     from classificacao cf
                     join departamento d on cf.cod_dep = d.cod_dep
                     join categoria c on cf.cod_cat = c.cod_cat

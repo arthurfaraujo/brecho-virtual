@@ -7,6 +7,8 @@ import departments from '../../models/departments.js';
 import categories from '../../models/categories.js';
 import subcategories from '../../models/subcategories.js';
 import classifications from '../../models/classifications.js';
+import clothes from '../../models/clothes.js';
+import wishlists from '../../models/wishlists.js';
 
 async function up() {
     const seeds = JSON.parse(readFileSync(resolve(process.cwd(), 'src', 'database', 'js', 'seed', 'seeds.json')));
@@ -35,6 +37,13 @@ async function up() {
         await classifications.create(classificacao);
     }
 
+    for (const peca of seeds.pecas) {
+        await clothes.create(peca);
+    }
+
+    for (const desejo of seeds.listas_desejo) {
+        await wishlists.create(desejo);
+    }
 }
 
 export default { up };

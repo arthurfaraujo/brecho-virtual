@@ -57,7 +57,8 @@
         { "nome": "Forever 21" },
         { "nome": "C&A" },
         { "nome": "Renner" },
-        { "nome": "Riachuelo" }
+        { "nome": "Riachuelo" },
+        { "nome": "Nike" }
     ],
     "departamentos": [
         { "nome": "Masculino" },
@@ -118,6 +119,80 @@
             "cod_dep": 4,
             "cod_cat": 4,
             "cod_sub": 12
+        },
+        {
+            "cod_dep": 4,
+            "cod_cat": 4,
+            "cod_sub": 1
+        },
+        {
+            "cod_dep": 4,
+            "cod_cat": 4,
+            "cod_sub": 2
         }
-    ]    
+    ],
+    "pecas": [
+        {
+            "descricao": "camiseta de tamanho médio, confortável à beça, ideal para fica de boa em casa",
+            "estado_uso": "desgastada",
+            "preco": 15.00,
+            "nome": "camiseta branca",
+            "cod_usr_cp": null,
+            "cod_cla": 6,
+            "cod_mar": 1,
+            "cod_usr_cr": null,
+            "data_compra": null
+        },
+        {
+            "descricao": "calça de moletom, bem ventilada, braba",
+            "estado_uso": "nova",
+            "preco": 45.00,
+            "nome": "calça moletom preta",
+            "cod_usr_cp": null,
+            "cod_cla": 7,
+            "cod_mar": null,
+            "cod_usr_cr": null,
+            "data_compra": null
+        },
+        {
+            "descricao": "muito bom para corridas e caminhadas em geral, extremamente confortável",
+            "estado_uso": "pouco usado",
+            "preco": 124.99,
+            "nome": "tênis nike de corrida",
+            "cod_usr_cp": null,
+            "cod_cla": 1,
+            "cod_mar": 7,
+            "cod_usr_cr": null,
+            "data_compra": null
+        },
+        {
+            "descricao": "sunga para criança, nova, nunca usada",
+            "estado_uso": "nova",
+            "preco": 24.99,
+            "nome": "sunga hering",
+            "cod_usr_cp": null,
+            "cod_cla": 3,
+            "cod_mar": null,
+            "cod_usr_cr": null,
+            "data_compra": null
+        }
+    ],
+    "listas_desejo": [
+        {
+            "cod_usr": 2,
+            "cod_pec": 3
+        },
+        {
+            "cod_usr": 3,
+            "cod_pec": 1
+        },
+        {
+            "cod_usr": 4,
+            "cod_pec": 2
+        },
+        {
+            "cod_usr": 4,
+            "cod_pec": 3
+        }
+    ]
 }

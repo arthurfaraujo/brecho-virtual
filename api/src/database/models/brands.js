@@ -3,7 +3,7 @@ import database from '../js/database.js';
 async function create(marca) {
     const db = await database.connect();
 
-    const query = `insert into marca (nome) values (?);`;
+    const query = `insert into marca (mar) values (?);`;
 
     const { nome } = marca;
 
