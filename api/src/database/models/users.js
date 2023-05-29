@@ -12,7 +12,7 @@ async function create(user) {
     uf, cidade, rua, numero) values (?, ?, ?, ?, ?, ?, ?, ?);
     `;
 
-    const { lastID } = await db.run(query, [email,  nome, telefone, 
+    const { lastID } = await db.run(query, [email, senha, nome, telefone, 
     uf, cidade, rua, numero]);
 
     return lastID;
