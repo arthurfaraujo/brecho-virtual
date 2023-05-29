@@ -14,6 +14,9 @@
         }
     }
 
+//TODO: usar multer para receber imagens através de um form
+//TODO: criar o front de cadastro de peça
+
 // rotas home
     rota.get('/', (req, res) => {
         res.render('home.ejs');

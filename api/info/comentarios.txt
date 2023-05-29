@@ -26,3 +26,6 @@ https://www.npmjs.com/package/sqlite-async
 fazer as migrations com o banco padrão, bem como as seeds.
 fazer um front-ent de cadastro de usuarios e produtos 
 a partir do front de login (ctrl c ctrl v)
+
+usar multer para receber imagens através de um form
+criar o front de cadastro de peça
