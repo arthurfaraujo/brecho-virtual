@@ -1,11 +1,13 @@
 * {
     margin: 0px;
     padding: 0px;
+    /* outline: 1px dotted black; */
 }
 
 body {
+    height: 100%;
     font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+    /* overflow: hidden; */
     background-color: rgb(255, 234, 207);
 }
 
@@ -77,26 +79,33 @@ nav {
 main {
     display: flex;
     justify-content: center;
-    background-color: rgb(255, 235, 217);
-    width: 90%;
+    /* background-color: rgb(0, 0, 0); */
+    width: 80%;
+    height: 100%;
     margin: auto;
-    height: 90%;
 }
 
 .grid-produtos {
-    margin-top: 30px;
-    width: 80%;
-    gap: 30px 10px;
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    gap: 30px 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 250px));
+    grid-template-rows: repeat(auto-fit, 350px);
+    justify-content: space-between;
+    /* background-color: black; */
+    outline: 1px dotted black;
 }
 
 .produto {
+    outline: 1px dotted black;
     cursor: pointer;
-    width: 75%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     text-align: center;
+    background-color: aqua;
+    overflow: hidden;
 }
 
 /* .produto-imagem {
@@ -104,9 +113,21 @@ main {
     height: 100%;
 } */
 
-.produto-imagem > img {
+.produto-imagem {
     width: 100%;
-    max-height: 100%;
+    height: 70%;
+    background-color: brown;
+    /* background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+    overflow: hidden;
+}
+
+.produto-imagem > img {
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
 }
 
 .produto > h3, .produto > p {
@@ -115,7 +136,7 @@ main {
 }
 
 .produto > button {
-    margin-top: 10px;
+    margin-top: 2%;
     background-color: #a97d6c;
     border: none;
     border-radius: 5px;

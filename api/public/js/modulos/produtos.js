@@ -5,7 +5,7 @@ function genProduct(product) {
     const html = `
     <div class="produto ${product.category}">
         <div class="produto-imagem">
-            <img src="${product.img}" class="imagem-produto">
+            <img src="${product.img}">
         </div>
         <h3>${product.name}</h3>
         <p>R$ ${product.price}</p>
@@ -30,4 +30,4 @@ async function showProducts() {
     }
 }
 
-showProducts();
+export default showProducts;
