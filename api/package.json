@@ -24,7 +24,7 @@
     },
     "scripts": {
         "listen": "node src/index.js",
-        "dev": "nodemon src/index.js",
+        "dev": "nodemon src/index.js && google-chrome https://localhost:3000/",
         "dbsim:reload": "npm run dbsim:drop && npm run dbsim:load",
         "dbsim:load": "node src/db/js/load.js",
         "dbsim:drop": "rm src/db/db.sqlite",
