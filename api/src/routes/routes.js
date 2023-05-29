@@ -2,6 +2,7 @@
     import { Router } from 'express';
     import product from '../db/models/Products.js';
     import user from '../db/models/Users.js';
+    import Users from '../database/models/users.js';
 
 // criação de constantes importantes
     const rota = Router();
@@ -43,8 +44,8 @@
     rota.post('/cadastro/usuario', async (req, res, next) => {
         const dados = {...req.body};
         try {
-            const lastid = await user.create(dados);            
-            res.json({message: "Cadastro realizado com sucesso!"});
+            const lastid = await Users.create(dados);            
+            res.redirect('/entrada');
         } catch(e) {
             next(e)
         }
@@ -74,7 +75,8 @@
 
         try {
             const lastid = await product.create(dados);            
-            res.json({message: "Cadastro realizado com sucesso!"});
+            res.send('testano')
+            json({message: "Cadastro realizado com sucesso!"});
         } catch(e) {
             next(e)
         }
