@@ -56,4 +56,15 @@ async function readAll() {
     return pecas;
 }
 
+async function remove(cod_pec) {
+    const db = await database.connect();
+
+    const query = `delete from peca 
+    where cod_pec = ?;`;
+
+    const { changes } = db.run(query, [cod_pec]);
+
+    return changes;
+}
+
 export default { create, read, readAll, readCod };

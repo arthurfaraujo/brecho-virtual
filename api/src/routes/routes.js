@@ -2,10 +2,10 @@
     import { Router } from 'express';
     import Clothes from '../database/models/clothes.js';
     import Images from '../database/models/productsImages.js';
-    import user from '../db/models/Users.js';
     import Users from '../database/models/users.js';
     import multer from 'multer';
     import crypto from 'node:crypto';
+    import { unlink } from 'node:fs/promises';
     // import { createClient } from '@supabase/supabase-js';
 
 // criação de constantes importantes
@@ -69,17 +69,18 @@
     });
 
     rota.delete('/cadastro/usuario', async (req, res, next) => {
-        const id = req.query.id;
+        const cod_usr = req.query.cod_usr;
 
         try {
-            const changes = await user.remove(id);
-            // console.log(changes);   
+            const changes = await Users.remove(cod_usr);  
+            
             if (changes == 0) {
                 throw new HTTPError("Usuário não encontrado.", 400);
             }
+
             res.json({message: 'Conta excluída com sucesso!'});            
         } catch (e) {
-            next(e)
+            next(e);
         }
     });
 
@@ -92,41 +93,44 @@
         const images = req.files;
 
         try {
-            const lastIdP = await Clothes.create(dados);
+            const lastIdC = await Clothes.create(dados);
             const cod_pec = await Clothes.readCod(dados);
 
-
             for (const img of images) {
-                const lastIdF = await Images.create(cod_pec.cod_pec, img.path);
+                const lastIdI = await Images.create(cod_pec.cod_pec, img.path);
             }
 
             res.json({message: "Cadastro realizado com sucesso!"});
         } catch(e) {
-            next(e)
+            next(e);
         }
     })
     
-// rotas data
+    
+    rota.delete('/cadastro/produto', async (req, res, next) => {
+        const cod_pec = req.query.cod_pec;
+            
+        try{
+            const changesC = await Clothes.remove(cod_pec);
+            const changesI = await Images.remove(cod_pec);
+
+            if ((changesC == 0) || (changesI == 0)) {
+                throw new HTTPError("Produto não encontrado.", 400);
+            }
+    
+            res.json({message: 'Produto removido com sucesso!'});
+        } catch(e) {
+            next(e);
+        }
+    });
+
+    // rotas data
     rota.get('/data/produtos', async (req, res, next) => {
         try {
             // console.log(await product.rAllP());
             res.json(await product.rAll());
         } catch (e) {
             next(e)
-        }
-    });
-
-    rota.delete('/data/produtos', async (req, res, next) => {
-        const id = req.query.id;
-        
-        try{
-            const changes = await product.remove(id);   
-            if (changes == 0) {
-                throw new HTTPError("Produto não encontrado.", 400);
-            }
-            res.json({message: 'Produto removido com sucesso!'});
-        } catch(e) {
-            next(e);
         }
     });
 

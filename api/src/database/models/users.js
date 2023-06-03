@@ -38,4 +38,14 @@ async function readAll() {
     return usuarios;
 }
 
-export default { create, read, readAll };
+async function remove(cod_usr) {
+    const db = await database.connect();
+
+    const query = `delete from usuario where cod_usr = ?;`;
+
+    const { changes } = await db.run(query, [cod_usr]);
+
+    return changes;
+}
+
+export default { create, read, readAll, remove };
