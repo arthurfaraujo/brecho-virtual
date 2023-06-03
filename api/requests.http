@@ -1,14 +1,14 @@
 @host = http://localhost:8080
 
 ### POST produto
-POST {{host}}/data/produtos
-Content-Type: application/json
+POST {{host}}/cadastro/produto
+Content-Type: multipart/form-data
 
 {   
     "nome": "caisa de tapa",
-    "preço": 100,
+    "preco": 100,
     "imagem": "../img/bioconstrucao_.jpg",
-    "categoria": "Objetos"
+    "estado_uso": "nova"
 } 
 
 

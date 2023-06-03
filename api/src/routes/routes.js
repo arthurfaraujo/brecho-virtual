@@ -1,11 +1,28 @@
 // importação de bibliotecas importantes
     import { Router } from 'express';
-    import product from '../db/models/Products.js';
+    import Products from '../database/models/clothes.js';
     import user from '../db/models/Users.js';
     import Users from '../database/models/users.js';
+    import multer from 'multer';
+    import crypto from 'node:crypto';
+    // import { createClient } from '@supabase/supabase-js';
 
 // criação de constantes importantes
     const rota = Router();
+    const storage = multer.diskStorage({
+        destination: (req, file, cb) => {
+            cb(null, 'public/img')
+        },
+
+        filename: (req, file, cb) => {
+            const extensao = file.originalname.split('.')[1];
+
+            const nomeNovo = crypto.randomBytes(30).toString('hex');
+
+            cb(null, `${nomeNovo}.${extensao}`);
+        }
+    })
+    const imagens = multer({storage: storage})
 
 // classe de erros específica para erros http
     class HTTPError extends Error {
@@ -70,13 +87,15 @@
         res.render('cadastro_produto.ejs');
     })
 
-    rota.post('/cadastro/produto', async (req, res,) => {
+    rota.post('/cadastro/produto', imagens.array('imagem', 5), async (req, res, next) => {
         const dados = {...req.body};
+        const images = req.files;
 
         try {
-            const lastid = await product.create(dados);            
-            res.send('testano')
-            json({message: "Cadastro realizado com sucesso!"});
+            for (const img of images) {
+                console.log(img.path);
+            }
+            res.json({message: "Cadastro realizado com sucesso!"});
         } catch(e) {
             next(e)
         }
