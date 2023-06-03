@@ -54,7 +54,7 @@
                 res.redirect(`/`);
             }            
         } catch(e) {
-            next(e)
+            next(e);
         }        
     });
 
@@ -64,7 +64,7 @@
             const lastid = await Users.create(dados);            
             res.redirect('/entrada');
         } catch(e) {
-            next(e)
+            next(e);
         }
     });
 
@@ -128,9 +128,9 @@
     rota.get('/data/produtos', async (req, res, next) => {
         try {
             // console.log(await product.rAllP());
-            res.json(await product.rAll());
+            res.json(await Clothes.readAll());
         } catch (e) {
-            next(e)
+            next(e);
         }
     });
 

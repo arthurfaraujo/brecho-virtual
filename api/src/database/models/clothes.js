@@ -67,4 +67,4 @@ async function remove(cod_pec) {
     return changes;
 }
 
-export default { create, read, readAll, readCod };
+export default { create, read, readAll, readCod, remove };

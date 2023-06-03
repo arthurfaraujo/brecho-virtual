@@ -3,12 +3,12 @@
 
 function genProduct(product) {
     const html = `
-    <div class="produto ${product.category}">
+    <div class="produto ${product.cod_cla}" id="${product.cod_pec}">
         <div class="produto-imagem">
-            <img src="${product.img}">
+            <img src=" ">
         </div>
-        <h3>${product.name}</h3>
-        <p>R$ ${product.price}</p>
+        <h3>${product.nome}</h3>
+        <p>R$ ${product.preco.toFixed(2)}</p>
         <button>Comprar</button>
     </div>
     `
@@ -27,6 +27,8 @@ async function showProducts() {
 
     for (const product of products) {
         insertProduct(product);
+
+        // console.table(product);
     }
 }
 
