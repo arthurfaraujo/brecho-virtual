@@ -3,10 +3,7 @@
     "version": "1.0.0",
     "description": "Sistema web de um brechó virtual.",
     "main": "src/index.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/slordian/brecho-virtual"
-    },
+    "repository": "https://github.com/slordian/brecho-virtual",
     "author": "slordian",
     "license": "MIT",
     "private": false,

@@ -27,6 +27,25 @@ async function read(cod_pec) {
     return peca;
 }
 
+async function readCod(peca) {
+    const db = await database.connect();
+
+    const query = `select cod_pec from peca
+    where descricao = ? and estado_uso = ? 
+    and preco = ? and nome = ? 
+    and cod_usr_cp = ? and
+    cod_cla = ? and cod_mar = ? 
+    and cod_usr_cr = ? and data_compra = ?;`;
+
+    const { descricao, estado_uso, preco, nome, cod_usr_cp,
+        cod_cla, cod_mar, cod_usr_cr, data_compra } = peca;
+
+    const pec = await db.get(query, [descricao, estado_uso, preco, nome, cod_usr_cp,
+        cod_cla, cod_mar, cod_usr_cr, data_compra]);
+
+    return pec;
+}
+
 async function readAll() {
     const db = await database.connect();
 
@@ -37,4 +56,4 @@ async function readAll() {
     return pecas;
 }
 
-export default { create, read, readAll };
+export default { create, read, readAll, readCod };

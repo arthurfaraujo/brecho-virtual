@@ -1,6 +1,7 @@
 // importação de bibliotecas importantes
     import { Router } from 'express';
-    import Products from '../database/models/clothes.js';
+    import Clothes from '../database/models/clothes.js';
+    import Images from '../database/models/productsImages.js';
     import user from '../db/models/Users.js';
     import Users from '../database/models/users.js';
     import multer from 'multer';
@@ -17,7 +18,7 @@
         filename: (req, file, cb) => {
             const extensao = file.originalname.split('.')[1];
 
-            const nomeNovo = crypto.randomBytes(30).toString('hex');
+            const nomeNovo = crypto.randomBytes(20).toString('hex');
 
             cb(null, `${nomeNovo}.${extensao}`);
         }
@@ -32,7 +33,6 @@
         }
     }
 
-//TODO: usar multer para receber imagens através de um form
 //TODO: criar o front de cadastro de peça
 
 // rotas home
@@ -92,9 +92,14 @@
         const images = req.files;
 
         try {
+            const lastIdP = await Clothes.create(dados);
+            const cod_pec = await Clothes.readCod(dados);
+
+
             for (const img of images) {
-                console.log(img.path);
+                const lastIdF = await Images.create(cod_pec.cod_pec, img.path);
             }
+
             res.json({message: "Cadastro realizado com sucesso!"});
         } catch(e) {
             next(e)
