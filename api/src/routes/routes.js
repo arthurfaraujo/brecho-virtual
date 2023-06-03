@@ -6,7 +6,6 @@
     import multer from 'multer';
     import crypto from 'node:crypto';
     import { unlink } from 'node:fs/promises';
-    // import { createClient } from '@supabase/supabase-js';
 
 // criação de constantes importantes
     const rota = Router();
@@ -23,7 +22,9 @@
             cb(null, `${nomeNovo}.${extensao}`);
         }
     })
-    const imagens = multer({storage: storage})
+    const imagens = multer({storage: storage});
+
+//TODO: enviar os caminhos das imagens na rota de dados dos produtos
 
 // classe de erros específica para erros http
     class HTTPError extends Error {
