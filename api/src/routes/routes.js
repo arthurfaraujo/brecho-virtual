@@ -26,6 +26,7 @@
     const imagens = multer({storage: storage});
 
 //TODO: enviar os caminhos das imagens na rota de dados dos produtos
+//TODO: apagar as imagens ao apagar o registro no banco
 
 // classe de erros específica para erros http
     class HTTPError extends Error {
