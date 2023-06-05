@@ -13,7 +13,7 @@ async function create(foto_produto) {
     return lastID;
 }
 
-async function remove() {
+async function remove(cod_pec) {
     const db = await database.connect();
 
     const query = `delete from foto_produto 

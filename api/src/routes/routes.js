@@ -97,7 +97,11 @@
             const lastIdC = await Clothes.create(dados);
 
             for (const img of images) {
-                const lastIdI = await Images.create(lastIdC, img.path);
+                const path = img.path;
+
+                const foto_produto = {cod_pec: lastIdC, url_img: path};
+                
+                const lastIdI = await Images.create(foto_produto);
             }
 
             res.json({message: "Cadastro realizado com sucesso!"});
