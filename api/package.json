@@ -6,7 +6,6 @@
     "repository": "https://github.com/slordian/brecho-virtual",
     "author": "slordian",
     "license": "MIT",
-    "private": false,
     "type": "module",
     "dependencies": {
         "@supabase/supabase-js": "^2.24.0",
