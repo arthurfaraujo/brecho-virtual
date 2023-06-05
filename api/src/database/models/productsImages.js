@@ -13,6 +13,17 @@ async function create(foto_produto) {
     return lastID;
 }
 
+async function readU(cod_pec) {
+    const db = await database.connect();
+
+    const query = `select url_img from foto_produto
+    where cod_pec = ?;`;
+
+    const codP = await db.all(query, [cod_pec]);
+
+    return codP;
+}
+
 async function remove(cod_pec) {
     const db = await database.connect();
 
@@ -24,4 +35,14 @@ async function remove(cod_pec) {
     return changes;
 };
 
-export default { create, remove };
+async function readAll() {
+    const db = await database.connect();
+
+    const query = `select * from foto_produto;`;
+
+    const codP = await db.all(query);
+
+    return codP;
+}
+
+export default { create, remove, readU, readAll };

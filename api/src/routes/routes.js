@@ -5,6 +5,7 @@
     import Users from '../database/models/users.js';
     import multer from 'multer';
     import crypto from 'node:crypto';
+    import fs from 'node:fs/promises';
     //TODO: procurar sobre o bcrypt
     import { unlink } from 'node:fs/promises';
 
@@ -117,8 +118,12 @@
         const cod_pec = req.query.cod_pec;
             
         try{
+            const imagens = await Images.readU(cod_pec);
             const changesC = await Clothes.remove(cod_pec);
-            const changesI = await Images.remove(cod_pec);
+            
+            for (const imagem of imagens) {
+                await fs.unlink(imagem.url_img);
+            }
 
             if (changesC == 0) {
                 throw new HTTPError("Produto não encontrado.", 400);

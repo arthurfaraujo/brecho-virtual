@@ -24,11 +24,11 @@ novo
 Content-Disposition: form-data; name="imagem"; filename="images.jpeg"
 Content-Type: image/jpeg
 
-./home/ifpb/Downloads/images.jpeg
+/home/arthur/Downloads/images.jpeg
 --boundary--
 
 ### DELETE produto
-DELETE {{host}}/cadastro/produto?cod_pec=3
+DELETE {{host}}/cadastro/produto?cod_pec=5
 ### GET produtos
 GET {{host}}/data/produtos
 

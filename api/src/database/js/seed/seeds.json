@@ -198,19 +198,19 @@
     "fotos_produtos": [
         {
             "cod_pec": 1,
-            "url_img": "8380264923hbf65730k.jpg"
+            "url_img": "public/img/produtos/27575904328754938.jpg"
         },
         {
             "cod_pec": 2,
-            "url_img": "1000006950_00004.png"
+            "url_img": "public/img/produtos/7256978345692837535.png"
         },
         {
             "cod_pec": 3,
-            "url_img": "1585128076.jpg"
+            "url_img": "public/img/produtos/1585128076.jpg"
         },
         {
             "cod_pec": 4,
-            "url_img": "7598157493053287fd.jpeg"
+            "url_img": "public/img/produtos/234659873265137851.jpeg"
         }
     ]
 }

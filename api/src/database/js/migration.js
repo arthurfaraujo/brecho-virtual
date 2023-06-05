@@ -99,9 +99,14 @@ async function up() {
         
             PRIMARY KEY (cod_usr, cod_pec),    
             FOREIGN KEY (cod_pec)
-                REFERENCES peca (cod_pec),
+                REFERENCES peca (cod_pec)
+            ON DELETE CASCADE 
+            ON UPDATE CASCADE,
+            
             FOREIGN KEY (cod_usr)
                 REFERENCES usuario (cod_usr)
+            ON DELETE CASCADE 
+            ON UPDATE CASCADE
         );
     `;
     await db.run(lista_desejo);
@@ -114,6 +119,8 @@ async function up() {
             PRIMARY KEY (cod_pec, url_img),
             FOREIGN KEY (cod_pec)
                 REFERENCES peca (cod_pec)
+            ON DELETE CASCADE 
+            ON UPDATE CASCADE
         );
     `;
     await db.run(foto_produto);
