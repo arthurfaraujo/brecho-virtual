@@ -166,12 +166,12 @@
             "data_compra": null
         },
         {
-            "descricao": "sunga para criança, nova, nunca usada",
-            "estado_uso": "nova",
-            "preco": 24.99,
-            "nome": "sunga hering",
+            "descricao": "camiseta braba, leve",
+            "estado_uso": "usada",
+            "preco": 29.99,
+            "nome": "camiseta rosa",
             "cod_usr_cp": null,
-            "cod_cla": 3,
+            "cod_cla": 6,
             "cod_mar": null,
             "cod_usr_cr": null,
             "data_compra": null
@@ -193,6 +193,24 @@
         {
             "cod_usr": 4,
             "cod_pec": 3
+        }
+    ],
+    "fotos_produtos": [
+        {
+            "cod_pec": 1,
+            "url_img": "8380264923hbf65730k.jpg"
+        },
+        {
+            "cod_pec": 2,
+            "url_img": "1000006950_00004.png"
+        },
+        {
+            "cod_pec": 3,
+            "url_img": "1585128076.jpg"
+        },
+        {
+            "cod_pec": 4,
+            "url_img": "7598157493053287fd.jpeg"
         }
     ]
 }

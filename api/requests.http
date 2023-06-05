@@ -1,19 +1,34 @@
-@host = http://localhost:8080
+@host = http://localhost:3000
 
 ### POST produto
 POST {{host}}/cadastro/produto
-Content-Type: multipart/form-data
+Content-Type: multipart/form-data; boundary="boundary"
 
-{   
-    "nome": "caisa de tapa",
-    "preco": 100,
-    "imagem": "../img/bioconstrucao_.jpg",
-    "estado_uso": "nova"
-} 
+--boundary
+Content-Disposition: form-data; name="nome"
 
+calça jeans
+--boundary
+Content-Disposition: form-data; name="preco"
+
+100.49
+--boundary
+Content-Disposition: form-data; name="descricao"
+
+otima peça, linda, super ventilada
+--boundary
+Content-Disposition: form-data; name="estado_uso"
+
+novo
+--boundary
+Content-Disposition: form-data; name="imagem"; filename="images.jpeg"
+Content-Type: image/jpeg
+
+./home/ifpb/Downloads/images.jpeg
+--boundary--
 
 ### DELETE produto
-DELETE {{host}}/data/produtos?id=4
+DELETE {{host}}/cadastro/produto?cod_pec=3
 ### GET produtos
 GET {{host}}/data/produtos
 

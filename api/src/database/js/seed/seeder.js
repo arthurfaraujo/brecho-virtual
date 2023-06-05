@@ -9,6 +9,7 @@ import subcategories from '../../models/subcategories.js';
 import classifications from '../../models/classifications.js';
 import clothes from '../../models/clothes.js';
 import wishlists from '../../models/wishlists.js';
+import images from '../../models/productsImages.js';
 
 async function up() {
     const seeds = JSON.parse(readFileSync(resolve(process.cwd(), 'src', 'database', 'js', 'seed', 'seeds.json')));
@@ -43,6 +44,10 @@ async function up() {
 
     for (const desejo of seeds.listas_desejo) {
         await wishlists.create(desejo);
+    }
+
+    for (const foto_produto of seeds.fotos_produtos) {
+        await images.create(foto_produto);
     }
 }
 

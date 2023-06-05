@@ -11,7 +11,7 @@
     const rota = Router();
     const storage = multer.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, 'public/img')
+            cb(null, 'public/img/produtos')
         },
 
         filename: (req, file, cb) => {
@@ -95,10 +95,9 @@
 
         try {
             const lastIdC = await Clothes.create(dados);
-            const cod_pec = await Clothes.readCod(dados);
 
             for (const img of images) {
-                const lastIdI = await Images.create(cod_pec.cod_pec, img.path);
+                const lastIdI = await Images.create(lastIdC, img.path);
             }
 
             res.json({message: "Cadastro realizado com sucesso!"});
@@ -113,9 +112,9 @@
             
         try{
             const changesC = await Clothes.remove(cod_pec);
-            const changesI = await Images.remove(cod_pec);
+            //const changesI = await Images.remove(cod_pec);
 
-            if ((changesC == 0) || (changesI == 0)) {
+            if (changesC == 0) {
                 throw new HTTPError("Produto não encontrado.", 400);
             }
     
