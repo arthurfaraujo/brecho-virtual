@@ -112,7 +112,7 @@
             
         try{
             const changesC = await Clothes.remove(cod_pec);
-            //const changesI = await Images.remove(cod_pec);
+            const changesI = await Images.remove(cod_pec);
 
             if (changesC == 0) {
                 throw new HTTPError("Produto não encontrado.", 400);

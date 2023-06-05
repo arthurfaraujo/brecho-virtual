@@ -2,14 +2,20 @@
   import 'express-async-errors';  
   import express from 'express';
   import morgan from 'morgan';
+  import dotenv from 'dotenv';
   // Rotas
     import home from './routes/routes.js';
 
+// uso de variáveis de ambiente com
+    dotenv.config();
+    
 // Criação de constantes importantes
-  const PORT = 3000;
+  const PORT = process.env.PORT;
   const server = express();
 
   // Configurações
+    // uso de variáveis de ambiente com
+        dotenv.config();
   
     // configura o json do express
         server.use(express.json());

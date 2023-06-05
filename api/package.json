@@ -19,11 +19,12 @@
     },
     "devDependencies": {
         "morgan": "^1.10.0",
-        "nodemon": "^2.0.22"
+        "nodemon": "^2.0.22",
+        "dotenv": "^16.1.4"
     },
     "scripts": {
         "listen": "node src/index.js",
-        "dev": "nodemon src/index.js && google-chrome https://localhost:3000/",
+        "dev": "nodemon src/index.js",
         "dbsim:reload": "npm run dbsim:drop && npm run dbsim:load",
         "dbsim:load": "node src/db/js/load.js",
         "dbsim:drop": "rm src/db/db.sqlite",
