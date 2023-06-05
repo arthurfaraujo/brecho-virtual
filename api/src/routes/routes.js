@@ -5,6 +5,7 @@
     import Users from '../database/models/users.js';
     import multer from 'multer';
     import crypto from 'node:crypto';
+    //TODO: procurar sobre o bcrypt
     import { unlink } from 'node:fs/promises';
 
 // criação de constantes importantes
