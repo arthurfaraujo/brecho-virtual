@@ -6,7 +6,7 @@
   // Rotas
     import home from './routes/routes.js';
 
-// uso de variáveis de ambiente com
+// uso de variáveis de ambiente com dotenv
     dotenv.config();
     
 // Criação de constantes importantes
@@ -14,8 +14,6 @@
   const server = express();
 
   // Configurações
-    // uso de variáveis de ambiente com
-        dotenv.config();
   
     // configura o json do express
         server.use(express.json());
