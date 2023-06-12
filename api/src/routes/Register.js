@@ -35,29 +35,10 @@
     // constante imagens que permite o uso do multer configurado    
         const imagens = multer({storage: storage});
 
-//TODO: enviar os caminhos das imagens na rota de dados dos produtos
-//TODO: apagar as imagens ao apagar o registro no banco
-
-// classe de erros específica para erros http
-    class HTTPError extends Error {
-        constructor(message, code) {
-            super(message);
-            this.code = code;
-        }
-    }
-
-// acesso do usuário à parte visual do sistema
-    rota.get('/', (req, res) => {
-        res.render('home.ejs');
-    });
-
-    rota.get('/entrada', (req, res) => {
-        res.render('entrada.ejs');
-    });
-
-    rota.get('/cadastro/produto', (req, res, next) => {
+// acesso do usuário à parte visual do cadastro
+    rota.get('/produto', (req, res, next) => {
         res.render('cadastro_produto.ejs');
-    })
+    });
 
 // acesso do usuário à parte de dados do sistema
     // verifica se o usuário existe e se logou corretamente
@@ -75,7 +56,7 @@
             }        
         });
     // cadastra um novo usuário
-        rota.post('/cadastro/usuario', async (req, res, next) => {
+        rota.post('/usuario', async (req, res, next) => {
             const dados = {...req.body};
             try {
                 const lastid = await Users.create(dados);            
@@ -85,7 +66,7 @@
             }
         });
     // remove um usuário
-        rota.delete('/cadastro/usuario', async (req, res, next) => {
+        rota.delete('/usuario', async (req, res, next) => {
             const cod_usr = req.query.cod_usr;
 
             try {
@@ -101,7 +82,7 @@
             }
         });
     // cadastra um produto e suas imagens
-        rota.post('/cadastro/produto', imagens.array('imagem', 5), async (req, res, next) => {
+        rota.post('/produto', imagens.array('imagem', 5), async (req, res, next) => {
             const dados = {...req.body};
             const images = req.files;
 
@@ -123,7 +104,7 @@
         })
     
     // remove um produto
-        rota.delete('/cadastro/produto', async (req, res, next) => {
+        rota.delete('/produto', async (req, res, next) => {
             const cod_pec = req.query.cod_pec;
                 
             try{
@@ -141,33 +122,6 @@
                 res.json({message: 'Produto removido com sucesso!'});
             } catch(e) {
                 next(e);
-            }
-        });
-        
-// acesso do front à parte de dados
-    // envia os produtos
-        rota.get('/data/produtos', async (req, res, next) => {
-            try {
-                // console.log(await product.rAllP());
-                res.json(await Clothes.readAll());
-            } catch (e) {
-                next(e);
-            }
-        });
-
-// Manipular erros sem quebrar o servidor
-    // 404
-        rota.use((req, res, next) => {
-            res.status(404).json({ message: 'Página não encontrada!' });
-        });
-
-    // Outros
-        rota.use((err, req, res, next) => {
-            console.error(err.stack);
-            if (err && err instanceof HTTPError) {
-                res.status(err.code).json({ message: err.message });
-            } else {
-                res.status(500).json({ message: 'Algo deu muito errado!' });
             }
         });
 

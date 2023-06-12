@@ -4,13 +4,16 @@
   import morgan from 'morgan';
   import dotenv from 'dotenv';
   // Rotas
-    import home from './routes/routes.js';
+    import pages from './routes/Pages.js';
+    import register from './routes/Register.js';
+    import data from './routes/Data.js';
+    import errors from './routes/Error.js';
 
 // uso de variáveis de ambiente com dotenv
     dotenv.config();
     
 // Criação de constantes importantes
-  const PORT = process.env.PORT;
+  const PORT = process.env.PORT || 3000;
   const server = express();
 
   // Configurações
@@ -29,7 +32,18 @@
         server.set('view engine', 'ejs');
 
 // Rotas
-    server.use(home);
+    // acesso a páginas inicial e de cadastro
+        server.use('/', pages);
+
+    // cadastros
+        server.use('/cadastro', register);
+
+    // dados
+        server.use('/data', data);
+
+    // ERROS
+        server.use(errors);
+
 
 // Botando o servidor pra rodar e escutar na porta PORT
   server.listen(PORT, () => {
