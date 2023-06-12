@@ -1,0 +1,48 @@
+datasource db {
+    provider = "sqlite"
+    url      = "file:./../db.db"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Usuario {
+    cod_usr Int @id @default(autoincrement())
+    nome String
+    e_mail String @unique
+    senha String
+    telefone Int
+    uf String
+    cidade String
+    rua String
+    numero String
+}
+
+model Marca {
+    cod_mar Int @id @default(autoincrement())
+    nome String
+}
+
+model Departamento {
+    cod_dep Int @id @default(autoincrement())
+    nome String
+}
+
+model Categoria {
+    cod_cat Int @id @default(autoincrement())
+    nome String
+}
+
+model Subcategoria {
+    cod_sub Int @id @default(autoincrement())
+    nome String
+}
+
+model Classificacao {
+    cod_cla Int @id @default(autoincrement())
+    dep Departamento @relation("composto", fields: [cod_dep], references: [cod_dep])
+    cod_dep Int
+    cod_cat Int
+    cod_sub Int
+}
