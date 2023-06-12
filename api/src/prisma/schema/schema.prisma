@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+    codUsr   Int        @id     @default(autoincrement())
+    nome     String
+    eMail    String     @unique
+    senha    String
+    telefone Int
+    uf       String
+    cidade   String
+    rua      String
+    numero   String
+    pecasCriadas   Peca[]       @relation("cria")
+    pecasCompradas Peca[]       @relation("compra")
+    deseja         ListaDesejo[]
+}
+
+model Marca {
+    codMar  Int     @id     @default(autoincrement())
+    nome    String
+    pecas   Peca[] 
+}
+
+model Departamento {
+    codDep  Int     @id     @default(autoincrement())
+    nome String
+    classificacoes  Classificacao[]
+}
+
+model Categoria {
+    codCat Int @id @default(autoincrement())
+    nome String
+    classificacoes Classificacao[]
+}
+
+model SubCategoria {
+    codSub Int @id @default(autoincrement())
+    nome String
+    classificacoes Classificacao[]
+}
+
+model Classificacao {
+    codCla Int @id @default(autoincrement())
+    dep Departamento @relation(fields: [codDep], references: [codDep])
+    codDep Int
+    cat Categoria @relation(fields: [codCat], references: [codCat])
+    codCat Int
+    sub SubCategoria @relation(fields: [codSub], references: [codSub])
+    codSub Int
+    pecas Peca[]
+}
+
+model Peca {
+    codPec Int @id @default(autoincrement())
+    nome String
+    descricao String?
+    estadoUso String
+    preco Float
+    comprador Usuario? @relation("compra", fields: [codUsrCr], references: [codUsr])
+    codUsrCr Int?
+    classificacao Classificacao @relation(fields: [codCla], references: [codCla])
+    codCla Int
+    marca Marca? @relation(fields: [codMar], references: [codMar])
+    codMar Int?
+    criador Usuario? @relation("cria", fields: [codUsrCp], references: [codUsr])
+    codUsrCp Int?
+    dataCompra DateTime?
+    desejadaPor ListaDesejo[]
+    Imagens FotoProduto[]
+}
+
+model ListaDesejo {
+    usuario Usuario @relation(fields: [codUsr], references: [codUsr])
+    codUsr Int
+    peca Peca @relation(fields: [codPec], references: [codPec])
+    codPec Int
+    @@id([codUsr, codPec])
+}
+
+model FotoProduto {
+    peca Peca @relation(fields: [codPec], references: [codPec])
+    codPec Int
+    urlImg String
+    @@id([codPec, urlImg])
+}
