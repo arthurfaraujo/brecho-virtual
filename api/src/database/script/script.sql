@@ -114,12 +114,12 @@ CREATE TABLE lista_desejo (
 ------------------------------------------------
 CREATE TABLE foto_produto (
     cod_pec     INTEGER,
-        url_img     VARCHAR(500),
+    url_img     VARCHAR(500),
     
-        PRIMARY KEY (cod_pec, url_img),
-        FOREIGN KEY (cod_pec)
-            REFERENCES peca (cod_pec)
+    PRIMARY KEY (cod_pec, url_img),
+    FOREIGN KEY (cod_pec)
+        REFERENCES peca (cod_pec)
         ON DELETE CASCADE 
         ON UPDATE CASCADE
-        );
+);
 -----------------------||-----------------------

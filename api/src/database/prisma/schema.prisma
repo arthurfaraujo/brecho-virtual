@@ -8,41 +8,85 @@ generator client {
 }
 
 model Usuario {
-    cod_usr Int @id @default(autoincrement())
+    codUsr Int @id @default(autoincrement())
     nome String
-    e_mail String @unique
+    eMail String @unique
     senha String
     telefone Int
     uf String
     cidade String
     rua String
     numero String
+    pecasCriadas Peca[] @relation("cria")
+    pecasCompradas Peca[] @relation("compra")
+    deseja ListaDesejo[]
 }
 
 model Marca {
-    cod_mar Int @id @default(autoincrement())
+    codMar Int @id @default(autoincrement())
     nome String
+    pecas Peca[] 
 }
 
 model Departamento {
-    cod_dep Int @id @default(autoincrement())
+    codDep Int @id @default(autoincrement())
     nome String
+    classificacoes Classificacao[]
 }
 
 model Categoria {
-    cod_cat Int @id @default(autoincrement())
+    codCat Int @id @default(autoincrement())
     nome String
+    classificacoes Classificacao[]
 }
 
 model Subcategoria {
-    cod_sub Int @id @default(autoincrement())
+    codSub Int @id @default(autoincrement())
     nome String
+    classificacoes Classificacao[]
 }
 
 model Classificacao {
-    cod_cla Int @id @default(autoincrement())
-    dep Departamento @relation("composto", fields: [cod_dep], references: [cod_dep])
-    cod_dep Int
-    cod_cat Int
-    cod_sub Int
+    codCla Int @id @default(autoincrement())
+    dep Departamento @relation(fields: [codDep], references: [codDep])
+    codDep Int
+    cat Categoria @relation(fields: [codCat], references: [codCat])
+    codCat Int
+    sub Subcategoria @relation(fields: [codSub], references: [codSub])
+    codSub Int
+    pecas Peca[]
+}
+
+model Peca {
+    codPec Int @id @default(autoincrement())
+    nome String
+    descricao String?
+    estadouso String
+    preco Float
+    comprador Usuario? @relation("compra", fields: [codUsrCr], references: [codUsr])
+    codUsrCr Int?
+    classificacao Classificacao @relation(fields: [codCla], references: [codCla])
+    codCla Int
+    marca Marca? @relation(fields: [codMar], references: [codMar])
+    codMar Int?
+    criador Usuario? @relation("cria", fields: [codUsrCp], references: [codUsr])
+    codUsrCp Int?
+    dataCompra DateTime?
+    desejadaPor ListaDesejo[]
+    Imagens FotoProduto[]
+}
+
+model ListaDesejo {
+    usuario Usuario @relation(fields: [codUsr], references: [codUsr])
+    codUsr Int
+    peca Peca @relation(fields: [codPec], references: [codPec])
+    codPec Int
+    @@id([codUsr, codPec])
+}
+
+model FotoProduto {
+    peca Peca @relation(fields: [codPec], references: [codPec])
+    codPec Int
+    urlImg String
+    @@id([codPec, urlImg])
 }
