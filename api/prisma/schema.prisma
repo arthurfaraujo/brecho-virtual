@@ -19,7 +19,7 @@ model Usuario {
     numero         String?
     pecasCriadas   Peca[]        @relation("cria")
     pecasCompradas Peca[]        @relation("compra")
-    deseja         ListaDesejo[]
+    deseja         DesejoUsuario[]
 }
 
 model Marca {
@@ -72,11 +72,12 @@ model Peca {
     criador       Usuario?      @relation("cria", fields: [codUsrCp], references: [codUsr])
     codUsrCp      Int?
     dataCompra    DateTime?
-    desejadaPor   ListaDesejo[]
-    Imagens       FotoProduto[]
+    dataCriacao   DateTime      @default(now())
+    desejadaPor   DesejoUsuario[]
+    Imagens       FotoProduto[] 
 }
 
-model ListaDesejo {
+model DesejoUsuario {
     usuario Usuario @relation(fields: [codUsr], references: [codUsr])
     codUsr  Int
     peca    Peca    @relation(fields: [codPec], references: [codPec])
