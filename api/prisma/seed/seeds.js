@@ -177,39 +177,39 @@ const seeds = {
             dataCompra: null,
         },
     ],
-    listasDesejo: [
+    desejosUsuario: [
         {
             codUsr: 2,
-            codPec: 3,
+            codProd: 3,
         },
         {
             codUsr: 3,
-            codPec: 1,
+            codProd: 1,
         },
         {
             codUsr: 4,
-            codPec: 2,
+            codProd: 2,
         },
         {
             codUsr: 4,
-            codPec: 3,
+            codProd: 3,
         },
     ],
     fotosProdutos: [
         {
-            codPec: 1,
+            codProd: 1,
             urlImg: "public/img/produtos/27575904328754938.jpg",
         },
         {
-            codPec: 2,
+            codProd: 2,
             urlImg: "public/img/produtos/7256978345692837535.png",
         },
         {
-            codPec: 3,
+            codProd: 3,
             urlImg: "public/img/produtos/1585128076.jpg",
         },
         {
-            codPec: 4,
+            codProd: 4,
             urlImg: "public/img/produtos/234659873265137851.jpeg",
         },
     ],

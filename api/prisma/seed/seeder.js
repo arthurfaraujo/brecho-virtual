@@ -6,6 +6,8 @@ import categoryModel from "../../src/models/categoryModel.js";
 import subCategoryModel from "../../src/models/subCategoryModel.js";
 import classificationModel from "../../src/models/classificationModel.js";
 import productModel from "../../src/models/productModel.js";
+import wishModel from "../../src/models/wishModel.js";
+import productImageModel from "../../src/models/productImageModel.js";
 
 async function up() {
     try {
@@ -40,6 +42,14 @@ async function up() {
 
         for (const product of seeds.produtos) {
             const created = await productModel.create(product);
+        }
+
+        for (const wish of seeds.desejosUsuario) {
+            const created = await wishModel.create(wish);
+        }
+
+        for (const productImage of seeds.fotosProdutos) {
+            const created = await productImageModel.create(productImage);
         }
     } catch (error) {
         throw error;
