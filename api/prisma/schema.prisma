@@ -8,17 +8,17 @@ datasource db {
 }
 
 model Usuario {
-    codUsr         Int           @id @default(autoincrement())
+    codUsr         Int             @id @default(autoincrement())
     nome           String
-    eMail          String        @unique
+    eMail          String          @unique
     senha          String
     telefone       String?
     uf             String?
     cidade         String?
     rua            String?
     numero         String?
-    pecasCriadas   Peca[]        @relation("cria")
-    pecasCompradas Peca[]        @relation("compra")
+    pecasCriadas   Peca[]          @relation("cria")
+    pecasCompradas Peca[]          @relation("compra")
     deseja         DesejoUsuario[]
 }
 
@@ -58,23 +58,23 @@ model Classificacao {
 }
 
 model Peca {
-    codPec        Int           @id @default(autoincrement())
+    codPec        Int             @id @default(autoincrement())
     nome          String
     descricao     String?
     estadoUso     String
-    preco         Float
-    comprador     Usuario?      @relation("compra", fields: [codUsrCr], references: [codUsr])
+    preco         Decimal
+    criador       Usuario?        @relation("cria", fields: [codUsrCr], references: [codUsr])
     codUsrCr      Int?
-    classificacao Classificacao @relation(fields: [codCla], references: [codCla])
-    codCla        Int
-    marca         Marca?        @relation(fields: [codMar], references: [codMar])
-    codMar        Int?
-    criador       Usuario?      @relation("cria", fields: [codUsrCp], references: [codUsr])
+    dataCriacao   DateTime        @default(now())
+    comprador     Usuario?        @relation("compra", fields: [codUsrCp], references: [codUsr])
     codUsrCp      Int?
     dataCompra    DateTime?
-    dataCriacao   DateTime      @default(now())
+    classificacao Classificacao   @relation(fields: [codCla], references: [codCla])
+    codCla        Int
+    marca         Marca?          @relation(fields: [codMar], references: [codMar])
+    codMar        Int?
     desejadaPor   DesejoUsuario[]
-    Imagens       FotoProduto[] 
+    Imagens       FotoProduto[]
 }
 
 model DesejoUsuario {
