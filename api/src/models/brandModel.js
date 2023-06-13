@@ -1,16 +1,16 @@
 import { prisma } from "../prismaDb/prismaConnection.js";
 
-async function createUnique(Brand) {
+async function create(Brand) {
     try {
         const brand = await prisma.marca.upsert({
-            where: { nome: Brand.nome },
+            where: Brand,
             update: {},
-            create: { nome: Brand.nome },
+            create: Brand,
         });
         return brand;
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
-export default { createUnique };
+export default { create };

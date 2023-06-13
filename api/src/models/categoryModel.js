@@ -1,16 +1,16 @@
 import { prisma } from "../prismaDb/prismaConnection.js";
 
-async function createUnique(Category) {
+async function create(Category) {
     try {
         const category = await prisma.categoria.upsert({
-            where: { nome: Category.nome },
+            where: Category,
             update: {},
-            create: { nome: Category.nome },
+            create: Category,
         });
         return category;
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
-export default { createUnique };
+export default { create };

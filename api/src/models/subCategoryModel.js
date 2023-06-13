@@ -1,16 +1,16 @@
 import { prisma } from "../prismaDb/prismaConnection.js";
 
-async function createUnique(subCategory) {
+async function create(SubCategory) {
     try {
-        const sub_category = await prisma.subCategoria.upsert({
-            where: { nome: subCategory.nome },
+        const subCategory = await prisma.subCategoria.upsert({
+            where: SubCategory,
             update: {},
-            create: { nome: subCategory.nome },
+            create: SubCategory,
         });
-        return sub_category;
+        return subCategory;
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
-export default { createUnique };
+export default { create };

@@ -1,6 +1,6 @@
 import { prisma } from "../prismaDb/prismaConnection.js";
 
-async function createUnique(User) {
+async function create(User) {
     try {
         const user = await prisma.usuario.upsert({
             where: { eMail: User.eMail },
@@ -20,8 +20,8 @@ async function createUnique(User) {
         });
         return user;        
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
-export default { createUnique };
+export default { create };
