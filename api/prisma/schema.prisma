@@ -12,11 +12,11 @@ model Usuario {
     nome           String
     eMail          String        @unique
     senha          String
-    telefone       Int
-    uf             String
-    cidade         String
-    rua            String
-    numero         String
+    telefone       String?
+    uf             String?
+    cidade         String?
+    rua            String?
+    numero         String?
     pecasCriadas   Peca[]        @relation("cria")
     pecasCompradas Peca[]        @relation("compra")
     deseja         ListaDesejo[]
@@ -24,25 +24,25 @@ model Usuario {
 
 model Marca {
     codMar Int    @id @default(autoincrement())
-    nome   String
+    nome   String @unique
     pecas  Peca[]
 }
 
 model Departamento {
     codDep         Int             @id @default(autoincrement())
-    nome           String
+    nome           String          @unique
     classificacoes Classificacao[]
 }
 
 model Categoria {
     codCat         Int             @id @default(autoincrement())
-    nome           String
+    nome           String          @unique
     classificacoes Classificacao[]
 }
 
 model SubCategoria {
     codSub         Int             @id @default(autoincrement())
-    nome           String
+    nome           String          @unique
     classificacoes Classificacao[]
 }
 

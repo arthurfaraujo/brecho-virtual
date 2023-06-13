@@ -30,5 +30,8 @@
         "db:reload": "yarn db:drop && yarn db:load",
         "db:load": "node src/database/js/load.js",
         "db:drop": "rm src/database/db.sqlite"
+    },
+    "prisma": {
+        "seed": "node prisma/seed/seeder.js"
     }
 }
