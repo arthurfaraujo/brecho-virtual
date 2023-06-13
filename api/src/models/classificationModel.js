@@ -3,13 +3,9 @@ import { prisma } from "../prismaDb/prismaConnection.js";
 async function create(Classification) {
     try {
         const classification = await prisma.classificacao.upsert({
-            where: { codCla: Classification.codCla },
+            where: { codCla: 0 },
             update: {},
-            create: {
-                codDep: Classification.codDep,
-                codCat: Classification.codCat,
-                codSub: Classification.codSub,
-            },
+            create: Classification,
         });
         return classification;
     } catch (error) {

@@ -96,49 +96,42 @@ const seeds = {
     ],
     classificacoes: [
         {
-            codCla: 0,
             codDep: 1,
             codCat: 2,
             codSub: 4,
         },
         {
-            codCla: 0,
             codDep: 2,
             codCat: 3,
             codSub: 8,
         },
         {
-            codCla: 0,
             codDep: 3,
             codCat: 1,
             codSub: 9,
         },
         {
-            codCla: 0,
             codDep: 5,
             codCat: 5,
             codSub: 14,
         },
         {
-            codCla: 0,
             codDep: 4,
             codCat: 4,
             codSub: 12,
         },
         {
-            codCla: 0,
             codDep: 4,
             codCat: 4,
             codSub: 1,
         },
         {
-            codCla: 0,
             codDep: 4,
             codCat: 4,
             codSub: 2,
         },
     ],
-    pecas: [
+    produtos: [
         {
             descricao: "camiseta de tamanho médio, confortável à beça, ideal para fica de boa em casa",
             estadoUso: "desgastada",

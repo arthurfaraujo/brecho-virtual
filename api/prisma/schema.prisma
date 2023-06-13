@@ -8,24 +8,24 @@ datasource db {
 }
 
 model Usuario {
-    codUsr         Int             @id @default(autoincrement())
-    nome           String
-    eMail          String          @unique
-    senha          String
-    telefone       String?
-    uf             String?
-    cidade         String?
-    rua            String?
-    numero         String?
-    pecasCriadas   Peca[]          @relation("cria")
-    pecasCompradas Peca[]          @relation("compra")
-    deseja         DesejoUsuario[]
+    codUsr            Int             @id @default(autoincrement())
+    nome              String
+    eMail             String          @unique
+    senha             String
+    telefone          String?
+    uf                String?
+    cidade            String?
+    rua               String?
+    numero            String?
+    produtosCriadas   Produto[]       @relation("cria")
+    produtosCompradas Produto[]       @relation("compra")
+    deseja            DesejoUsuario[]
 }
 
 model Marca {
-    codMar Int    @id @default(autoincrement())
-    nome   String @unique
-    pecas  Peca[]
+    codMar   Int       @id @default(autoincrement())
+    nome     String    @unique
+    produtos Produto[]
 }
 
 model Departamento {
@@ -47,18 +47,18 @@ model SubCategoria {
 }
 
 model Classificacao {
-    codCla Int          @id @default(autoincrement())
-    dep    Departamento @relation(fields: [codDep], references: [codDep])
-    codDep Int
-    cat    Categoria    @relation(fields: [codCat], references: [codCat])
-    codCat Int
-    sub    SubCategoria @relation(fields: [codSub], references: [codSub])
-    codSub Int
-    pecas  Peca[]
+    codCla   Int          @id @default(autoincrement())
+    dep      Departamento @relation(fields: [codDep], references: [codDep])
+    codDep   Int
+    cat      Categoria    @relation(fields: [codCat], references: [codCat])
+    codCat   Int
+    sub      SubCategoria @relation(fields: [codSub], references: [codSub])
+    codSub   Int
+    produtos Produto[]
 }
 
-model Peca {
-    codPec        Int             @id @default(autoincrement())
+model Produto {
+    codProd       Int             @id @default(autoincrement())
     nome          String
     descricao     String?
     estadoUso     String
@@ -80,16 +80,16 @@ model Peca {
 model DesejoUsuario {
     usuario Usuario @relation(fields: [codUsr], references: [codUsr])
     codUsr  Int
-    peca    Peca    @relation(fields: [codPec], references: [codPec])
-    codPec  Int
+    Produto Produto @relation(fields: [codProd], references: [codProd])
+    codProd Int
 
-    @@id([codUsr, codPec])
+    @@id([codUsr, codProd])
 }
 
 model FotoProduto {
-    peca   Peca   @relation(fields: [codPec], references: [codPec])
-    codPec Int
-    urlImg String
+    Produto Produto @relation(fields: [codProd], references: [codProd])
+    codProd Int
+    urlImg  String
 
-    @@id([codPec, urlImg])
+    @@id([codProd, urlImg])
 }
