@@ -1,2 +1,4 @@
 node_modules
 .yarn
+db.sqlite
+db.sqlite-journal
