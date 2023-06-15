@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-const errorHandlers = Router()
+export const errorHandlers = Router()
 
 // classe de erros específica para erros http
 export class HTTPError extends Error {
