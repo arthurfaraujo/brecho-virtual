@@ -7,7 +7,7 @@ import dotenv from 'dotenv'
 import pages from './routes/Pages.js'
 import register from './routes/Register.js'
 import data from './routes/Data.js'
-import { errors } from './routes/Error.js'
+import { errorHandlers } from './routes/Error.js'
 
 // uso de variáveis de ambiente com dotenv
 dotenv.config()
@@ -41,7 +41,7 @@ server.use('/cadastro', register)
 server.use('/data', data)
 
 // ERROS
-server.use(errors)
+server.use(errorHandlers)
 
 // Botando o servidor pra rodar e escutar na porta PORT
 server.listen(PORT, () => {
