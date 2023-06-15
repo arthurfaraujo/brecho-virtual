@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-const rota = Router()
+const errorHandlers = Router()
 
 // classe de erros específica para erros http
 class HTTPError extends Error {
@@ -12,12 +12,12 @@ class HTTPError extends Error {
 
 // Manipular erros sem quebrar o servidor
 // 404
-rota.use((req, res, next) => {
+errorHandlers.use((req, res, next) => {
   res.status(404).json({ message: 'Página não encontrada!' })
 })
 
 // Outros
-rota.use((err, req, res, next) => {
+errorHandlers.use((err, req, res, next) => {
   console.error(err.stack)
   if (err && err instanceof HTTPError) {
     res.status(err.code).json({ message: err.message })
@@ -26,4 +26,4 @@ rota.use((err, req, res, next) => {
   }
 })
 
-export default rota
+export default { errorHandlers, HTTPError }

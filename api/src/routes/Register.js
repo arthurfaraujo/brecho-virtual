@@ -3,7 +3,8 @@
 import Clothes from '../database/models/clothes.js'
 import Images from '../database/models/productsImages.js'
 import Users from '../database/models/users.js'
-
+// errors
+import { HTTPError } from 'Error.js'
 // sistema de rotas do express
 import { Router } from 'express'
 
