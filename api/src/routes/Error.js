@@ -3,7 +3,7 @@ import { Router } from 'express'
 const errorHandlers = Router()
 
 // classe de erros específica para erros http
-class HTTPError extends Error {
+export class HTTPError extends Error {
   constructor (message, code) {
     super(message)
     this.code = code
