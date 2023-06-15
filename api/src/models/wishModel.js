@@ -1,17 +1,13 @@
-import { prisma } from "../prismaDb/prismaConnection.js";
+import { prisma } from '../prismaDb/prismaConnection.js'
 
-async function create(Wish) {
-    try {
-        const wish = await prisma.desejoUsuario.upsert({
-            where: {codUsr_codProd: Wish},
-            update: {},
-            create: Wish,
-        });
+async function create (Wish) {
+  const wish = await prisma.desejoUsuario.upsert({
+    where: { codUsr_codProd: Wish },
+    update: {},
+    create: Wish
+  })
 
-        return wish;
-    } catch (error) {
-        throw error;
-    }
+  return wish
 }
 
-export default { create };
+export default { create }

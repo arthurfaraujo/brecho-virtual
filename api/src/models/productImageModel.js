@@ -1,17 +1,13 @@
-import { prisma } from "../prismaDb/prismaConnection.js";
+import { prisma } from '../prismaDb/prismaConnection.js'
 
-async function create(Image) {
-    try {
-        const image = await prisma.fotoProduto.upsert({
-            where: {codProd_urlImg: Image},
-            update: {},
-            create: Image,
-        });
+async function create (Image) {
+  const image = await prisma.fotoProduto.upsert({
+    where: { codProd_urlImg: Image },
+    update: {},
+    create: Image
+  })
 
-        return image
-    } catch (error) {
-        throw error;
-    }
+  return image
 }
 
-export default { create };
+export default { create }
