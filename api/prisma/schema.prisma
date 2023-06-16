@@ -62,7 +62,7 @@ model Produto {
     nome          String
     descricao     String?
     estadoUso     String
-    preco         Decimal
+    preco         Float
     criador       Usuario?        @relation("cria", fields: [codUsrCr], references: [codUsr])
     codUsrCr      Int?
     dataCriacao   DateTime        @default(now())
