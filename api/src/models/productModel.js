@@ -9,4 +9,10 @@ async function create (Product) {
   return product
 }
 
-export default { create }
+async function readAll () {
+  const products = await prisma.produto.findMany()
+
+  return products
+}
+
+export default { create, readAll }
