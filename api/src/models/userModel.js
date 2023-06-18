@@ -18,4 +18,20 @@ async function create (User) {
   return user
 }
 
-export default { create }
+async function auth (eMail, senha) {
+  const user = await prisma.usuario.findUnique({
+    where: { eMail },
+    select: {
+      codUsr: true,
+      senha: true
+    }
+  })
+
+  if (user && user.senha === senha) {
+    return user.codUsr
+  } else {
+    return 0
+  }
+}
+
+export default { create, auth }
