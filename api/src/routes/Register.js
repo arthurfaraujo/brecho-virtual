@@ -2,7 +2,7 @@
 // models
 import Clothes from '../database/models/clothes.js'
 import Images from '../database/models/productsImages.js'
-import Users from '../database/models/users.js'
+import userModel from '../models/userModel.js'
 // errors
 import { HTTPError } from './Error.js'
 // sistema de rotas do express
@@ -44,13 +44,15 @@ rota.get('/produto', (req, res, next) => {
 // acesso do usuário à parte de dados do sistema
 // verifica se o usuário existe e se logou corretamente
 rota.post('/login', async (req, res, next) => {
-  const dados = { ...req.body }
   try {
-    const usuario = await user.auth(dados)
-    if (usuario === 1) {
-      throw new HTTPError('Usuário e/ou senha incorreto(s).', 400)
-    } else {
+    const usuario = req.body
+    const codUsr = await userModel.auth(usuario.eMail, usuario.senha)
+    // console.log(usuario)
+    // console.log(codUsr)
+    if (codUsr) {
       res.redirect('/')
+    } else {
+      throw new HTTPError('Usuário e/ou senha incorreto(s)!', 400)
     }
   } catch (e) {
     next(e)
@@ -58,9 +60,9 @@ rota.post('/login', async (req, res, next) => {
 })
 // cadastra um novo usuário
 rota.post('/usuario', async (req, res, next) => {
-  const dados = { ...req.body }
+  const dados = { aa: 21 }
   try {
-    const lastid = await Users.create(dados)
+    await userModel.create(dados)
     res.redirect('/entrada')
   } catch (e) {
     next(e)
