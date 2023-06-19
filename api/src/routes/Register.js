@@ -60,7 +60,7 @@ rota.post('/login', async (req, res, next) => {
 })
 // cadastra um novo usuário
 rota.post('/usuario', async (req, res, next) => {
-  const dados = { aa: 21 }
+  const dados = req.body
   try {
     await userModel.create(dados)
     res.redirect('/entrada')
