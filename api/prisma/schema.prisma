@@ -78,16 +78,16 @@ model Produto {
 }
 
 model DesejoUsuario {
-    usuario Usuario @relation(fields: [codUsr], references: [codUsr])
+    usuario Usuario @relation(fields: [codUsr], references: [codUsr], onDelete: Cascade)
     codUsr  Int
-    Produto Produto @relation(fields: [codProd], references: [codProd])
+    Produto Produto @relation(fields: [codProd], references: [codProd], onDelete: Cascade)
     codProd Int
 
     @@id([codUsr, codProd])
 }
 
 model FotoProduto {
-    Produto Produto @relation(fields: [codProd], references: [codProd])
+    Produto Produto @relation(fields: [codProd], references: [codProd], onDelete: Cascade)
     codProd Int
     urlImg  String
 
