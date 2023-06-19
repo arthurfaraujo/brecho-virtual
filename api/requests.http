@@ -17,9 +17,13 @@ Content-Disposition: form-data; name="descricao"
 
 otima peça, linda, super ventilada
 --boundary
-Content-Disposition: form-data; name="estado_uso"
+Content-Disposition: form-data; name="estadoUso"
 
 novo
+--boundary
+Content-Disposition: form-data; name="codCla"
+
+3
 --boundary
 Content-Disposition: form-data; name="imagem"; filename="images.jpeg"
 Content-Type: image/jpeg
@@ -27,8 +31,28 @@ Content-Type: image/jpeg
 /home/arthur/Imagens/images.jpeg
 --boundary--
 
+### POST produto
+POST {{host}}/cadastro/produto
+Content-Type: application/json
+
+{
+    codProd
+    nome
+    descricao
+    estadoUso
+    preco
+    codUsrCr
+    dataCriacao
+    codUsrCp
+    dataCompra
+    codCla
+    marca
+    codMar
+}
+
 ### DELETE produto
-DELETE {{host}}/cadastro/produto?cod_pec=5
+DELETE {{host}}/cadastro/produto?codProd=
+
 ### GET produtos
 GET {{host}}/data/produtos
 

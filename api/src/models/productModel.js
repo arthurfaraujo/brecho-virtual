@@ -20,14 +20,30 @@ async function createWithImage (Product, Images) {
     where: { codProd: 0 },
     update: {},
     create: {
-      Product,
+      nome: Product.nome,
+      descricao: Product.descricao || null,
+      estadoUso: Product.estadoUso,
+      preco: parseFloat(Product.preco),
+      codUsrCr: parseInt(Product.codUsrCr) || null,
+      codCla: parseInt(Product.codCla),
+      codMar: parseInt(Product.codMar) || null,
       Imagens: {
         create: Images
       }
-    }
+    },
+    include: { Imagens: true }
   })
 
   return product
 }
 
-export default { create, readAll, createWithImage }
+async function remove (codProd) {
+  const product = await prisma.produto.delete({
+    where: { codProd },
+    include: { Imagens: true }
+  })
+
+  return product
+}
+
+export default { create, readAll, createWithImage, remove }

@@ -86,15 +86,14 @@ rota.delete('/usuario', async (req, res, next) => {
 })
 // cadastra um produto e suas imagens
 rota.post('/produto', imagens.array('imagem', 5), async (req, res, next) => {
-  const data = { ...req.body }
+  const data = req.body
   const imagesData = req.files
   const images = []
   for (const image of imagesData) {
     images.push({ urlImg: image.path })
   }
-
   try {
-    await productModel.createWithImage(data, images)
+    console.log(await productModel.createWithImage(data, images))
     res.json({ message: 'Cadastro realizado com sucesso!' })
   } catch (e) {
     next(e)
@@ -103,18 +102,16 @@ rota.post('/produto', imagens.array('imagem', 5), async (req, res, next) => {
 
 // remove um produto
 rota.delete('/produto', async (req, res, next) => {
-  const codPec = req.query.codPec
+  const codProdString = req.query.codProd
+  const codProd = parseInt(codProdString)
 
   try {
-    const imagens = await Images.readU(codPec)
-    const changesC = await Clothes.remove(codPec)
+    const produtos = await productModel.remove(codProd)
 
-    for (const imagem of imagens) {
-      await fs.unlink(imagem.url_img)
-    }
+    console.log(produtos)
 
-    if (changesC === 0) {
-      throw new HTTPError('Produto não encontrado.', 400)
+    for (const imagem of produtos.Imagens) {
+      await fs.unlink(imagem.urlImg)
     }
 
     res.json({ message: 'Produto removido com sucesso!' })
