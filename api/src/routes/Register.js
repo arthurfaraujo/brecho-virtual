@@ -70,12 +70,13 @@ rota.post('/usuario', async (req, res, next) => {
 })
 // remove um usuário
 rota.delete('/usuario', async (req, res, next) => {
-  const codUsr = req.query.codUsr
+  const codUsrString = req.query.codUsr
+  const codUsr = parseInt(codUsrString)
 
   try {
-    const changes = await Users.remove(codUsr)
+    const usuario = await userModel.remove(codUsr)
 
-    if (changes === 0) {
+    if (!usuario) {
       throw new HTTPError('Usuário não encontrado.', 400)
     }
 

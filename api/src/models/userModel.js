@@ -34,4 +34,14 @@ async function auth (eMail, senha) {
   }
 }
 
-export default { create, auth }
+async function remove (codUsr) {
+  const user = await prisma.usuario.delete({
+    where: { codUsr }
+  })
+
+  if (user) {
+    return user
+  }
+}
+
+export default { create, remove, auth }

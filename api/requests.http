@@ -52,7 +52,7 @@ Content-Type: application/json
 
 
 ### DELETE conta
-DELETE {{host}}/cadastro?id=1
+DELETE {{host}}/cadastro/usuario?codUsr=4
 
 
 ### POST login
