@@ -1,8 +1,7 @@
 // importação de bibliotecas importantes
 // models
-import Clothes from '../database/models/clothes.js'
-import Images from '../database/models/productsImages.js'
 import userModel from '../models/userModel.js'
+import productModel from '../models/productModel.js'
 // errors
 import { HTTPError } from './Error.js'
 // sistema de rotas do express
@@ -87,20 +86,15 @@ rota.delete('/usuario', async (req, res, next) => {
 })
 // cadastra um produto e suas imagens
 rota.post('/produto', imagens.array('imagem', 5), async (req, res, next) => {
-  const dados = { ...req.body }
-  const images = req.files
+  const data = { ...req.body }
+  const imagesData = req.files
+  const images = []
+  for (const image of imagesData) {
+    images.push({ urlImg: image.path })
+  }
 
   try {
-    const lastIdC = await Clothes.create(dados)
-
-    for (const img of images) {
-      const path = img.path
-
-      const fotoProduto = { cod_pec: lastIdC, url_img: path }
-
-      const lastIdI = await Images.create(fotoProduto)
-    }
-
+    await productModel.createWithImage(data, images)
     res.json({ message: 'Cadastro realizado com sucesso!' })
   } catch (e) {
     next(e)

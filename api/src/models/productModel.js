@@ -15,4 +15,19 @@ async function readAll () {
   return products
 }
 
-export default { create, readAll }
+async function createWithImage (Product, Images) {
+  const product = await prisma.produto.upsert({
+    where: { codProd: 0 },
+    update: {},
+    create: {
+      Product,
+      Imagens: {
+        create: Images
+      }
+    }
+  })
+
+  return product
+}
+
+export default { create, readAll, createWithImage }

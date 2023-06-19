@@ -24,7 +24,7 @@ novo
 Content-Disposition: form-data; name="imagem"; filename="images.jpeg"
 Content-Type: image/jpeg
 
-/home/arthur/Downloads/images.jpeg
+/home/arthur/Imagens/images.jpeg
 --boundary--
 
 ### DELETE produto
