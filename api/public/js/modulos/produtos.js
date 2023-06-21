@@ -1,9 +1,9 @@
 // const response = await fetch('/data/produtos');
 // const products = await response.json();
 
-function genProduct(product) {
-    const html = `
-    <div class="produto ${product.cod_cla}" id="${product.cod_pec}">
+function genProduct (product) {
+  const html = `
+    <div class="produto ${product.codCla}" id="${product.codPec}">
         <div class="produto-imagem">
             <img src=" ">
         </div>
@@ -12,24 +12,26 @@ function genProduct(product) {
         <button>Comprar</button>
     </div>
     `
-    return html;
+  // console.log(product.preco)
+
+  return html
 }
 
-function insertProduct(product) {
-    const catalog = document.querySelector('.grid-produtos');
-    const productView = genProduct(product);
+function insertProduct (product) {
+  const catalog = document.querySelector('.grid-produtos')
+  const productView = genProduct(product)
 
-    catalog.insertAdjacentHTML('beforeend', productView);
+  catalog.insertAdjacentHTML('beforeend', productView)
 }
 
-async function showProducts() {
-    const products = await fetch('/data/produtos').then(list => list.json());
+async function showProducts () {
+  const products = await fetch('/data/produtos').then(res => res.json())
 
-    for (const product of products) {
-        insertProduct(product);
+  // console.log(products)
 
-        // console.table(product);
-    }
+  products.forEach(element => {
+    insertProduct(element)
+  })
 }
 
-export default showProducts;
+export default showProducts

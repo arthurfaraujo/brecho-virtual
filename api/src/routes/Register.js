@@ -1,10 +1,9 @@
 // importação de bibliotecas importantes
 // models
-import Clothes from '../database/models/clothes.js'
-import Images from '../database/models/productsImages.js'
-import Users from '../database/models/users.js'
+import userModel from '../models/userModel.js'
+import productModel from '../models/productModel.js'
 // errors
-import { HTTPError } from 'Error.js'
+import { HTTPError } from './Error.js'
 // sistema de rotas do express
 import { Router } from 'express'
 
@@ -44,13 +43,15 @@ rota.get('/produto', (req, res, next) => {
 // acesso do usuário à parte de dados do sistema
 // verifica se o usuário existe e se logou corretamente
 rota.post('/login', async (req, res, next) => {
-  const dados = { ...req.body }
   try {
-    const usuario = await user.auth(dados)
-    if (usuario === 1) {
-      throw new HTTPError('Usuário e/ou senha incorreto(s).', 400)
-    } else {
+    const usuario = req.body
+    const codUsr = await userModel.auth(usuario.eMail, usuario.senha)
+    // console.log(usuario)
+    // console.log(codUsr)
+    if (codUsr) {
       res.redirect('/')
+    } else {
+      throw new HTTPError('Usuário e/ou senha incorreto(s)!', 400)
     }
   } catch (e) {
     next(e)
@@ -58,9 +59,9 @@ rota.post('/login', async (req, res, next) => {
 })
 // cadastra um novo usuário
 rota.post('/usuario', async (req, res, next) => {
-  const dados = { ...req.body }
+  const dados = req.body
   try {
-    const lastid = await Users.create(dados)
+    await userModel.create(dados)
     res.redirect('/entrada')
   } catch (e) {
     next(e)
@@ -68,12 +69,13 @@ rota.post('/usuario', async (req, res, next) => {
 })
 // remove um usuário
 rota.delete('/usuario', async (req, res, next) => {
-  const codUsr = req.query.codUsr
+  const codUsrString = req.query.codUsr
+  const codUsr = parseInt(codUsrString)
 
   try {
-    const changes = await Users.remove(codUsr)
+    const usuario = await userModel.remove(codUsr)
 
-    if (changes === 0) {
+    if (!usuario) {
       throw new HTTPError('Usuário não encontrado.', 400)
     }
 
@@ -84,20 +86,14 @@ rota.delete('/usuario', async (req, res, next) => {
 })
 // cadastra um produto e suas imagens
 rota.post('/produto', imagens.array('imagem', 5), async (req, res, next) => {
-  const dados = { ...req.body }
-  const images = req.files
-
+  const data = req.body
+  const imagesData = req.files
+  const images = []
+  for (const image of imagesData) {
+    images.push({ urlImg: image.path })
+  }
   try {
-    const lastIdC = await Clothes.create(dados)
-
-    for (const img of images) {
-      const path = img.path
-
-      const fotoProduto = { cod_pec: lastIdC, url_img: path }
-
-      const lastIdI = await Images.create(fotoProduto)
-    }
-
+    console.log(await productModel.createWithImage(data, images))
     res.json({ message: 'Cadastro realizado com sucesso!' })
   } catch (e) {
     next(e)
@@ -106,18 +102,16 @@ rota.post('/produto', imagens.array('imagem', 5), async (req, res, next) => {
 
 // remove um produto
 rota.delete('/produto', async (req, res, next) => {
-  const codPec = req.query.codPec
+  const codProdString = req.query.codProd
+  const codProd = parseInt(codProdString)
 
   try {
-    const imagens = await Images.readU(codPec)
-    const changesC = await Clothes.remove(codPec)
+    const produtos = await productModel.remove(codProd)
 
-    for (const imagem of imagens) {
-      await fs.unlink(imagem.url_img)
-    }
+    console.log(produtos)
 
-    if (changesC === 0) {
-      throw new HTTPError('Produto não encontrado.', 400)
+    for (const imagem of produtos.Imagens) {
+      await fs.unlink(imagem.urlImg)
     }
 
     res.json({ message: 'Produto removido com sucesso!' })

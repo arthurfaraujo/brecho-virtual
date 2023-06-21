@@ -1,3 +1,3 @@
-import showProducts from "./modulos/produtos.js";
+import showProducts from './modulos/produtos.js'
 
-showProducts();
+showProducts()
