@@ -33,6 +33,37 @@ Content-Type: image/jpeg
 
 ### POST produto
 POST {{host}}/cadastro/produto
+Content-Type: multipart/form-data; boundary="boundary"
+
+--boundary
+Content-Disposition: form-data; name="nome"
+
+gorro
+--boundary
+Content-Disposition: form-data; name="preco"
+
+100.49
+--boundary
+Content-Disposition: form-data; name="descricao"
+
+otima peça, linda, super ventilada
+--boundary
+Content-Disposition: form-data; name="estadoUso"
+
+novo
+--boundary
+Content-Disposition: form-data; name="codCla"
+
+3
+--boundary
+Content-Disposition: form-data; name="imagem"; filename="download.jpeg"
+Content-Type: image/jpeg
+
+/home/arthur/Imagens/download.jpeg
+--boundary--
+
+### POST produto
+POST {{host}}/cadastro/produto
 Content-Type: application/json
 
 {
@@ -51,7 +82,7 @@ Content-Type: application/json
 }
 
 ### DELETE produto
-DELETE {{host}}/cadastro/produto?codProd=
+DELETE {{host}}/cadastro/produto?codProd=6
 
 ### GET produtos
 GET {{host}}/data/produtos
