@@ -20,9 +20,11 @@ errorHandlers.use((req, res, next) => {
 errorHandlers.use((err, req, res, next) => {
   console.error(err.stack)
   if (err && err instanceof HTTPError) {
-    res.status(err.code).json({ message: err.message })
+    // res.status(err.code).json({ message: err.message })
+    res.render('error', { errorMessage: err.message, errorCode: err.code })
   } else {
-    res.status(500).json({ message: 'Algo deu muito errado!' })
+    // res.status(500).json({ message: 'Algo deu muito errado!' })
+    res.render('error', { errorMessage: 'Houve um erro interno!', errorCode: 500 })
   }
 })
 
