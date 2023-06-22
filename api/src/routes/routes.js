@@ -15,21 +15,6 @@ class HTTPError extends Error {
     this.code = code
   }
 }
-// constante que agrega as rotas
-const rota = Router()
-
-// acesso à parte visual do sistema
-rota.get('/', (req, res) => {
-  res.render('home')
-})
-
-rota.get('/entrada', (req, res) => {
-  res.render('entrada')
-})
-
-// importação de bibliotecas importantes
-
-// TODO: procurar sobre o bcrypt
 
 // configuração do multer
 const storage = multer.diskStorage({
@@ -48,6 +33,20 @@ const storage = multer.diskStorage({
 
 // constante imagens que permite o uso do multer configurado
 const imagens = multer({ storage })
+
+// constante que agrega as rotas
+const rota = Router()
+
+// acesso à parte visual do sistema
+rota.get('/', (req, res) => {
+  res.render('home')
+})
+
+rota.get('/entrada', (req, res) => {
+  res.render('entrada')
+})
+
+// TODO: procurar sobre o bcrypt
 
 // acesso do usuário à parte visual do cadastro
 rota.get('/cadastro/produto', (req, res, next) => {
