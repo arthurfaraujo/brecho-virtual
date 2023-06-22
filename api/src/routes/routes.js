@@ -39,7 +39,7 @@ const rota = Router()
 
 // acesso à parte visual do sistema
 rota.get('/', (req, res) => {
-  res.render('home')
+  res.render('home', { codUsr: null })
 })
 
 rota.get('/entrada', (req, res) => {
@@ -57,12 +57,12 @@ rota.get('/cadastro/produto', (req, res, next) => {
 // verifica se o usuário existe e se logou corretamente
 rota.post('/cadastro/login', async (req, res, next) => {
   try {
-    const usuario = req.body
-    const codUsr = await userModel.auth(usuario.eMail, usuario.senha)
-    // console.log(usuario)
-    // console.log(codUsr)
-    if (codUsr) {
-      res.redirect('/')
+    const dataUsuario = req.body
+    const codUsuario = await userModel.auth(dataUsuario.eMail, dataUsuario.senha)
+    if (codUsuario) {
+      res.render('home', {
+        codUsr: codUsuario
+      })
     } else {
       throw new HTTPError('Usuário e/ou senha incorreto(s)!', 400)
     }
