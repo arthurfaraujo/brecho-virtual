@@ -198,19 +198,19 @@ const seeds = {
   fotosProdutos: [
     {
       codProd: 1,
-      urlImg: 'public/img/produtos/27575904328754938.jpg'
+      urlImg: 'img/produtos/27575904328754938.jpg'
     },
     {
       codProd: 2,
-      urlImg: 'public/img/produtos/7256978345692837535.png'
+      urlImg: 'img/produtos/7256978345692837535.png'
     },
     {
       codProd: 3,
-      urlImg: 'public/img/produtos/1585128076.jpg'
+      urlImg: 'img/produtos/1585128076.jpg'
     },
     {
       codProd: 4,
-      urlImg: 'public/img/produtos/234659873265137851.jpeg'
+      urlImg: 'img/produtos/234659873265137851.jpeg'
     }
   ]
 }
