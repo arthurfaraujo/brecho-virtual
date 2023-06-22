@@ -10,7 +10,9 @@ async function create (Product) {
 }
 
 async function readAll () {
-  const products = await prisma.produto.findMany()
+  const products = await prisma.produto.findMany({
+    include: { Imagens: true }
+  })
 
   return products
 }

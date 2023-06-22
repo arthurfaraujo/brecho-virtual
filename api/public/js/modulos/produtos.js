@@ -3,9 +3,9 @@
 
 function genProduct (product) {
   const html = `
-    <div class="produto ${product.codCla}" id="${product.codPec}">
+    <div class="produto ${product.codCla}" id="${product.codProd}">
         <div class="produto-imagem">
-            <img src=" ">
+            <img src="${product.Imagens[0].urlImg}">
         </div>
         <h3>${product.nome}</h3>
         <p>R$ ${product.preco.toFixed(2)}</p>
@@ -27,7 +27,7 @@ function insertProduct (product) {
 async function showProducts () {
   const products = await fetch('/data/produtos').then(res => res.json())
 
-  // console.log(products)
+  console.log(products)
 
   products.forEach(element => {
     insertProduct(element)

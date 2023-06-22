@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => {
     const extensao = file.originalname.split('.')[1]
 
-    const nomeNovo = crypto.randomBytes(20).toString('hex')
+    const nomeNovo = crypto.randomBytes(16).toString('hex')
 
     cb(null, `${nomeNovo}.${extensao}`)
   }
@@ -103,7 +103,7 @@ rota.post('/cadastro/produto', imagens.array('imagem', 5), async (req, res, next
   const imagesData = req.files
   const images = []
   for (const image of imagesData) {
-    images.push({ urlImg: image.path })
+    images.push({ urlImg: image.path.replace('public/', '') })
   }
   try {
     console.log(await productModel.createWithImage(data, images))
@@ -124,7 +124,7 @@ rota.delete('/cadastro/produto', async (req, res, next) => {
     console.log(produtos)
 
     for (const imagem of produtos.Imagens) {
-      await fs.unlink(imagem.urlImg)
+      await fs.unlink(`public/${imagem.urlImg}`)
     }
 
     res.json({ message: 'Produto removido com sucesso!' })
