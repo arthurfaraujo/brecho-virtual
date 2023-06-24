@@ -23,7 +23,7 @@
         "eslint-plugin-promise": "^6.0.0",
         "morgan": "^1.10.0",
         "nodemon": "^2.0.22",
-        "prisma": "^4.15.0"
+        "prisma": "latest"
     },
     "scripts": {
         "listen": "node src/index.js",
