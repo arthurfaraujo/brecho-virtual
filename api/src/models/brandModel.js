@@ -9,4 +9,10 @@ async function create (Brand) {
   return brand
 }
 
-export default { create }
+async function readAll () {
+  const brands = await prisma.marca.findMany()
+
+  return brands
+}
+
+export default { create, readAll }

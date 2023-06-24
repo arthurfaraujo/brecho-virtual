@@ -9,4 +9,16 @@ async function create (Classification) {
   return classification
 }
 
-export default { create }
+async function readAll () {
+  const classifications = await prisma.classificacao.findMany({
+    include: {
+      dep: true,
+      cat: true,
+      sub: true
+    }
+  })
+
+  return classifications
+}
+
+export default { create, readAll }

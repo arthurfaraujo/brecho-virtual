@@ -82,7 +82,7 @@ Content-Type: application/json
 }
 
 ### DELETE produto
-DELETE {{host}}/cadastro/produto?codProd=6
+DELETE {{host}}/cadastro/produto?codProd=5
 
 ### GET produtos
 GET {{host}}/data/produtos
@@ -107,7 +107,7 @@ Content-Type: application/json
 
 
 ### DELETE conta
-DELETE {{host}}/cadastro/usuario?codUsr=4
+DELETE {{host}}/cadastro/usuario?codUsr=6
 
 
 ### POST login
