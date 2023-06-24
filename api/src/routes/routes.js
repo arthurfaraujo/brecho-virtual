@@ -2,9 +2,13 @@
 import multer from 'multer'
 import crypto from 'node:crypto'
 import fs from 'node:fs/promises'
+
 // models
 import userModel from '../models/userModel.js'
 import productModel from '../models/productModel.js'
+import classModel from '../models/classificationModel.js'
+import brandModel from '../models/brandModel.js'
+
 // sistema de rotas do express
 import { Router } from 'express'
 
@@ -46,11 +50,8 @@ rota.get('/entrada', (req, res) => {
   res.render('entrada')
 })
 
-// TODO: procurar sobre o bcrypt
-
-// acesso do usuário à parte visual do cadastro
-rota.get('/cadastro/produto', (req, res, next) => {
-  res.render('cadastro_produto.ejs')
+rota.get('/cadastro/produto', (req, res) => {
+  res.render('cadastroProduto')
 })
 
 // acesso do usuário à parte de dados do sistema
@@ -70,6 +71,7 @@ rota.post('/cadastro/login', async (req, res, next) => {
     next(e)
   }
 })
+
 // cadastra um novo usuário
 rota.post('/cadastro/usuario', async (req, res, next) => {
   const dados = req.body
@@ -80,6 +82,7 @@ rota.post('/cadastro/usuario', async (req, res, next) => {
     next(e)
   }
 })
+
 // remove um usuário
 rota.delete('/cadastro/usuario', async (req, res, next) => {
   const codUsrString = req.query.codUsr
@@ -97,15 +100,20 @@ rota.delete('/cadastro/usuario', async (req, res, next) => {
     next(e)
   }
 })
+
 // cadastra um produto e suas imagens
 rota.post('/cadastro/produto', imagens.array('imagem', 5), async (req, res, next) => {
-  const data = req.body
-  const imagesData = req.files
-  const images = []
-  for (const image of imagesData) {
-    images.push({ urlImg: image.path.replace('public/', '') })
-  }
   try {
+    const data = req.body
+    data.preco = parseFloat(data.preco)
+    data.codCla = parseInt(data.codCla)
+    data.codMar = parseInt(data.codMar)
+    const imagesData = req.files
+    const images = []
+    for (const image of imagesData) {
+      images.push({ urlImg: image.path.replace('public/', '') })
+    }
+    console.log(data)
     console.log(await productModel.createWithImage(data, images))
     res.json({ message: 'Cadastro realizado com sucesso!' })
   } catch (e) {
@@ -139,6 +147,26 @@ rota.get('/data/produtos', async (req, res, next) => {
   try {
     // console.log(await productModel.readAll())
     res.json(await productModel.readAll())
+  } catch (e) {
+    next(e)
+  }
+})
+
+// envia as classificações
+rota.get('/data/classificacoes', async (req, res, next) => {
+  try {
+    // console.log(await classModel.readAll())
+    res.json(await classModel.readAll())
+  } catch (e) {
+    next(e)
+  }
+})
+
+// envia as classificações
+rota.get('/data/marcas', async (req, res, next) => {
+  try {
+    console.log(await brandModel.readAll())
+    res.json(await brandModel.readAll())
   } catch (e) {
     next(e)
   }
