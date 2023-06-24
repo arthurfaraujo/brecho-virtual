@@ -39,7 +39,7 @@ const rota = Router()
 
 // acesso à parte visual do sistema
 rota.get('/', (req, res) => {
-  res.render('home', { codUsr: null })
+  res.render('home')
 })
 
 rota.get('/entrada', (req, res) => {
