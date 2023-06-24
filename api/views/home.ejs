@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Início</title>
         <link rel="stylesheet" href="/css/home.css" />
-        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+        <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
     </head>
     <body>
         <header>
@@ -17,18 +17,27 @@
                     <div></div>
                 </div>
                 <ul class="nav-list">
-                    <li>Início</li>
+                    <li><a href="/">Início</a></li>
                     <li><a href="/entrada">Entrada</a></li>
-                    <li>Sobre</li>
+                    <li icon>
+                        <a href="/cadastro/produto"
+                            ><iconify-icon
+                                icon="icon-park-outline:add"
+                                style="color: rgb(255, 255, 255); font-size: 1.5rem;"
+                            ></iconify-icon
+                        ></a>
+                    </li>
                 </ul>
             </nav>
         </header>
         <main>
-            <div class="grid-produtos">
-
-            </div>
+            <div class="grid-produtos"></div>
         </main>
-        <script src="js/responsividade.js" loading="lazy" type="module"></script>
+        <script
+            src="js/responsividade.js"
+            loading="lazy"
+            type="module"
+        ></script>
         <script src="js/main.js" type="module"></script>
     </body>
 </html>
