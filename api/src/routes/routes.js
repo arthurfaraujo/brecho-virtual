@@ -61,9 +61,7 @@ rota.post('/cadastro/login', async (req, res, next) => {
     const dataUsuario = req.body
     const codUsuario = await userModel.auth(dataUsuario.eMail, dataUsuario.senha)
     if (codUsuario) {
-      res.render('home', {
-        codUsr: codUsuario
-      })
+      res.redirect('/')
     } else {
       throw new HTTPError('Usuário e/ou senha incorreto(s)!', 400)
     }
