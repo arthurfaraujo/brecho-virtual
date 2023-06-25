@@ -27,7 +27,7 @@ function insertProduct (product) {
 async function showProducts () {
   const products = await fetch('/data/produtos').then(res => res.json())
 
-  // console.log(products)
+  console.log(products)
 
   products.forEach(element => {
     insertProduct(element)
