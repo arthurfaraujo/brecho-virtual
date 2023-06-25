@@ -4,48 +4,68 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Cadastro de Produto</title>
-        <!-- <link rel="stylesheet" href="css/cadastroProduto.css" /> -->
+        <link rel="stylesheet" href="/css/navBar.css" />
+        <link rel="stylesheet" href="/css/cadastroProduto.css" />
+        <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
     </head>
     <body>
-        <div class="div-formulario">
-            <form
-                action="/cadastro/produto"
-                method="POST"
-                enctype="multipart/form-data"
-                autocomplete="off"
-            >
-                <label for="nome">Nome:</label>
-                <input type="text" name="nome" required />
-                <label for="imagens">Imagem(s):</label>
-                <input
-                    type="file"
-                    name="imagem"
-                    accept=".jpeg, .jpg, .png"
-                    required
-                />
-                <label for="preco">Preço:</label>
-                <input type="text" name="preco" required />
-                <label for="descricao">Descrição:</label>
-                <textarea name="descricao"></textarea>
-                <label for="estadoUso">Estado de uso:</label>
-                <input type="text" name="estadoUso" required />
-                <label for="codCla">Classificação:</label>
-                <select name="codCla" class="classificacoes" required>
-                    <option value="" disabled selected>
-                        Selecione a classificação:
-                    </option>
-                </select>
-
-                <label for="codMar">Marca:</label>
-                <select name="codMar" class="marcas">
-                    <option value="" disabled selected>
-                        Selecione a marca:
-                    </option>
-                </select>
-
-                <input type="submit" value="cadastrar" href="/"/>
-            </form>
-        </div>
+        <%- include('partials/navBar'); %>
+        <main>
+            <div class="div-formulario">
+                <form
+                    action="/cadastro/produto"
+                    method="POST"
+                    enctype="multipart/form-data"
+                    autocomplete="off"
+                >
+                    <div>
+                        <label for="nome">Nome:</label>
+                        <input type="text" name="nome" required />
+                    </div>
+                    <div>
+                        <label for="imagens">Imagem(s):</label>
+                        <input
+                            type="file"
+                            name="imagem"
+                            accept=".jpeg, .jpg, .png"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label for="preco">Preço:</label>
+                        <input type="text" name="preco" required />
+                    </div>
+                    <div>
+                        <label for="descricao">Descrição:</label>
+                        <textarea name="descricao"></textarea>
+                    </div>
+                    <div>
+                        <label for="estadoUso">Estado de uso:</label>
+                        <input type="text" name="estadoUso" required />
+                    </div>
+                    <div>
+                        <label for="codCla">Classificação:</label>
+                        <select name="codCla" class="classificacoes" required>
+                            <option value="" disabled selected>
+                                Selecione a classificação:
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="codMar">Marca:</label>
+                        <select name="codMar" class="marcas">
+                            <option value="" disabled selected>
+                                Selecione a marca:
+                            </option>
+                        </select>
+                    </div>
+                    <input type="submit" href="/" id="submit-form" hidden />
+                </form>
+            </div>
+            <div class="submit-label">
+                <label for="submit-form">Cadastrar</label>
+            </div>
+        </main>
         <script src="/js/modulos/formProduto.js" type="module"></script>
     </body>
 </html>

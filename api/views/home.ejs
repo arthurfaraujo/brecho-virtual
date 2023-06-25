@@ -3,41 +3,21 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Início</title>
+        <title>Brechó Virtual</title>
         <link rel="stylesheet" href="/css/home.css" />
+        <link rel="stylesheet" href="/css/navBar.css" />
         <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
     </head>
     <body>
-        <header>
-            <nav>
-                <a class="nav-logo" href="/">Taylor's Thrifting</a>
-                <div class="mobile-menu">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <ul class="nav-list">
-                    <li><a href="/">Início</a></li>
-                    <li><a href="/entrada">Entrada</a></li>
-                    <li icon>
-                        <a href="/cadastro/produto"
-                            ><iconify-icon
-                                icon="icon-park-outline:add"
-                                style="color: rgb(255, 255, 255); font-size: 1.5rem;"
-                            ></iconify-icon
-                        ></a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <%- include('partials/navBar'); %>
         <main>
             <div class="grid-produtos"></div>
         </main>
         <script
-            src="js/responsividade.js"
+            src="/js/responsividade.js"
             loading="lazy"
             type="module"
         ></script>
-        <script src="js/main.js" type="module"></script>
+        <script src="/js/main.js" type="module"></script>
     </body>
 </html>

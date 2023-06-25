@@ -8,10 +8,20 @@ body {
     color: #725442;
     font-family: sans-serif;
     height: 100vh;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
 }
+
+main {
+    width: 60%;
+    height: 80vh;
+    margin: 40px auto auto auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
 
 .container {
     display: grid;
