@@ -28,12 +28,7 @@
     "scripts": {
         "listen": "node src/index.js",
         "dev": "nodemon src/index.js",
-        "dbsim:reload": "npm run dbsim:drop && npm run dbsim:load",
-        "dbsim:load": "node src/db/js/load.js",
-        "dbsim:drop": "rm src/db/db.sqlite",
-        "db:reload": "yarn db:drop && yarn db:load",
-        "db:load": "node src/database/js/load.js",
-        "db:drop": "rm src/database/db.sqlite"
+        "open": "google-chrome 127.0.0.1:8080"
     },
     "prisma": {
         "seed": "node prisma/seed/seeder.js"
