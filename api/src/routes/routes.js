@@ -113,7 +113,7 @@ rota.post('/cadastro/produto', imagens.array('imagem', 5), async (req, res, next
     }
     console.log(data)
     console.log(await productModel.createWithImage(data, images))
-    res.json({ message: 'Cadastro realizado com sucesso!' })
+    res.redirect('/')
   } catch (e) {
     next(e)
   }
