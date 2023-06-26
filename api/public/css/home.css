@@ -7,7 +7,7 @@
 body {
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
-    /* overflow: hidden; */
+    overflow: hidden scroll;
     background-color: rgb(250, 226, 195);
 }
 
