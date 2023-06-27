@@ -130,7 +130,7 @@ rota.delete('/cadastro/produto', async (req, res, next) => {
     console.log(produtos)
 
     for (const imagem of produtos.Imagens) {
-      await fs.unlink(`/${imagem.urlImg}`)
+      await fs.unlink(`public/${imagem.urlImg}`)
     }
 
     res.json({ message: 'Produto removido com sucesso!' })
