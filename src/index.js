@@ -8,7 +8,7 @@ import dotenv from 'dotenv'
 import register from './routes/Register.js'
 import data from './routes/Data.js'
 import { errorHandlers } from './routes/Error.js' */
-import routes from './routes/routes.js'
+import routes from './routes.js'
 
 // uso de variáveis de ambiente com dotenv
 dotenv.config()

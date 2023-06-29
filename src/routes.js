@@ -4,10 +4,10 @@ import crypto from 'node:crypto'
 import fs from 'node:fs/promises'
 
 // models
-import userModel from '../models/userModel.js'
-import productModel from '../models/productModel.js'
-import classModel from '../models/classificationModel.js'
-import brandModel from '../models/brandModel.js'
+import userModel from './models/userModel.js'
+import productModel from './models/productModel.js'
+import classModel from './models/classificationModel.js'
+import brandModel from './models/brandModel.js'
 
 // sistema de rotas do express
 import { Router } from 'express'
