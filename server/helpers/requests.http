@@ -1,0 +1,127 @@
+@host = http://localhost:8080
+
+### POST produto
+POST {{host}}/cadastro/produto
+Content-Type: multipart/form-data; boundary="boundary"
+
+--boundary
+Content-Disposition: form-data; name="nome"
+
+calça jeans
+--boundary
+Content-Disposition: form-data; name="preco"
+
+100.49
+--boundary
+Content-Disposition: form-data; name="descricao"
+
+otima peça, linda, super ventilada
+--boundary
+Content-Disposition: form-data; name="estadoUso"
+
+novo
+--boundary
+Content-Disposition: form-data; name="codCla"
+
+3
+--boundary
+Content-Disposition: form-data; name="imagem"; filename="images.jpeg"
+Content-Type: image/jpeg
+
+/home/arthur/Imagens/images.jpeg
+--boundary--
+
+### POST produto
+POST {{host}}/cadastro/produto
+Content-Type: multipart/form-data; boundary="boundary"
+
+--boundary
+Content-Disposition: form-data; name="nome"
+
+gorro
+--boundary
+Content-Disposition: form-data; name="preco"
+
+100.49
+--boundary
+Content-Disposition: form-data; name="descricao"
+
+otima peça, linda, super ventilada
+--boundary
+Content-Disposition: form-data; name="estadoUso"
+
+novo
+--boundary
+Content-Disposition: form-data; name="codCla"
+
+3
+--boundary
+Content-Disposition: form-data; name="imagem"; filename="download.jpeg"
+Content-Type: image/jpeg
+
+/home/arthur/Imagens/download.jpeg
+--boundary--
+
+### POST produto
+POST {{host}}/cadastro/produto
+Content-Type: application/json
+
+{
+    codProd
+    nome
+    descricao
+    estadoUso
+    preco
+    codUsrCr
+    dataCriacao
+    codUsrCp
+    dataCompra
+    codCla
+    marca
+    codMar
+}
+
+### DELETE produto
+DELETE {{host}}/cadastro/produto?codProd=7
+
+### GET produtos
+GET {{host}}/data/produtos
+
+###POST usuario
+POST {{host}}/cadastro/usuario
+Content-Type: application/json
+
+{
+    "nome": "Nome",
+    "estado_uso": "FDSHAFLKSJ"
+}
+
+### POST conta
+POST {{host}}/cadastro
+Content-Type: application/json
+
+{
+    "nome": "predo",
+    "senha": "senha"
+}
+
+
+### DELETE conta
+DELETE {{host}}/cadastro/usuario?codUsr=6
+
+
+### POST login
+POST {{host}}/login
+Content-Type: application/json
+
+{
+    "nome": "luiz",
+    "senha": "senha"
+}
+
+### GET usuarios
+GET {{host}}/usuarios
+
+
+### GET marcas
+GET {{host}}/marcas
