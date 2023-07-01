@@ -1,10 +1,8 @@
 import { prisma } from '../prismaDb/prismaConnection.js'
 
 async function create (User) {
-  const user = await prisma.usuario.upsert({
-    where: { eMail: User.eMail },
-    update: {},
-    create: {
+  const user = await prisma.usuario.create({
+    data: {
       nome: User.nome,
       eMail: User.eMail,
       senha: User.senha,
