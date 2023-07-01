@@ -23,7 +23,7 @@ class HTTPError extends Error {
 // configuração do multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'server/public/img/produtos')
+    cb(null, 'public/img/produtos')
   },
 
   filename: (req, file, cb) => {
@@ -109,7 +109,7 @@ rota.post('/cadastro/produto', imagens.array('imagem', 5), async (req, res, next
     const imagesData = req.files
     const images = []
     for (const image of imagesData) {
-      images.push({ urlImg: image.path.replace('server/public/', '') })
+      images.push({ urlImg: image.path.replace('public/', '') })
     }
     console.log(data)
     console.log(await productModel.createWithImage(data, images))
@@ -130,7 +130,7 @@ rota.delete('/cadastro/produto', async (req, res, next) => {
     console.log(produtos)
 
     for (const imagem of produtos.Imagens) {
-      await fs.unlink(`server/public/${imagem.urlImg}`)
+      await fs.unlink(`public/${imagem.urlImg}`)
     }
 
     res.json({ message: 'Produto removido com sucesso!' })
@@ -163,7 +163,7 @@ rota.get('/data/classificacoes', async (req, res, next) => {
 // envia as classificações
 rota.get('/data/marcas', async (req, res, next) => {
   try {
-    console.log(await brandModel.readAll())
+    // console.log(await brandModel.readAll())
     res.json(await brandModel.readAll())
   } catch (e) {
     next(e)

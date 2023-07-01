@@ -26,7 +26,7 @@ server.use(express.urlencoded({ extended: true }))
 server.use(morgan('tiny'))
 
 // define a pasta de arquivos estáticos
-server.use(express.static('server/public'))
+server.use(express.static('public'))
 
 // define o ejs como motor de visualização de páginas
 server.set('view engine', 'ejs')

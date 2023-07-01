@@ -2,7 +2,7 @@
     "name": "brecho-virtual",
     "version": "1.0.0",
     "description": "Sistema web de um brechó virtual.",
-    "main": "src/index.js",
+    "main": "server/index.js",
     "repository": "https://github.com/slordian/brecho-virtual",
     "author": "slordian",
     "license": "MIT",
@@ -21,8 +21,8 @@
         "prisma": "^4.16.1"
     },
     "scripts": {
-        "listen": "node server/index.js",
-        "dev": "nodemon server/index.js",
+        "listen": "node brecho.js",
+        "dev": "nodemon brecho.js",
         "open": "google-chrome 127.0.0.1:8080"
     },
     "prisma": {
