@@ -16,18 +16,13 @@
     "devDependencies": {
         "@prisma/client": "^4.16.1",
         "dotenv": "^16.1.4",
-        "eslint": "^8.0.1",
-        "eslint-config-standard": "latest",
-        "eslint-plugin-import": "^2.25.2",
-        "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
-        "eslint-plugin-promise": "^6.0.0",
         "morgan": "^1.10.0",
-        "nodemon": "^2.0.22",
+        "nodemon": "^1.14.9",
         "prisma": "^4.16.1"
     },
     "scripts": {
-        "listen": "node src/index.js",
-        "dev": "nodemon src/index.js",
+        "listen": "node server/index.js",
+        "dev": "nodemon server/index.js",
         "open": "google-chrome 127.0.0.1:8080"
     },
     "prisma": {
