@@ -1,5 +1,24 @@
 import userModel from '../models/userModel.js'
 
+function handleErrors (err) {
+  if (err.message.includes('prisma')) {
+    const message = err.message.split('\n')
+    switch (message[message.length - 1]) {
+      case 'Unique constraint failed on the fields: (`eMail`)':
+        return 'E-mail já em uso!'
+      case 'Argument `eMail` must not be null.':
+        return 'Preencha o e-mail!'
+      case 'Argument `senha` must not be null.':
+        return 'Preencha a senha!'
+      case 'Argument `nome` must not be null.':
+        return 'Preencha o nome!'
+    }
+    return message[message.length - 1]
+  } else {
+    return err.message
+  }
+}
+
 function accessGet (req, res) {
   res.render('entrada')
 }
@@ -10,10 +29,10 @@ async function loginPost (req, res, next) {
     const codUsuario = await userModel.auth(dataUsuario.eMail, dataUsuario.senha)
     if (codUsuario) {
       res.redirect('/')
-    } else {
-      throw new Error('Usuário e/ou senha incorreto(s)!')
     }
   } catch (e) {
+    e.code = 400
+    e.messageUsr = e.message
     next(e)
   }
 }
@@ -24,7 +43,9 @@ async function userPost (req, res, next) {
     await userModel.create(dados)
     res.redirect('/entrada')
   } catch (e) {
+    const message = handleErrors(e)
     e.code = 400
+    e.messageUsr = message
     next(e)
   }
 }

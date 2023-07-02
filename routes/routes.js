@@ -102,7 +102,7 @@ rota.delete('/cadastro/produto', async (req, res, next) => {
 // envia os produtos
 rota.get('/data/produtos', async (req, res, next) => {
   try {
-    console.log(await productModel.readAll())
+    // console.log(await productModel.readAll())
     res.json(await productModel.readAll())
   } catch (e) {
     next(e)
@@ -137,10 +137,14 @@ rota.use((req, res, next) => {
 
 // Outros
 rota.use((err, req, res, next) => {
-  console.error(err.stack)
+  console.log(err.message)
   if (err.code) {
-    // res.status(err.code).json({ message: err.message })
-    res.status(err.code).render('error', { errorMessage: err.message, errorCode: err.code })
+    if (parseInt(err.code) < 600) {
+      // res.status(err.code).json({ message: err.message })
+      res.status(err.code).render('error', { errorMessage: err.messageUsr, errorCode: err.code })
+    } else {
+      res.status(400).render('error', { errorMessage: err.messageUsr, errorCode: 400 })
+    }
   } else {
     // res.status(500).json({ message: 'Algo deu muito errado!' })
     res.status(500).render('error', { errorMessage: 'Houve um erro interno!', errorCode: 500 })

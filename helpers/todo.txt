@@ -1,0 +1,2 @@
+add some status code when things happen
+add validation in the models
