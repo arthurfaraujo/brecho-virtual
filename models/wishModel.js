@@ -1,4 +1,4 @@
-import { prisma } from '../prismaDb/prismaConnection.js'
+import { prisma } from '../prisma/prismaDb/prismaConnection.js'
 
 async function create (Wish) {
   const wish = await prisma.desejoUsuario.upsert({
