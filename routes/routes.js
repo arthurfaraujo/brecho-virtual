@@ -1,15 +1,12 @@
 // bibliotecas de funções variadas
 import multer from 'multer'
 import crypto from 'node:crypto'
-import fs from 'node:fs/promises'
-
-// models
-import productModel from '../models/productModel.js'
-import classModel from '../models/classificationModel.js'
-import brandModel from '../models/brandModel.js'
 
 // controllers
 import userController from '../controllers/userController.js'
+import productController from '../controllers/productController.js'
+import brandController from '../controllers/brandController.js'
+import classificationController from '../controllers/classificationController.js'
 
 // sistema de rotas do express
 import { Router } from 'express'
@@ -40,94 +37,35 @@ rota.get('/', (req, res) => {
   res.render('home')
 })
 
-rota.get('/entrada', (req, res) => {
-  res.render('entrada')
-})
+rota.get('/entrada', userController.getAccess)
 
-rota.get('/cadastro/produto', (req, res) => {
-  res.render('cadastroProduto')
-})
+rota.get('/cadastro/produto', productController.getProductCreate)
 
 // acesso do usuário à parte de dados do sistema
 // verifica se o usuário existe e se logou corretamente
-rota.post('/cadastro/login', userController.loginPost)
+rota.post('/cadastro/login', userController.postLogin)
 
 // cadastra um novo usuário
-rota.post('/cadastro/usuario', userController.userPost)
+rota.post('/cadastro/usuario', userController.postUser)
 
 // remove um usuário
-rota.delete('/cadastro/usuario', userController.userDelete)
+rota.delete('/cadastro/usuario', userController.deleteUser)
 
 // cadastra um produto e suas imagens
-rota.post('/cadastro/produto', imagens.array('imagem', 5), async (req, res, next) => {
-  try {
-    const data = req.body
-    data.preco = parseFloat(data.preco)
-    data.codCla = parseInt(data.codCla)
-    data.codMar = parseInt(data.codMar)
-    const imagesData = req.files
-    const images = []
-    for (const image of imagesData) {
-      images.push({ urlImg: image.path.replace('public/', '') })
-    }
-    console.log(data)
-    console.log(await productModel.createWithImage(data, images))
-    res.redirect('/')
-  } catch (e) {
-    next(e)
-  }
-})
+rota.post('/cadastro/produto', imagens.array('imagem', 5), productController.postProduct)
 
 // remove um produto
-rota.delete('/cadastro/produto', async (req, res, next) => {
-  const codProdString = req.query.codProd
-  const codProd = parseInt(codProdString)
-
-  try {
-    const produtos = await productModel.remove(codProd)
-
-    console.log(produtos)
-
-    for (const imagem of produtos.Imagens) {
-      await fs.unlink(`public/${imagem.urlImg}`)
-    }
-
-    res.json({ message: 'Produto removido com sucesso!' })
-  } catch (e) {
-    next(e)
-  }
-})
+rota.delete('/cadastro/produto', productController.deleteProduct)
 
 // acesso do front à parte de dados
 // envia os produtos
-rota.get('/data/produtos', async (req, res, next) => {
-  try {
-    // console.log(await productModel.readAll())
-    res.json(await productModel.readAll())
-  } catch (e) {
-    next(e)
-  }
-})
+rota.get('/data/produtos', productController.getProducts)
 
 // envia as classificações
-rota.get('/data/classificacoes', async (req, res, next) => {
-  try {
-    // console.log(await classModel.readAll())
-    res.json(await classModel.readAll())
-  } catch (e) {
-    next(e)
-  }
-})
+rota.get('/data/classificacoes', classificationController.getClassifications)
 
 // envia as classificações
-rota.get('/data/marcas', async (req, res, next) => {
-  try {
-    // console.log(await brandModel.readAll())
-    res.json(await brandModel.readAll())
-  } catch (e) {
-    next(e)
-  }
-})
+rota.get('/data/marcas', brandController.getBrands)
 
 // Manipular erros sem quebrar o servidor
 // 404

@@ -19,11 +19,11 @@ function handleErrors (err) {
   }
 }
 
-function accessGet (req, res) {
+function getAccess (req, res) {
   res.render('entrada')
 }
 
-async function loginPost (req, res, next) {
+async function postLogin (req, res, next) {
   try {
     const dataUsuario = req.body
     const codUsuario = await userModel.auth(dataUsuario.eMail, dataUsuario.senha)
@@ -37,7 +37,7 @@ async function loginPost (req, res, next) {
   }
 }
 
-async function userPost (req, res, next) {
+async function postUser (req, res, next) {
   try {
     const dados = req.body
     await userModel.create(dados)
@@ -50,7 +50,7 @@ async function userPost (req, res, next) {
   }
 }
 
-async function userDelete (req, res, next) {
+async function deleteUser (req, res, next) {
   try {
     const codUsrString = req.query.codUsr
     const codUsr = parseInt(codUsrString)
@@ -67,4 +67,4 @@ async function userDelete (req, res, next) {
   }
 }
 
-export default { accessGet, loginPost, userPost, userDelete }
+export default { getAccess, postLogin, postUser, deleteUser }
