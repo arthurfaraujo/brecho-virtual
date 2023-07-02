@@ -9,9 +9,6 @@ body {
     font-family: sans-serif;
     height: 100vh;
     overflow: hidden scroll;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
 }
 
 main {
