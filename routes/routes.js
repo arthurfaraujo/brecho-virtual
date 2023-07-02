@@ -2,13 +2,11 @@
 import multer from 'multer'
 import crypto from 'node:crypto'
 
-// models
-import classModel from '../models/classificationModel.js'
-import brandModel from '../models/brandModel.js'
-
 // controllers
 import userController from '../controllers/userController.js'
 import productController from '../controllers/productController.js'
+import brandController from '../controllers/brandController.js'
+import classificationController from '../controllers/classificationController.js'
 
 // sistema de rotas do express
 import { Router } from 'express'
@@ -64,24 +62,10 @@ rota.delete('/cadastro/produto', productController.deleteProduct)
 rota.get('/data/produtos', productController.getProducts)
 
 // envia as classificações
-rota.get('/data/classificacoes', async (req, res, next) => {
-  try {
-    // console.log(await classModel.readAll())
-    res.json(await classModel.readAll())
-  } catch (e) {
-    next(e)
-  }
-})
+rota.get('/data/classificacoes', classificationController.getClassifications)
 
 // envia as classificações
-rota.get('/data/marcas', async (req, res, next) => {
-  try {
-    // console.log(await brandModel.readAll())
-    res.json(await brandModel.readAll())
-  } catch (e) {
-    next(e)
-  }
-})
+rota.get('/data/marcas', brandController.getBrands)
 
 // Manipular erros sem quebrar o servidor
 // 404
