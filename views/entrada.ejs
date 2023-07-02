@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Acesso</title>
-        <link rel="stylesheet" href="css/entrada.css" />
-        <link rel="stylesheet" href="css/navBar.css" />
-        <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
-    </head>
+<%- include('partials/headerOpen'); %>
+    <link rel="stylesheet" href="css/entrada.css" />
+<%- include('partials/headerClose'); %>
     <body>
         <header><%- include('partials/navBar'); %></header>
         <main>
@@ -83,10 +76,4 @@
             type="module"
             loading="lazy"
         ></script>
-        <script
-            src="/js/responsividade.js"
-            loading="lazy"
-            type="module"
-        ></script>
-    </body>
-</html>
+<%- include('partials/footer'); %>

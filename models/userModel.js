@@ -1,13 +1,11 @@
-import { prisma } from '../prismaDb/prismaConnection.js'
+import { prisma } from '../prisma/prismaDb/prismaConnection.js'
 
 async function create (User) {
-  const user = await prisma.usuario.upsert({
-    where: { eMail: User.eMail },
-    update: {},
-    create: {
-      nome: User.nome,
-      eMail: User.eMail,
-      senha: User.senha,
+  const user = await prisma.usuario.create({
+    data: {
+      nome: User.nome || null,
+      eMail: User.eMail || null,
+      senha: User.senha || null,
       telefone: User.telefone || null,
       uf: User.uf || null,
       cidade: User.cidade || null,
@@ -27,10 +25,14 @@ async function auth (eMail, senha) {
     }
   })
 
-  if (user && user.senha === senha) {
-    return user.codUsr
+  if (user) {
+    if (user.senha === senha) {
+      return user.codUsr
+    } else {
+      throw new Error('Senha incorreta para o usuário!')
+    }
   } else {
-    return 0
+    throw new Error('E-mail não cadastrado!')
   }
 }
 

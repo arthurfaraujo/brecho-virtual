@@ -1,4 +1,4 @@
-import { prisma } from '../prismaDb/prismaConnection.js'
+import { prisma } from '../prisma/prismaDb/prismaConnection.js'
 
 async function create (Category) {
   const category = await prisma.categoria.upsert({

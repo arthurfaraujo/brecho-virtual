@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cadastro de Produto</title>
-        <link rel="stylesheet" href="/css/navBar.css" />
-        <link rel="stylesheet" href="/css/cadastroProduto.css" />
-        <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
-    </head>
-    <body>
+<%- include('partials/headerOpen'); %>
+    <link rel="stylesheet" href="/css/cadastroProduto.css">
+<%- include('partials/headerClose'); %>
         <%- include('partials/navBar'); %>
         <main>
             <div class="div-formulario">
@@ -67,10 +59,4 @@
             </div>
         </main>
         <script src="/js/modulos/formProduto.js" type="module"></script>
-        <script
-            src="/js/responsividade.js"
-            loading="lazy"
-            type="module"
-        ></script>
-    </body>
-</html>
+<%- include('partials/footer'); %>

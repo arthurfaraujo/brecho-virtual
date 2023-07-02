@@ -17,8 +17,8 @@ model Usuario {
     cidade            String?
     rua               String?
     numero            String?
-    produtosCriadas   Produto[]       @relation("cria")
-    produtosCompradas Produto[]       @relation("compra")
+    produtosCriados   Produto[]       @relation("cria")
+    produtosComprados Produto[]       @relation("compra")
     deseja            DesejoUsuario[]
 }
 
