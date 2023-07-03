@@ -44,7 +44,7 @@ async function deleteProduct (req, res, next) {
       await fs.unlink(`public/${imagem.urlImg}`)
     }
 
-    res.json({ message: 'Produto removido com sucesso!' })
+    res.status(200).redirect('/')
   } catch (e) {
     next(e)
   }
