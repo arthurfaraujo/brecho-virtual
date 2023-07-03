@@ -31,9 +31,13 @@ main {
 
 .produto {
     /* outline: 1px dotted black; */
+    position: relative;
     cursor: pointer;
     width: 250px;
     height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     text-align: center;
     background-color: rgba(255, 183, 116, 0.445);
     padding: 15px 5px 12px 5px;
@@ -54,17 +58,39 @@ main {
     object-position: bottom;
 }
 
-.produto > h3, .produto > p {
+.produto > h3,
+.produto > p {
+    width: 100%;
     margin-top: 10px;
     font-weight: bold;
 }
 
-.produto > button {
+.produto > button.compra {
     margin-top: 2%;
-    background-color: #a97d6c;
+    background-color: rgb(169, 125, 108);
     border: none;
     border-radius: 5px;
-    color: #fff;
+    color: rgb(255, 255, 255);
     font-size: 14px;
     padding: 10px;
+}
+
+.produto > button.apaga {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    bottom: auto;
+    left: auto;
+    z-index: 10;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 0;
+    transition: 200ms;
+}
+
+.produto > button.apaga:hover {
+    cursor: pointer;
+    transform: scale(1.3);
 }
