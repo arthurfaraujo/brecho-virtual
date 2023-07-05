@@ -1,6 +1,6 @@
-import classModel from '../models/classificationModel.js'
+import classModel from '../models/classification.js'
 
-async function getClassifications (req, res, next) {
+async function classificationDataGet (req, res, next) {
   try {
     // console.log(await classModel.readAll())
     res.json(await classModel.readAll())
@@ -9,4 +9,4 @@ async function getClassifications (req, res, next) {
   }
 }
 
-export default { getClassifications }
+export default { classificationDataGet }

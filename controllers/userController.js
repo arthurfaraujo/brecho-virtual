@@ -1,4 +1,4 @@
-import userModel from '../models/userModel.js'
+import userModel from '../models/user.js'
 
 function handleErrors (err) {
   if (err.message.includes('prisma')) {
@@ -19,11 +19,11 @@ function handleErrors (err) {
   }
 }
 
-function getAccess (req, res) {
-  res.render('entrada')
+function userAccessGet (req, res) {
+  res.render('userAccess')
 }
 
-async function postLogin (req, res, next) {
+async function userLoginPost (req, res, next) {
   try {
     const dataUsuario = req.body
     const codUsuario = await userModel.auth(dataUsuario.eMail, dataUsuario.senha)
@@ -37,11 +37,11 @@ async function postLogin (req, res, next) {
   }
 }
 
-async function postUser (req, res, next) {
+async function userCreatePost (req, res, next) {
   try {
     const dados = req.body
     await userModel.create(dados)
-    res.redirect('/entrada')
+    res.redirect('/usuario/acesso')
   } catch (e) {
     const message = handleErrors(e)
     e.code = 400
@@ -50,7 +50,7 @@ async function postUser (req, res, next) {
   }
 }
 
-async function deleteUser (req, res, next) {
+async function userDelete (req, res, next) {
   try {
     const codUsrString = req.query.codUsr
     const codUsr = parseInt(codUsrString)
@@ -67,4 +67,4 @@ async function deleteUser (req, res, next) {
   }
 }
 
-export default { getAccess, postLogin, postUser, deleteUser }
+export default { userAccessGet, userLoginPost, userCreatePost, userDelete }

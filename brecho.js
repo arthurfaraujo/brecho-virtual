@@ -4,11 +4,11 @@ import express from 'express'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
 // Rotas
-/* import pages from './routes/Pages.js'
-import register from './routes/Register.js'
-import data from './routes/Data.js'
-import { errorHandlers } from './routes/Error.js' */
-import routes from './routes/routes.js'
+import userRoutes from './routes/UserRoutes.js'
+import productRoutes from './routes/ProductRoutes.js'
+import classificationRoutes from './routes/ClassificationRoutes.js'
+import brandRoutes from './routes/BrandRoutes.js'
+import ErrorRoutes from './routes/ErrorRoutes.js'
 
 // uso de variáveis de ambiente com dotenv
 dotenv.config()
@@ -32,19 +32,19 @@ server.use(express.static('public'))
 server.set('view engine', 'ejs')
 
 // Rotas
-/* // acesso a páginas inicial e de cadastro
-server.use('/', pages)
+server.get('/', (req, res) => {
+  res.render('home')
+})
 
-// cadastros
-server.use('/cadastro', register)
+server.use('/usuario', userRoutes)
 
-// dados
-server.use('/data', data)
+server.use('/produto', productRoutes)
 
-// ERROS
-server.use(errorHandlers) */
+server.use('/classificacao', classificationRoutes)
 
-server.use(routes)
+server.use('/marca', brandRoutes)
+
+server.use(ErrorRoutes)
 
 // Botando o servidor pra rodar e escutar na porta PORT
 server.listen(PORT, () => {

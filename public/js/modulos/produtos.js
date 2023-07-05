@@ -39,7 +39,7 @@ function insertProduct (product) {
 }
 
 async function showProducts () {
-  const products = await fetch('/data/produtos').then(res => res.json())
+  const products = await fetch('/produto/dados').then(res => res.json())
 
   console.log(products)
 
