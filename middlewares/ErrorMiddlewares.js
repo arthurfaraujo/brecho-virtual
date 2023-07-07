@@ -1,15 +1,8 @@
-import { Router } from 'express'
+function pageNotFound (req, res, next) {
+  res.status(404).render('error', { errorMessage: 'Página não encontrada!', errorCode: 404 })
+}
 
-const route = Router()
-
-// Manipular erros sem quebrar o servidor
-// 404
-route.use((req, res, next) => {
-  res.status(404).render('error', { errorMessage: 'Página não encontrada', errorCode: 404 })
-})
-
-// Outros
-route.use((err, req, res, next) => {
+function otherErrors (err, req, res, next) {
   console.log(err.message)
   if (err.code) {
     if (parseInt(err.code) < 600) {
@@ -22,6 +15,6 @@ route.use((err, req, res, next) => {
     // res.status(500).json({ message: 'Algo deu muito errado!' })
     res.status(500).render('error', { errorMessage: 'Houve um erro interno!', errorCode: 500 })
   }
-})
+}
 
-export default route
+export default { pageNotFound, otherErrors }

@@ -8,7 +8,7 @@ import userRoutes from './routes/UserRoutes.js'
 import productRoutes from './routes/ProductRoutes.js'
 import classificationRoutes from './routes/ClassificationRoutes.js'
 import brandRoutes from './routes/BrandRoutes.js'
-import ErrorRoutes from './routes/ErrorRoutes.js'
+import ErrorMiddlewares from './middlewares/ErrorMiddlewares.js'
 
 // uso de variáveis de ambiente com dotenv
 dotenv.config()
@@ -44,7 +44,7 @@ server.use('/classificacao', classificationRoutes)
 
 server.use('/marca', brandRoutes)
 
-server.use(ErrorRoutes)
+server.use(ErrorMiddlewares.pageNotFound, ErrorMiddlewares.otherErrors)
 
 // Botando o servidor pra rodar e escutar na porta PORT
 server.listen(PORT, () => {
