@@ -25,7 +25,7 @@ async function productCreatePost (req, res, next) {
     for (const image of imagesData) {
       images.push({ urlImg: image.path.replace('public/', '') })
     }
-    console.log(data)
+    // console.log(data)
     console.log(await productModel.createWithImage(data, images))
     res.redirect('/')
   } catch (e) {
