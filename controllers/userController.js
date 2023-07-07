@@ -26,8 +26,10 @@ function userAccessGet (req, res) {
 async function userLoginPost (req, res, next) {
   try {
     const dataUsuario = req.body
-    const codUsuario = await userModel.auth(dataUsuario.eMail, dataUsuario.senha)
-    if (codUsuario) {
+    const usuario = await userModel.auth(dataUsuario.eMail, dataUsuario.senha)
+    if (usuario) {
+      res.cookie('codUsr', usuario.codUsr, { httpOnly: true })
+      res.cookie('nomeUsr', usuario.nomeUsr, { httpOnly: true })
       res.redirect('/')
     }
   } catch (e) {

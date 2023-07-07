@@ -3,12 +3,14 @@ import 'express-async-errors'
 import express from 'express'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
+import cookieParser from 'cookie-parser'
 // Rotas
+import indexRoutes from './routes/IndexRoutes.js'
 import userRoutes from './routes/UserRoutes.js'
 import productRoutes from './routes/ProductRoutes.js'
 import classificationRoutes from './routes/ClassificationRoutes.js'
 import brandRoutes from './routes/BrandRoutes.js'
-import ErrorMiddlewares from './middlewares/ErrorMiddlewares.js'
+import ErrorMiddlewares from './middlewares/ErrorMiddleware.js'
 
 // uso de variáveis de ambiente com dotenv
 dotenv.config()
@@ -22,6 +24,9 @@ const server = express()
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
+// configura o cookie parser
+server.use(cookieParser())
+
 // mostra o que está acontecendo no servidor
 server.use(morgan('tiny'))
 
@@ -32,9 +37,6 @@ server.use(express.static('public'))
 server.set('view engine', 'ejs')
 
 // Rotas
-server.get('/', (req, res) => {
-  res.render('home')
-})
 
 server.use('/usuario', userRoutes)
 
@@ -43,6 +45,8 @@ server.use('/produto', productRoutes)
 server.use('/classificacao', classificationRoutes)
 
 server.use('/marca', brandRoutes)
+
+server.use('/', indexRoutes)
 
 server.use(ErrorMiddlewares.pageNotFound, ErrorMiddlewares.otherErrors)
 

@@ -18,16 +18,12 @@ async function create (User) {
 
 async function auth (eMail, senha) {
   const user = await prisma.usuario.findUnique({
-    where: { eMail },
-    select: {
-      codUsr: true,
-      senha: true
-    }
+    where: { eMail }
   })
 
   if (user) {
     if (user.senha === senha) {
-      return user.codUsr
+      return { codUsr: user.codUsr, nomeUsr: user.nome }
     } else {
       throw new Error('Senha incorreta para o usuário!')
     }
