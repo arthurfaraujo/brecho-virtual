@@ -25,7 +25,7 @@ const route = Router()
 
 route.get('/cadastra', productController.productCreateGet)
 
-route.post('/cadastra', imagens.array('imagem', 5), productController.productCreatePost)
+route.post('/cadastra', imagens.array('imagem[]', 5), productController.productCreatePost)
 
 route.delete('/remove', productController.productDelete)
 

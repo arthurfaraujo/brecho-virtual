@@ -17,6 +17,8 @@ async function productsDataGet (req, res, next) {
 async function productCreatePost (req, res, next) {
   try {
     const data = req.body
+    data.codUsrCr = parseInt(req.cookies.codUsr)
+    data.preco = data.preco.replace(',', '.')
     data.preco = parseFloat(data.preco)
     data.codCla = parseInt(data.codCla)
     data.codMar = parseInt(data.codMar)
@@ -26,7 +28,7 @@ async function productCreatePost (req, res, next) {
       images.push({ urlImg: image.path.replace('public/', '') })
     }
     // console.log(data)
-    console.log(await productModel.createWithImage(data, images))
+    await productModel.createWithImage(data, images)
     res.redirect('/')
   } catch (e) {
     next(e)

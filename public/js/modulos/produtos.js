@@ -3,7 +3,7 @@
 
 function genProduct (product) {
   const html = `
-    <div class="produto ${product.codCla}" id="codProd-${product.codProd}">
+    <div class="produto" id="codProd-${product.codProd}" data-class="${product.codCla}" data-codUsrCr="${product.codUsrCr}">
       <button class="apaga" value="${product.codProd}">
         <iconify-icon 
           icon="fa:trash-o" 

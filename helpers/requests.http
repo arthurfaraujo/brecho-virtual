@@ -1,7 +1,7 @@
 @host = http://localhost:8080
 
 ### POST produto
-POST {{host}}/cadastro/produto
+POST {{host}}/produto/cadastra
 Content-Type: multipart/form-data; boundary="boundary"
 
 --boundary
@@ -25,10 +25,10 @@ Content-Disposition: form-data; name="codCla"
 
 3
 --boundary
-Content-Disposition: form-data; name="imagem"; filename="images.jpeg"
+Content-Disposition: form-data; name="imagem[]"; filename="jameswebbuau.png"
 Content-Type: image/jpeg
 
-/home/arthur/Imagens/images.jpeg
+"C:\Users\arthu\OneDrive\Imagens\jameswebbuau.png"
 --boundary--
 
 ### POST produto
