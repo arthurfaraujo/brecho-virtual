@@ -15,7 +15,7 @@ function insertClassification (classification) {
 }
 
 async function showClassification () {
-  const classifications = await fetch('/data/classificacoes').then(res => res.json())
+  const classifications = await fetch('/classificacao/dados').then(res => res.json())
 
   classifications.forEach(element => insertClassification(element))
 }
@@ -37,7 +37,7 @@ function insertBrand (Brand) {
 }
 
 async function showBrand () {
-  const Brands = await fetch('/data/marcas').then(res => res.json())
+  const Brands = await fetch('/marca/dados').then(res => res.json())
 
   Brands.forEach(element => insertBrand(element))
 }

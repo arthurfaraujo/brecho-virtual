@@ -4,7 +4,7 @@
 function genProduct (product) {
   const html = `
     <div class="produto ${product.codCla}" id="codProd-${product.codProd}">
-      <button class="apaga" value="${product.codProd}" onclick="js/modulos/deleteProduct.js">
+      <button class="apaga" value="${product.codProd}">
         <iconify-icon 
           icon="fa:trash-o" 
           style="color: rgb(169, 125, 108); font-size: 1.5rem">
@@ -33,13 +33,13 @@ function insertProduct (product) {
   const deleteButton = prod.querySelector('.apaga')
 
   deleteButton.onclick = async () => {
-    await fetch(`/cadastro/produto?codProd=${product.codProd}`, { method: 'DELETE' })
+    await fetch(`/produto/remove?codProd=${product.codProd}`, { method: 'DELETE' })
     location.reload()
   }
 }
 
 async function showProducts () {
-  const products = await fetch('/data/produtos').then(res => res.json())
+  const products = await fetch('/produto/dados').then(res => res.json())
 
   console.log(products)
 

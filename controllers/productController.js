@@ -1,11 +1,11 @@
-import productModel from '../models/productModel.js'
+import productModel from '../models/product.js'
 import fs from 'node:fs/promises'
 
-function getProductCreate (req, res) {
-  res.render('cadastroProduto')
+function productCreateGet (req, res) {
+  res.render('productCreate')
 }
 
-async function getProducts (req, res, next) {
+async function productsDataGet (req, res, next) {
   try {
     // console.log(await productModel.readAll())
     res.json(await productModel.readAll())
@@ -14,7 +14,7 @@ async function getProducts (req, res, next) {
   }
 }
 
-async function postProduct (req, res, next) {
+async function productCreatePost (req, res, next) {
   try {
     const data = req.body
     data.preco = parseFloat(data.preco)
@@ -25,7 +25,7 @@ async function postProduct (req, res, next) {
     for (const image of imagesData) {
       images.push({ urlImg: image.path.replace('public/', '') })
     }
-    console.log(data)
+    // console.log(data)
     console.log(await productModel.createWithImage(data, images))
     res.redirect('/')
   } catch (e) {
@@ -33,7 +33,7 @@ async function postProduct (req, res, next) {
   }
 }
 
-async function deleteProduct (req, res, next) {
+async function productDelete (req, res, next) {
   try {
     const codProdString = req.query.codProd
     const codProd = parseInt(codProdString)
@@ -50,4 +50,4 @@ async function deleteProduct (req, res, next) {
   }
 }
 
-export default { getProducts, postProduct, getProductCreate, deleteProduct }
+export default { productsDataGet, productCreateGet, productCreatePost, productDelete }

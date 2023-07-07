@@ -1,5 +1,5 @@
 <%- include('partials/headerOpen'); %>
-    <link rel="stylesheet" href="css/entrada.css" />
+    <link rel="stylesheet" href="/css/entrada.css" />
 <%- include('partials/headerClose'); %>
     <body>
         <header><%- include('partials/navBar'); %></header>
@@ -8,7 +8,7 @@
                 <div class="invisible cont-cad">
                     <h1>Cadastro</h1>
                     <form
-                        action="/cadastro/usuario"
+                        action="/usuario/cadastra"
                         method="POST"
                         autocomplete="off"
                     >
@@ -46,7 +46,7 @@
                 ></div>
                 <div class="cont-log">
                     <h1>Acesso</h1>
-                    <form action="/cadastro/login" method="POST" autocomplete="off">
+                    <form action="/usuario/conecta" method="POST" autocomplete="off">
                         <label for="eMail">E-mail</label>
                         <input
                             type="text"
@@ -72,7 +72,7 @@
             </div>
         </main>
         <script
-            src="js/modulos/formEntrada.js"
+            src="/js/modulos/formEntrada.js"
             type="module"
             loading="lazy"
         ></script>

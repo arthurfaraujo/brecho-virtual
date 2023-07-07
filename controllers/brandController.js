@@ -1,6 +1,6 @@
-import brandModel from '../models/brandModel.js'
+import brandModel from './../models/brand.js'
 
-async function getBrands (req, res, next) {
+async function brandDataGet (req, res, next) {
   try {
     // console.log(await brandModel.readAll())
     res.json(await brandModel.readAll())
@@ -9,4 +9,4 @@ async function getBrands (req, res, next) {
   }
 }
 
-export default { getBrands }
+export default { brandDataGet }
