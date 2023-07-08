@@ -33,7 +33,7 @@ function insertProduct (product) {
   const deleteButton = prod.querySelector('.apaga')
 
   deleteButton.onclick = async () => {
-    await fetch(`/produto/remove?codProd=${product.codProd}`, { method: 'DELETE' })
+    await fetch(`/produto/remove?codProd=${product.codProd}&codUsrCr=${product.codUsrCr}`, { method: 'DELETE' })
     location.reload()
   }
 }
