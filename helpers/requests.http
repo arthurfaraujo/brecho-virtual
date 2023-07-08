@@ -5,6 +5,10 @@ POST {{host}}/produto/cadastra
 Content-Type: multipart/form-data; boundary="boundary"
 
 --boundary
+Content-Disposition: form-data; name="codUsrCr"
+
+2
+--boundary
 Content-Disposition: form-data; name="nome"
 
 calça jeans

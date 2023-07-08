@@ -17,7 +17,7 @@ async function productsDataGet (req, res, next) {
 async function productCreatePost (req, res, next) {
   try {
     const data = req.body
-    data.codUsrCr = parseInt(req.cookies.codUsr)
+    data.codUsrCr = data.codUsrCr || parseInt(req.cookies.codUsr)
     data.preco = data.preco.replace(',', '.')
     data.preco = parseFloat(data.preco)
     data.codCla = parseInt(data.codCla)
@@ -37,17 +37,22 @@ async function productCreatePost (req, res, next) {
 
 async function productDelete (req, res, next) {
   try {
-    const codProdString = req.query.codProd
-    const codProd = parseInt(codProdString)
+    if ((req.query.codUsrCr === 'null') || (req.cookies.codUsr === req.query.codUsrCr)) {
+      const codProdString = req.query.codProd
+      const codProd = parseInt(codProdString)
 
-    const produtos = await productModel.remove(codProd)
+      const produtos = await productModel.remove(codProd)
 
-    for (const imagem of produtos.Imagens) {
-      await fs.unlink(`public/${imagem.urlImg}`)
+      for (const imagem of produtos.Imagens) {
+        await fs.unlink(`public/${imagem.urlImg}`)
+      }
+
+      res.status(200).redirect('/')
+    } else {
+      throw new Error('Você não tem permissão para apagar este produto!')
     }
-
-    res.status(200).redirect('/')
   } catch (e) {
+    e.code = 401
     next(e)
   }
 }
