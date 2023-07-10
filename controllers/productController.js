@@ -18,7 +18,7 @@ async function productCreatePost (req, res, next) {
   try {
     const data = req.body
     data.codUsrCr = data.codUsrCr || parseInt(req.cookies.codUsr)
-    data.preco = data.preco.replace(',', '.')
+    data.preco = parseFloat(data.preco.replace(',', '.'))
     data.preco = parseFloat(data.preco)
     data.codCla = parseInt(data.codCla)
     data.codMar = parseInt(data.codMar)
