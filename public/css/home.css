@@ -75,7 +75,7 @@ main {
     padding: 10px;
 }
 
-.produto > button.apaga {
+.produto button.apaga {
     position: absolute;
     top: 18px;
     right: 18px;
@@ -90,7 +90,7 @@ main {
     transition: 200ms;
 }
 
-.produto > button.apaga:hover {
+.produto button.apaga:hover {
     cursor: pointer;
     transform: scale(1.3);
 }
