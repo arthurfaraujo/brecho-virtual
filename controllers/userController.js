@@ -1,4 +1,5 @@
 import userModel from '../models/user.js'
+import wishModel from '../models/wish.js'
 
 function handleErrors (err) {
   if (err.message.includes('prisma')) {
@@ -69,4 +70,15 @@ async function userDelete (req, res, next) {
   }
 }
 
-export default { userAccessGet, userLoginPost, userCreatePost, userDelete }
+async function userWishsGet (req, res, next) {
+  try {
+    const codUsr = parseInt(req.params.codUsr)
+    const wishs = await wishModel.readUserWishs()
+    res.json(wishs)
+  } catch (e) {
+    e.code = 400
+    next(e)
+  }
+}
+
+export default { userAccessGet, userLoginPost, userCreatePost, userDelete, userWishsGet }

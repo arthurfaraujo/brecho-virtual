@@ -10,4 +10,14 @@ async function create (Wish) {
   return wish
 }
 
-export default { create }
+async function readUserWishs (codUsr) {
+  const wishs = await prisma.desejoUsuario.findMany({
+    where: { codUsr },
+    include: { Produto: {
+      include: { Imagens: true } 
+    } }
+  })
+
+  return wishs
+}
+export default { create, readUserWishs }

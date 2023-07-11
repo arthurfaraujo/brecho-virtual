@@ -11,4 +11,6 @@ route.post('/conecta', userController.userLoginPost)
 
 route.delete('/remove', userController.userDelete)
 
+route.get('/desejos/:codUsr', userController.userWishsGet)
+
 export default route
