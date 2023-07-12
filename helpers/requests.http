@@ -11,11 +11,11 @@ Content-Disposition: form-data; name="codUsrCr"
 --boundary
 Content-Disposition: form-data; name="nome"
 
-calça jeans
+lebron
 --boundary
 Content-Disposition: form-data; name="preco"
 
-100.49
+100,49
 --boundary
 Content-Disposition: form-data; name="descricao"
 
@@ -29,10 +29,10 @@ Content-Disposition: form-data; name="codCla"
 
 3
 --boundary
-Content-Disposition: form-data; name="imagem[]"; filename="jameswebbuau.png"
+Content-Disposition: form-data; name="imagem[]"; filename="LeBron_James_(51959977144)_(cropped2).jpg"
 Content-Type: image/jpeg
 
-"C:\Users\arthu\OneDrive\Imagens\jameswebbuau.png"
+"\\wsl.localhost\Ubuntu\home\arthur\dev\LeBron_James_(51959977144)_(cropped2).jpg"
 --boundary--
 
 ### POST produto

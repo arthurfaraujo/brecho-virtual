@@ -27,7 +27,7 @@ route.get('/cadastra', productController.productCreateGet)
 
 route.post('/cadastra', imagens.array('imagem[]', 5), productController.productCreatePost)
 
-route.post('/remove', productController.productDelete)
+route.delete('/remove', productController.productDelete)
 
 route.get('/dados', productController.productsDataGet)
 

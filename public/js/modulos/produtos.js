@@ -4,9 +4,7 @@
 function genProduct (product) {
   const html = `
     <div class="produto" id="codProd-${product.codProd}" data-class="${product.codCla}" data-codUsrCr="${product.codUsrCr}">
-      <form action="/produto/remove?codProd=${product.codProd}&codUsrCr=${product.codUsrCr}" method="post">
         <button class="apaga" value="${product.codProd}">
-      </form>
         <iconify-icon 
           icon="fa:trash-o" 
           style="color: rgb(169, 125, 108); font-size: 1.5rem">
@@ -31,13 +29,22 @@ function insertProduct (product) {
 
   catalog.insertAdjacentHTML('beforeend', productView)
 
-  /* const prod = catalog.querySelector(`#codProd-${product.codProd}`)
+  const prod = catalog.querySelector(`#codProd-${product.codProd}`)
   const deleteButton = prod.querySelector('.apaga')
 
-  deleteButton.onclick = async () => {
-    await fetch(`/produto/remove?codProd=${product.codProd}&codUsrCr=${product.codUsrCr}`, { method: 'DELETE' })
-    location.reload()
-  } */
+  deleteButton.onclick = () => {
+    fetch(`/produto/remove?codProd=${product.codProd}&codUsrCr=${product.codUsrCr}`, { method: 'DELETE' }).then(res => {
+      console.log(res.status)
+      if (res.status === 200) {
+        prod.remove()
+      } else if (res.status === 401) {
+        alert('Você não tem permissão para excluir este produto!')
+      } else {
+        alert('Erro ao excluir produto!')
+        location.reload()
+      }
+    })
+  }
 }
 
 async function showProducts () {

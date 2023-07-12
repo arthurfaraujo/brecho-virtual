@@ -52,7 +52,11 @@ async function productDelete (req, res, next) {
       throw new Error('Você não tem permissão para apagar este produto!')
     }
   } catch (e) {
-    e.code = 401
+    if (e.message === 'Você não tem permissão para apagar este produto!') {
+      e.code = 401
+    } else {
+      e.code = 400
+    }
     next(e)
   }
 }

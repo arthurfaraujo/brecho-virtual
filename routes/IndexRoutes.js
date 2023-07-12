@@ -7,4 +7,8 @@ route.get('/', auth, (req, res) => {
   res.render('home')
 })
 
+route.delete('/', (req, res) => {
+  res.json({ message: 'deletado' })
+})
+
 export default route
