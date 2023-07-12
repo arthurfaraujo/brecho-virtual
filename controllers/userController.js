@@ -70,10 +70,10 @@ async function userDelete (req, res, next) {
   }
 }
 
-async function userWishsGet (req, res, next) {
+async function userWishesGet (req, res, next) {
   try {
     const codUsr = parseInt(req.params.codUsr)
-    const wishs = await wishModel.readUserWishs()
+    const wishs = await wishModel.readUserWishes(codUsr)
     res.json(wishs)
   } catch (e) {
     e.code = 400
@@ -81,4 +81,4 @@ async function userWishsGet (req, res, next) {
   }
 }
 
-export default { userAccessGet, userLoginPost, userCreatePost, userDelete, userWishsGet }
+export default { userAccessGet, userLoginPost, userCreatePost, userDelete, userWishesGet }
