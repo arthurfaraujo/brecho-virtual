@@ -48,4 +48,13 @@ async function remove (codProd) {
   return product
 }
 
-export default { create, readAll, createWithImage, remove }
+async function buy (codProd, codUsr) {
+  const product = await prisma.produto.update({
+    where: { codProd },
+    data: { codUsrCp: codUsr }
+  })
+
+  return product
+}
+
+export default { create, readAll, createWithImage, remove, buy }

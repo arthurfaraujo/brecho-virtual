@@ -45,6 +45,19 @@ function insertProduct (product) {
       }
     })
   }
+
+  const buyButton = prod.querySelector('.compra')
+  buyButton.onclick = () => {
+    fetch(`/produto/compra/${product.codProd}`, { method: 'PATCH' }).then(res => {
+      console.log(res.status)
+      if (res.status === 200) {
+        prod.remove()
+        alert('Compra realizada com sucesso!')
+      } else {
+        alert('Erro ao realizar compra!')
+      }
+    })
+  }
 }
 
 async function showProducts () {
@@ -53,7 +66,9 @@ async function showProducts () {
   console.log(products)
 
   products.forEach(element => {
-    insertProduct(element)
+    if (element.codUsrCp === null) {
+      insertProduct(element)
+    }
   })
 }
 

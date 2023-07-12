@@ -19,7 +19,7 @@ async function readUserWishes (codUsr) {
       }
     }
   })
-
+  console.log(typeof wishes)
   return wishes
 }
 export default { create, readUserWishes }

@@ -1,0 +1,22 @@
+<%- include('partials/headerOpen'); %>
+    <link rel="stylesheet" href="/css/home.css">
+<%- include('partials/headerClose'); %>
+    <%- include('partials/navBar'); %>
+    <main>
+        <div class="grid-produtos">
+          <% wishes.forEach(Produto => { %>
+            <div class="card-produto">
+                <div class="card-produto-img">
+                    <img src="<%= Produto.Produto.Imagens[0].urlImg %>" alt="<%= Produto.Produto.nome %>">
+                </div>
+                <div class="card-produto-info">
+                    <h3><%= Produto.Produto.nome %></h3>
+                    <p><%= Produto.Produto.descricao %></p>
+                    <p>R$ <%= Produto.Produto.preco %></p>
+                    <button class="btn btn-primary" onclick="">Remover</button>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </main>
+<%- include('partials/footer'); %>

@@ -40,6 +40,17 @@ async function userLoginPost (req, res, next) {
   }
 }
 
+function userLogoutGet (req, res, next) {
+  try {
+    res.clearCookie('codUsr')
+    res.clearCookie('nomeUsr')
+    res.redirect('/')
+  } catch (e) {
+    e.code = 400
+    next(e)
+  }
+}
+
 async function userCreatePost (req, res, next) {
   try {
     const dados = req.body
@@ -72,13 +83,32 @@ async function userDelete (req, res, next) {
 
 async function userWishesGet (req, res, next) {
   try {
-    const codUsr = parseInt(req.params.codUsr)
-    const wishs = await wishModel.readUserWishes(codUsr)
-    res.json(wishs)
+    const codUsr = parseInt(req.cookies.codUsr)
+    const wishes = await wishModel.readUserWishes(codUsr)
+    if (wishes.length) {
+      res.render('wishList', { wishes })
+    } else {
+      throw new Error('Nem um desejo encontrado!')
+    }
   } catch (e) {
     e.code = 400
     next(e)
   }
 }
 
-export default { userAccessGet, userLoginPost, userCreatePost, userDelete, userWishesGet }
+async function userWishCreatePost (req, res, next) {
+  try {
+    const codUsr = Number(req.cookies.codUsr)
+    const codProd = Number(req.params.codProd)
+    const wishData = { codUsr, codProd }
+    const wish = await wishModel.create(wishData)
+    console.log(wish)
+
+    res.redirect('/usuario/deseja/')
+  } catch (e) {
+    e.code = 400
+    next(e)
+  }
+}
+
+export default { userAccessGet, userLoginPost, userCreatePost, userDelete, userWishesGet, userWishCreatePost, userLogoutGet }

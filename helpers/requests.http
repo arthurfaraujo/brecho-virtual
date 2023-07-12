@@ -66,6 +66,10 @@ Content-Type: image/jpeg
 /home/arthur/Imagens/download.jpeg
 --boundary--
 
+### POST wish
+POST {{host}}/usuario/deseja/1
+HEAD 
+
 ### POST produto
 POST {{host}}/cadastro/produto
 Content-Type: application/json
@@ -102,14 +106,8 @@ Content-Type: application/json
 }
 
 ### POST conta
-POST {{host}}/cadastro/login
-Content-Type: application/json
-
-{
-    "eMail": "a",
-    "senha": "a"
-}
-
+POST  {{host}}/usuario/deseja/2
+Cookie: codUsr=3; nomeUsr=uia
 
 ### DELETE conta
 DELETE {{host}}/cadastro/usuario?codUsr=6

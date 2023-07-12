@@ -11,4 +11,8 @@ route.delete('/', (req, res) => {
   res.json({ message: 'deletado' })
 })
 
+route.patch('/', (req, res) => {
+  res.json({ message: 'atualizado' })
+})
+
 export default route

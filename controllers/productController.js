@@ -41,10 +41,10 @@ async function productDelete (req, res, next) {
       const codProdString = req.query.codProd
       const codProd = parseInt(codProdString)
 
-      const produtos = await productModel.remove(codProd)
+      const products = await productModel.remove(codProd)
 
-      for (const imagem of produtos.Imagens) {
-        await fs.unlink(`public/${imagem.urlImg}`)
+      for (const image of products.Imagens) {
+        await fs.unlink(`public/${image.urlImg}`)
       }
 
       res.status(200).redirect('/')
@@ -61,4 +61,22 @@ async function productDelete (req, res, next) {
   }
 }
 
-export default { productsDataGet, productCreateGet, productCreatePost, productDelete }
+async function productBuyPatch (req, res, next) {
+  try {
+    const codUsr = Number(req.cookies.codUsr)
+    const codProd = Number(req.params.codProd)
+
+    const product = await productModel.buy(codProd, codUsr)
+
+    if (product) {
+      res.status(200).redirect('/')
+    } else {
+      throw new Error('Erro ao realizar compra!')
+    }
+  } catch (e) {
+    e.code = 400
+    next(e)
+  }
+}
+
+export default { productsDataGet, productCreateGet, productCreatePost, productDelete, productBuyPatch }

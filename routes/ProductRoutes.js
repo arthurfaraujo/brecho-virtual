@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import productController from '../controllers/productController.js'
+import { auth } from '../middlewares/AuthMiddleware.js'
 import multer from 'multer'
 import crypto from 'node:crypto'
 
@@ -30,5 +31,7 @@ route.post('/cadastra', imagens.array('imagem[]', 5), productController.productC
 route.delete('/remove', productController.productDelete)
 
 route.get('/dados', productController.productsDataGet)
+
+route.patch('/compra/:codProd', auth, productController.productBuyPatch)
 
 export default route

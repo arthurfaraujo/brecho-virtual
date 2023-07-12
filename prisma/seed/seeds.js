@@ -2,7 +2,7 @@ const seeds = {
   usuarios: [
     {
       eMail: 'artu@gmail.com',
-      senha: 'artulindao',
+      senha: '1234',
       nome: 'arthur',
       telefone: '81973637832',
       uf: 'SP',
@@ -193,6 +193,18 @@ const seeds = {
     {
       codUsr: 4,
       codProd: 3
+    },
+    {
+      codUsr: 1,
+      codProd: 3
+    },
+    {
+      codUsr: 1,
+      codProd: 2
+    },
+    {
+      codUsr: 1,
+      codProd: 4
     }
   ],
   fotosProdutos: [
