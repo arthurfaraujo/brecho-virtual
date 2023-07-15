@@ -3,7 +3,7 @@ function pageNotFound (req, res, next) {
 }
 
 function otherErrors (err, req, res, next) {
-  console.log(err.message)
+  console.log(err)
   if (err.code) {
     if (parseInt(err.code) < 600) {
       // res.status(err.code).json({ message: err.message })

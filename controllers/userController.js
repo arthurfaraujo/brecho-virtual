@@ -13,6 +13,8 @@ function handleErrors (err) {
         return 'Preencha a senha!'
       case 'Argument `nome` must not be null.':
         return 'Preencha o nome!'
+      case 'Unique constraint failed on the fields: (`codUsr`,`codProd`)':
+        return 'Produto já está na lista de desejos!'
     }
     return message[message.length - 1]
   } else {
@@ -123,6 +125,7 @@ async function userWishCreatePost (req, res, next) {
     res.redirect('/usuario/deseja/')
   } catch (e) {
     e.code = 400
+    e.message = handleErrors(e)
     next(e)
   }
 }

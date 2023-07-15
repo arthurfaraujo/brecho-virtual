@@ -1,10 +1,8 @@
 import { prisma } from '../prisma/prismaDb/prismaConnection.js'
 
 async function create (Wish) {
-  const wish = await prisma.desejoUsuario.upsert({
-    where: { codUsr_codProd: Wish },
-    update: {},
-    create: Wish
+  const wish = await prisma.desejoUsuario.create({
+    data: Wish
   })
 
   return wish
