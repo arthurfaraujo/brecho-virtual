@@ -1,6 +1,3 @@
-// const response = await fetch('/data/produtos');
-// const products = await response.json();
-
 function genProduct (product) {
   const html = `
     <div class="produto" id="codProd-${product.codProd}" data-class="${product.codCla}" data-codUsrCr="${product.codUsrCr}">
@@ -11,7 +8,7 @@ function genProduct (product) {
         </iconify-icon>
       </button>
       <div class="produto-imagem">
-          <img src="${product.Imagens[0].urlImg}">
+          <img src="/${product.Imagens[0].urlImg}">
       </div>
       <h3>${product.nome}</h3>
       <p>R$ ${product.preco.toFixed(2)}</p>
@@ -38,15 +35,14 @@ function addDeleteButton (product) {
   const deleteButton = prod.querySelector('.apaga')
 
   deleteButton.onclick = () => {
-    fetch(`/produto/remove?codProd=${product.codProd}&codUsrCr=${product.codUsrCr}`, { method: 'DELETE' }).then(res => {
+    fetch(`/usuario/deseja/${product.codProd}`, { method: 'DELETE' }).then(res => {
       console.log(res.status)
       if (res.status === 200) {
         prod.remove()
       } else if (res.status === 401) {
-        alert('Você não tem permissão para excluir este produto!')
+        alert('Você não tem permissão para excluir este produto da lista de desejos!')
       } else {
-        alert('Erro ao excluir produto!')
-        location.reload()
+        alert('Erro ao excluir produto da lista de desejos!')
       }
     })
   }
@@ -67,17 +63,16 @@ function addBuyButton (product) {
     })
   }
 }
-
 async function showProducts () {
-  const products = await fetch('/produto/dados').then(res => res.json())
+  const products = await fetch('/usuario/deseja/dados').then(res => res.json())
 
   console.log(products)
 
   products.forEach(element => {
-    if (element.codUsrCp === null) {
-      insertProduct(element)
+    if (element.Produto.codUsrCp === null) {
+      insertProduct(element.Produto)
     }
   })
 }
 
-export default showProducts
+showProducts()

@@ -22,4 +22,12 @@ async function readUserWishes (codUsr) {
   console.log(typeof wishes)
   return wishes
 }
-export default { create, readUserWishes }
+
+async function deleteUserWish (Wish) {
+  const wish = await prisma.desejoUsuario.delete({
+    where: { codUsr_codProd: Wish }
+  })
+
+  return wish
+}
+export default { create, readUserWishes, deleteUserWish }

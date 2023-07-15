@@ -66,7 +66,7 @@ async function userCreatePost (req, res, next) {
 
 async function userDelete (req, res, next) {
   try {
-    const codUsrString = req.query.codUsr
+    const codUsrString = req.cookies.codUsr
     const codUsr = parseInt(codUsrString)
     const usuario = await userModel.remove(codUsr)
 
@@ -75,6 +75,22 @@ async function userDelete (req, res, next) {
     }
 
     res.json({ message: 'Conta excluída com sucesso!' })
+  } catch (e) {
+    e.code = 400
+    next(e)
+  }
+}
+
+async function userWishesDataGet (req, res, next) {
+  try {
+    const codUsr = parseInt(req.cookies.codUsr)
+    const wishes = await wishModel.readUserWishes(codUsr)
+    if (wishes.length) {
+      console.log(wishes[0].Produto.Imagens[0].urlImg)
+      res.json(wishes)
+    } else {
+      throw new Error('Nem um desejo encontrado!')
+    }
   } catch (e) {
     e.code = 400
     next(e)
@@ -111,4 +127,31 @@ async function userWishCreatePost (req, res, next) {
   }
 }
 
-export default { userAccessGet, userLoginPost, userCreatePost, userDelete, userWishesGet, userWishCreatePost, userLogoutGet }
+async function userWishDelete (req, res, next) {
+  try {
+    const codUsr = Number(req.cookies.codUsr)
+    const codProd = Number(req.params.codProd)
+    const wishData = { codUsr, codProd }
+    const wish = await wishModel.deleteUserWish(wishData)
+    if (wish) {
+      res.status(200).json({ message: 'Produto excluído da lista de desejos com sucesso!' })
+    } else {
+      throw new Error('Erro ao excluir produto da lista de desejos!')
+    }
+  } catch (e) {
+    e.code = 400
+    next(e)
+  }
+}
+
+export default {
+  userAccessGet,
+  userLoginPost,
+  userCreatePost,
+  userDelete,
+  userWishesDataGet,
+  userWishesGet,
+  userWishCreatePost,
+  userWishDelete,
+  userLogoutGet
+}

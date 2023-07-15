@@ -14,8 +14,12 @@ route.get('/desconecta', userController.userLogoutGet)
 
 route.delete('/remove', userController.userDelete)
 
+route.get('/deseja/dados', auth, userController.userWishesDataGet)
+
 route.get('/deseja', auth, userController.userWishesGet)
 
 route.post('/deseja/:codProd', auth, userController.userWishCreatePost)
+
+route.delete('/deseja/:codProd', auth, userController.userWishDelete)
 
 export default route
