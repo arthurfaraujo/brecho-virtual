@@ -14,6 +14,22 @@ async function productsDataGet (req, res, next) {
   }
 }
 
+async function productDetailGet (req, res, next) {
+  try {
+    const codProd = Number(req.params.codProd)
+    const product = await productModel.readOne(codProd)
+    if (product) {
+      // res.json({ product })
+      res.render('productDetail', { product })
+    } else {
+      throw new Error('Produto não encontrado!')
+    }
+  } catch (e) {
+    e.code = 400
+    next(e)
+  }
+}
+
 async function productCreatePost (req, res, next) {
   try {
     const data = req.body
@@ -79,4 +95,4 @@ async function productBuyPatch (req, res, next) {
   }
 }
 
-export default { productsDataGet, productCreateGet, productCreatePost, productDelete, productBuyPatch }
+export default { productsDataGet, productCreateGet, productDetailGet, productCreatePost, productDelete, productBuyPatch }
