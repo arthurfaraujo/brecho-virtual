@@ -9,7 +9,7 @@
     <div class="productDetailInfo">
       <h1 class="productDetailInfoName"><%= product.nome %></h1>
       <p class="productDetailInfoDescription"><%= product.descricao %></p>
-      <p class="productDetailInfoPrice">R$ <%= product.preco %></p>
+      <p class="productDetailInfoPrice">R$ <%= product.preco.toFixed(2) %></p>
       <button class="compra">Comprar</button>
     </div>
   </div>
