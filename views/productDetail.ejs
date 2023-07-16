@@ -2,25 +2,30 @@
 <link rel="stylesheet" href="/css/home.css" />
 <%- include('partials/headerClose'); %> <%- include('partials/navBar'); %>
 <main>
-  <div class="productDetail">
-    <div class="productDetail__image">
+  <div class="productDetail" id="codProd-<%= product.codProd %>">
+    <div class="productDetailImage">
       <img src="/<%= product.Imagens[0].urlImg %>" alt="<%= product.nome %>" />
     </div>
-    <div class="productDetail__info">
-      <h1 class="productDetail__info__name"><%= product.nome %></h1>
-      <p class="productDetail__info__description"><%= product.descricao %></p>
-      <p class="productDetail__info__price">R$ <%= product.preco %></p>
-      <form action="/cart" method="POST">
-        <input type="hidden" name="id" value="<%= product.codProd %>" />
-        <input type="hidden" name="name" value="<%= product.nome %>" />
-        <input type="hidden" name="price" value="<%= product.preco %>" />
-        <input type="hidden" name="image" value="/<%= product.Imagens[0] %>" />
-        <input type="hidden" name="quantity" value="1" />
-        <button class="productDetail__info__button" type="submit">
-          Adicionar ao carrinho
-        </button>
-      </form>
+    <div class="productDetailInfo">
+      <h1 class="productDetailInfoName"><%= product.nome %></h1>
+      <p class="productDetailInfoDescription"><%= product.descricao %></p>
+      <p class="productDetailInfoPrice">R$ <%= product.preco %></p>
+      <button class="compra">Comprar</button>
     </div>
   </div>
 </main>
+<script hidden>
+  const buyButton = document.body.querySelector('.compra')
+  buyButton.onclick = () => {
+    fetch('/produto/compra/<%= product.codProd %>', { method: 'PATCH' }).then(res => {
+      console.log(res.status)
+      if (res.status === 200) {
+        window.location.href = '/'
+        alert('Compra realizada com sucesso!')
+      } else {
+        alert('Erro ao realizar compra!')
+      }
+    })
+  }
+</script>
 <%- include('partials/footer'); %>

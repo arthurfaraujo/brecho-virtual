@@ -69,7 +69,7 @@ main {
     font-weight: bold;
 }
 
-.produto > button.compra {
+button.compra {
     margin-top: 2%;
     background-color: rgb(169, 125, 108);
     border: none;
@@ -94,7 +94,7 @@ button.apaga, button.deseja {
     transition: 200ms;
 }
 
-button.apaga:hover, button.deseja:hover {
+button.apaga:hover, button.deseja:hover, button.compra:hover {
     cursor: pointer;
     transform: scale(1.3);
 }
