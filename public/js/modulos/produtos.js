@@ -68,8 +68,9 @@ function addBuyButton (product) {
 
 function infoProduct (codProd) {
   const product = document.body.querySelector(`#codProd-${codProd}`)
+  const image = product.querySelector('img')
 
-  product.onclick = () => {
+  image.onclick = () => {
     window.location.href = `/produto/info/${codProd}`
   }
 }
