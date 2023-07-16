@@ -34,4 +34,6 @@ route.get('/dados', productController.productsDataGet)
 
 route.patch('/compra/:codProd', auth, productController.productBuyPatch)
 
+route.get('/info/:codProd', productController.productDetailGet)
+
 export default route

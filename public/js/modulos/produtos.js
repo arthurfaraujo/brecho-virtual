@@ -29,6 +29,7 @@ function insertProduct (product) {
 
   catalog.insertAdjacentHTML('beforeend', productView)
 
+  infoProduct(product.codProd)
   addWishButton(product)
   addBuyButton(product)
 }
@@ -65,6 +66,13 @@ function addBuyButton (product) {
   }
 }
 
+function infoProduct (codProd) {
+  const product = document.body.querySelector(`#codProd-${codProd}`)
+
+  product.onclick = () => {
+    window.location.href = `/produto/info/${codProd}`
+  }
+}
 async function showProducts () {
   const products = await fetch('/produto/dados').then(res => res.json())
 

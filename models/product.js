@@ -17,6 +17,14 @@ async function readAll () {
   return products
 }
 
+async function readOne (codProd) {
+  const product = await prisma.produto.findUnique({
+    where: { codProd },
+    include: { Imagens: true }
+  })
+
+  return product
+}
 async function createWithImage (Product, Images) {
   const product = await prisma.produto.upsert({
     where: { codProd: 0 },
@@ -57,4 +65,4 @@ async function buy (codProd, codUsr) {
   return product
 }
 
-export default { create, readAll, createWithImage, remove, buy }
+export default { create, readAll, readOne, createWithImage, remove, buy }
