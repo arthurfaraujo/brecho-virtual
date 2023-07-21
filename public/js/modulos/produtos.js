@@ -14,7 +14,7 @@ function genProduct (product) {
           <img src="${product.Imagens[0].urlImg}">
       </div>
       <h3>${product.nome}</h3>
-      <p>R$ ${product.preco.toFixed(2)}</p>
+      <p>R$ ${Number(product.preco).toFixed(2)}</p>
       <button class="compra">Comprar</button>
     </div>
     `
@@ -74,6 +74,7 @@ function infoProduct (codProd) {
     window.location.href = `/produto/info/${codProd}`
   }
 }
+
 async function showProducts () {
   const products = await fetch('/produto/dados').then(res => res.json())
 

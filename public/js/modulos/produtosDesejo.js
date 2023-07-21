@@ -11,7 +11,7 @@ function genProduct (product) {
           <img src="/${product.Imagens[0].urlImg}">
       </div>
       <h3>${product.nome}</h3>
-      <p>R$ ${product.preco.toFixed(2)}</p>
+      <p>R$ ${Number(product.preco).toFixed(2)}</p>
       <button class="compra">Comprar</button>
     </div>
     `
@@ -25,7 +25,7 @@ function insertProduct (product) {
   const productView = genProduct(product)
 
   catalog.insertAdjacentHTML('beforeend', productView)
-
+  infoProduct(product.codProd)
   addDeleteButton(product)
   addBuyButton(product)
 }
@@ -63,6 +63,16 @@ function addBuyButton (product) {
     })
   }
 }
+
+function infoProduct (codProd) {
+  const product = document.body.querySelector(`#codProd-${codProd}`)
+  const image = product.querySelector('img')
+
+  image.onclick = () => {
+    window.location.href = `/produto/info/${codProd}`
+  }
+}
+
 async function showProducts () {
   const products = await fetch('/usuario/deseja/dados').then(res => res.json())
 

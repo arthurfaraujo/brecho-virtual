@@ -10,9 +10,9 @@ route.post('/cadastra', userController.userCreatePost)
 
 route.post('/conecta', userController.userLoginPost)
 
-route.get('/desconecta', userController.userLogoutGet)
+route.get('/desconecta', auth, userController.userLogoutGet)
 
-route.delete('/remove', userController.userDelete)
+route.delete('/remove', auth, userController.userDelete)
 
 route.get('/deseja/dados', auth, userController.userWishesDataGet)
 

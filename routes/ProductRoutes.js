@@ -24,16 +24,16 @@ const imagens = multer({ storage })
 
 const route = Router()
 
-route.get('/cadastra', productController.productCreateGet)
+route.get('/cadastra', auth, productController.productCreateGet)
 
-route.post('/cadastra', imagens.array('imagem[]', 5), productController.productCreatePost)
+route.post('/cadastra', auth, imagens.array('imagem[]', 5), productController.productCreatePost)
 
-route.delete('/remove', productController.productDelete)
+route.delete('/remove', auth, productController.productDelete)
 
 route.get('/dados', productController.productsDataGet)
 
 route.patch('/compra/:codProd', auth, productController.productBuyPatch)
 
-route.get('/info/:codProd', productController.productDetailGet)
+route.get('/info/:codProd', auth, productController.productDetailGet)
 
 export default route
