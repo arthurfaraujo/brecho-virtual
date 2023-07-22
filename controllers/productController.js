@@ -53,17 +53,15 @@ async function productCreatePost (req, res, next) {
 
 async function productDelete (req, res, next) {
   try {
-    if ((req.query.codUsrCr === 'null') || (req.cookies.codUsr === req.query.codUsrCr)) {
-      const codProdString = req.query.codProd
-      const codProd = parseInt(codProdString)
+    let product = await productModel.readOne(Number(req.query.codProd))
+    if (req.cookies.codUsr === product.codUsrCr.toString()) {
+      product = await productModel.remove(Number(req.query.codProd))
 
-      const products = await productModel.remove(codProd)
-
-      for (const image of products.Imagens) {
+      for (const image of product.Imagens) {
         await fs.unlink(`public/${image.urlImg}`)
       }
 
-      res.status(200).redirect('/')
+      res.status(200).json({ message: 'Produto removido com sucesso!' })
     } else {
       throw new Error('Você não tem permissão para apagar este produto!')
     }
