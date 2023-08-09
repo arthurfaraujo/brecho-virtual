@@ -15,17 +15,19 @@
   </div>
 </main>
 <script hidden>
-  const buyButton = document.body.querySelector('.compra')
+  const buyButton = document.body.querySelector(".compra")
   buyButton.onclick = () => {
-    fetch('/produto/compra/<%= product.codProd %>', { method: 'PATCH' }).then(res => {
-      console.log(res.status)
-      if (res.status === 200) {
-        window.location.href = '/'
-        alert('Compra realizada com sucesso!')
-      } else {
-        alert('Erro ao realizar compra!')
+    fetch("/produto/compra/<%= product.codProd %>", { method: "PATCH" }).then(
+      (res) => {
+        console.log(res.status)
+        if (res.status === 200) {
+          window.location.href = "/"
+          alert("Compra realizada com sucesso!")
+        } else {
+          alert("Erro ao realizar compra!")
+        }
       }
-    })
+    )
   }
 </script>
 <%- include('partials/footer'); %>

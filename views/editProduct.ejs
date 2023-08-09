@@ -1,0 +1,42 @@
+<%- include('partials/headerOpen'); %>
+<link rel="stylesheet" href="/css/produtoEdit.css" />
+<%- include('partials/headerClose'); %> <%- include('partials/navBar'); %>
+<main>
+  <div class="productDetail" id="codProd-<%= product.codProd %>">
+    <div class="productDetailImage">
+      <img src="/<%= product.Imagens[0].urlImg %>" alt="<%= product.nome %>" />
+    </div>
+    <form action="post">
+      <!-- <input type="hidden" name="codProd" value="<%= product.codProd %>" /> -->
+      <div class="productDetailInfo">
+        <div class="prop">
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            value="<%= product.nome %>"
+            class="editName formAttr"
+            name="nome"
+          />
+        </div>
+        <div class="prop">
+          <label for="descricao">Detalhes</label>
+          <textarea class="editInfo formAttr" name="descricao" wrap="hard">
+<%= product.descricao %></textarea
+          >
+        </div>
+        <div class="prop">
+          <label for="preco">Preço</label>
+          <input
+            type="text"
+            value="<%= product.preco.toFixed(2) %>"
+            class="editPrice formAttr"
+            name="preco"
+          />
+        </div>
+        <input type="submit" class="edita" value="Enviar" />
+      </div>
+    </form>
+  </div>
+</main>
+<script src="/js/productEdit.js"></script>
+<%- include('partials/footer'); %>

@@ -1,34 +1,34 @@
 {
-    "name": "brecho-virtual",
-    "version": "1.0.0",
-    "description": "Sistema web de um brechó virtual.",
-    "main": "server/index.js",
-    "repository": "https://github.com/slordian/brecho-virtual",
-    "author": "slordian",
-    "license": "MIT",
-    "type": "module",
-    "dependencies": {
-        "@prisma/client": "^4.16.1",
-        "cookie-parser": "^1.4.6",
-        "dotenv": "^16.1.4",
-        "ejs": "^3.1.9",
-        "express": "^4.18.2",
-        "express-async-errors": "^3.1.1",
-        "multer": "^1.4.5-lts.1"
-    },
-    "devDependencies": {
-        "eslint": "^8.44.0",
-        "eslint-config-standard": "^17.1.0",
-        "morgan": "^1.10.0",
-        "nodemon": "^1.14.9",
-        "prisma": "^4.16.1"
-    },
-    "scripts": {
-        "listen": "node brecho.js",
-        "dev": "nodemon brecho.js",
-        "open": "google-chrome 127.0.0.1:8080"
-    },
-    "prisma": {
-        "seed": "node prisma/seed/seeder.js"
-    }
+  "name": "brecho-virtual",
+  "version": "1.0.0",
+  "description": "Sistema web de um brechó virtual.",
+  "main": "server/index.js",
+  "repository": "https://github.com/slordian/brecho-virtual",
+  "author": "slordian",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@prisma/client": "^4.16.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.1.4",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-config-standard": "^17.1.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^1.14.9",
+    "prisma": "^4.16.1"
+  },
+  "scripts": {
+    "listen": "node brecho.js",
+    "start": "nodemon brecho.js",
+    "open": "google-chrome 127.0.0.1:8080"
+  },
+  "prisma": {
+    "seed": "node prisma/seed/seeder.js"
+  }
 }

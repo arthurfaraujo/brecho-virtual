@@ -1,11 +1,11 @@
 import productModel from '../models/product.js'
 import fs from 'node:fs/promises'
 
-function productCreateGet (req, res) {
+function productCreateGet(req, res) {
   res.render('productCreate')
 }
 
-async function productsDataGet (req, res, next) {
+async function productsDataGet(req, res, next) {
   try {
     // console.log(await productModel.readAll())
     res.json(await productModel.readAll())
@@ -14,7 +14,7 @@ async function productsDataGet (req, res, next) {
   }
 }
 
-async function productDetailGet (req, res, next) {
+async function productDetailGet(req, res, next) {
   try {
     const codProd = Number(req.params.codProd)
     const product = await productModel.readOne(codProd)
@@ -30,7 +30,42 @@ async function productDetailGet (req, res, next) {
   }
 }
 
-async function productCreatePost (req, res, next) {
+async function productUserGet(req, res, next) {
+  try {
+    const codUsr = Number(req.cookies.codUsr)
+    const userProducts = await productModel.readAllFromUser(codUsr)
+
+    if (userProducts === []) {
+      throw new Error('Você não cadastrou produto nenhum!')
+    } else {
+      res.json(userProducts)
+    }
+  } catch (e) {
+    next(e)
+  }
+}
+
+async function productEditGet(req, res, next) {
+  try {
+    const codProd = Number(req.params.codProd)
+    const product = await productModel.readOne(codProd)
+
+    res.render('editProduct', { product })
+  } catch (e) {}
+}
+
+async function productEditPut(req, res, next) {
+  try {
+    const codProd = Number(req.params.codProd)
+    const editedProduct = await productModel.update({ codProd, ...req.body })
+    console.log(editedProduct)
+    res.json(editedProduct)
+  } catch (e) {
+    next(e)
+  }
+}
+
+async function productCreatePost(req, res, next) {
   try {
     const data = req.body
     data.codUsrCr = data.codUsrCr || parseInt(req.cookies.codUsr)
@@ -51,7 +86,7 @@ async function productCreatePost (req, res, next) {
   }
 }
 
-async function productDelete (req, res, next) {
+async function productDelete(req, res, next) {
   try {
     let product = await productModel.readOne(Number(req.query.codProd))
     if (req.cookies.codUsr === product.codUsrCr.toString()) {
@@ -75,7 +110,7 @@ async function productDelete (req, res, next) {
   }
 }
 
-async function productBuyPatch (req, res, next) {
+async function productBuyPatch(req, res, next) {
   try {
     const codUsr = Number(req.cookies.codUsr)
     const codProd = Number(req.params.codProd)
@@ -93,4 +128,14 @@ async function productBuyPatch (req, res, next) {
   }
 }
 
-export default { productsDataGet, productCreateGet, productDetailGet, productCreatePost, productDelete, productBuyPatch }
+export default {
+  productsDataGet,
+  productCreateGet,
+  productDetailGet,
+  productUserGet,
+  productEditGet,
+  productEditPut,
+  productCreatePost,
+  productDelete,
+  productBuyPatch
+}

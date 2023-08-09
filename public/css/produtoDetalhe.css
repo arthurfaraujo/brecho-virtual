@@ -67,14 +67,14 @@ main {
 }
 
 button.compra {
-    margin-top: 2%;
-    background-color: rgb(169, 125, 108);
-    border: none;
-    border-radius: 5px;
-    color: rgb(255, 255, 255);
-    font-size: 14px;
-    padding: 10px;
-    transition: 300ms
+  margin-top: 2%;
+  background-color: rgb(169, 125, 108);
+  border: none;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  padding: 10px;
+  transition: 300ms;
 }
 
 button.compra:hover {

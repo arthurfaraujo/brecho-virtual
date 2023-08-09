@@ -1,6 +1,8 @@
-function genProduct (product) {
+function genProduct(product) {
   const html = `
-    <div class="produto" id="codProd-${product.codProd}" data-class="${product.codCla}" data-codUsrCr="${product.codUsrCr}">
+    <div class="produto" id="codProd-${product.codProd}" data-class="${
+    product.codCla
+  }" data-codUsrCr="${product.codUsrCr}">
         <button class="apaga" value="${product.codProd}">
         <iconify-icon 
           icon="fa:trash-o" 
@@ -11,7 +13,7 @@ function genProduct (product) {
           <img src="/${product.Imagens[0].urlImg}">
       </div>
       <h3>${product.nome}</h3>
-      <p>R$ ${Number(product.preco).toFixed(2)}</p>
+      <p>R$ ${Number(product.preco).toFixed(2).toString().replace('.', ',')}</p>
       <button class="compra">Comprar</button>
     </div>
     `
@@ -20,7 +22,7 @@ function genProduct (product) {
   return html
 }
 
-function insertProduct (product) {
+function insertProduct(product) {
   const catalog = document.querySelector('.grid-produtos')
   const productView = genProduct(product)
 
@@ -30,41 +32,47 @@ function insertProduct (product) {
   addBuyButton(product)
 }
 
-function addDeleteButton (product) {
+function addDeleteButton(product) {
   const prod = document.body.querySelector(`#codProd-${product.codProd}`)
   const deleteButton = prod.querySelector('.apaga')
 
   deleteButton.onclick = () => {
-    fetch(`/usuario/deseja/${product.codProd}`, { method: 'DELETE' }).then(res => {
-      console.log(res.status)
-      if (res.status === 200) {
-        prod.remove()
-      } else if (res.status === 401) {
-        alert('Você não tem permissão para excluir este produto da lista de desejos!')
-      } else {
-        alert('Erro ao excluir produto da lista de desejos!')
+    fetch(`/usuario/deseja/${product.codProd}`, { method: 'DELETE' }).then(
+      res => {
+        console.log(res.status)
+        if (res.status === 200) {
+          prod.remove()
+        } else if (res.status === 401) {
+          alert(
+            'Você não tem permissão para excluir este produto da lista de desejos!'
+          )
+        } else {
+          alert('Erro ao excluir produto da lista de desejos!')
+        }
       }
-    })
+    )
   }
 }
 
-function addBuyButton (product) {
+function addBuyButton(product) {
   const prod = document.body.querySelector(`#codProd-${product.codProd}`)
   const buyButton = prod.querySelector('.compra')
   buyButton.onclick = () => {
-    fetch(`/produto/compra/${product.codProd}`, { method: 'PATCH' }).then(res => {
-      console.log(res.status)
-      if (res.status === 200) {
-        prod.remove()
-        alert('Compra realizada com sucesso!')
-      } else {
-        alert('Erro ao realizar compra!')
+    fetch(`/produto/compra/${product.codProd}`, { method: 'PATCH' }).then(
+      res => {
+        console.log(res.status)
+        if (res.status === 200) {
+          prod.remove()
+          alert('Compra realizada com sucesso!')
+        } else {
+          alert('Erro ao realizar compra!')
+        }
       }
-    })
+    )
   }
 }
 
-function infoProduct (codProd) {
+function infoProduct(codProd) {
   const product = document.body.querySelector(`#codProd-${codProd}`)
   const image = product.querySelector('img')
 
@@ -73,7 +81,7 @@ function infoProduct (codProd) {
   }
 }
 
-async function showProducts () {
+async function showProducts() {
   const products = await fetch('/usuario/deseja/dados').then(res => res.json())
 
   console.log(products)

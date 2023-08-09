@@ -1,6 +1,6 @@
 import { prisma } from '../prisma/prismaDb/prismaConnection.js'
 
-async function create (Product) {
+async function create(Product) {
   const product = await prisma.produto.upsert({
     where: { codProd: 0 },
     update: {},
@@ -9,7 +9,7 @@ async function create (Product) {
   return product
 }
 
-async function readAll () {
+async function readAll() {
   const products = await prisma.produto.findMany({
     include: { Imagens: true }
   })
@@ -17,7 +17,16 @@ async function readAll () {
   return products
 }
 
-async function readOne (codProd) {
+async function readAllFromUser(codUsrCr) {
+  const products = await prisma.produto.findMany({
+    where: { codUsrCr },
+    include: { Imagens: true }
+  })
+
+  return products
+}
+
+async function readOne(codProd) {
   const product = await prisma.produto.findUnique({
     where: { codProd },
     include: { Imagens: true }
@@ -25,7 +34,7 @@ async function readOne (codProd) {
 
   return product
 }
-async function createWithImage (Product, Images) {
+async function createWithImage(Product, Images) {
   const product = await prisma.produto.upsert({
     where: { codProd: 0 },
     update: {},
@@ -47,7 +56,7 @@ async function createWithImage (Product, Images) {
   return product
 }
 
-async function remove (codProd) {
+async function remove(codProd) {
   const product = await prisma.produto.delete({
     where: { codProd },
     include: { Imagens: true }
@@ -56,7 +65,7 @@ async function remove (codProd) {
   return product
 }
 
-async function buy (codProd, codUsr) {
+async function buy(codProd, codUsr) {
   const product = await prisma.produto.update({
     where: { codProd },
     data: { codUsrCp: codUsr }
@@ -65,4 +74,27 @@ async function buy (codProd, codUsr) {
   return product
 }
 
-export default { create, readAll, readOne, createWithImage, remove, buy }
+async function update(oldProduct) {
+  const { nome, descricao, preco, codProd } = oldProduct
+  const newProduct = await prisma.produto.update({
+    where: { codProd },
+    data: {
+      nome,
+      descricao,
+      preco: Number(preco)
+    }
+  })
+
+  return newProduct
+}
+
+export default {
+  create,
+  readAll,
+  readAllFromUser,
+  readOne,
+  createWithImage,
+  remove,
+  buy,
+  update
+}

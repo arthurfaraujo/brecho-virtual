@@ -26,7 +26,12 @@ const route = Router()
 
 route.get('/cadastra', auth, productController.productCreateGet)
 
-route.post('/cadastra', auth, imagens.array('imagem[]', 5), productController.productCreatePost)
+route.post(
+  '/cadastra',
+  auth,
+  imagens.array('imagem[]', 5),
+  productController.productCreatePost
+)
 
 route.delete('/remove', auth, productController.productDelete)
 
@@ -35,5 +40,11 @@ route.get('/dados', productController.productsDataGet)
 route.patch('/compra/:codProd', auth, productController.productBuyPatch)
 
 route.get('/info/:codProd', auth, productController.productDetailGet)
+
+route.get('/usuario', auth, productController.productUserGet)
+
+route.get('/edita/:codProd', auth, productController.productEditGet)
+
+route.put('/edita/:codProd', auth, productController.productEditPut)
 
 export default route
