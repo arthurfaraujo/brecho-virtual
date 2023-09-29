@@ -1,130 +1,61 @@
 @host = http://localhost:8080
+@codProd = 10
 
-### POST produto
+### Post usuario
+POST {{host}}/usuario/cadastra
+Content-Type: application/json
+
+{
+    "nome": "teste",
+    "eMail": "teste",
+    "senha": "teste"
+}
+###
+
+### Post login
+POST {{host}}/usuario/conecta
+Content-Type: application/json
+
+{
+    "eMail": "test",
+    "senha": "teste"
+}
+###
+
+### Post produto
 POST {{host}}/produto/cadastra
 Content-Type: multipart/form-data; boundary="boundary"
 
 --boundary
 Content-Disposition: form-data; name="codUsrCr"
 
+1
+--boundary
+Content-Disposition: form-data; name="nome"
+
+produtoTeste
+--boundary
+Content-Disposition: form-data; name="preco"
+
+13,99
+--boundary
+Content-Disposition: form-data; name="estadoUso"
+
+novo
+--boundary
+Content-Disposition: form-data; name="codCla"
+
 2
---boundary
-Content-Disposition: form-data; name="nome"
-
-lebron
---boundary
-Content-Disposition: form-data; name="preco"
-
-100,49
---boundary
-Content-Disposition: form-data; name="descricao"
-
-otima peça, linda, super ventilada
---boundary
-Content-Disposition: form-data; name="estadoUso"
-
-novo
---boundary
-Content-Disposition: form-data; name="codCla"
-
-3
---boundary
-Content-Disposition: form-data; name="imagem[]"; filename="LeBron_James_(51959977144)_(cropped2).jpg"
-Content-Type: image/jpeg
-
-"\\wsl.localhost\Ubuntu\home\arthur\dev\LeBron_James_(51959977144)_(cropped2).jpg"
 --boundary--
+###
 
-### POST produto
-POST {{host}}/cadastro/produto
-Content-Type: multipart/form-data; boundary="boundary"
+### Get produto
+{{host}}/produto/dados
+###
 
---boundary
-Content-Disposition: form-data; name="nome"
+### Delete produto
+DELETE {{host}}/produto/remove/?codProd={{codProd}}
+###
 
-gorro
---boundary
-Content-Disposition: form-data; name="preco"
-
-100.49
---boundary
-Content-Disposition: form-data; name="descricao"
-
-otima peça, linda, super ventilada
---boundary
-Content-Disposition: form-data; name="estadoUso"
-
-novo
---boundary
-Content-Disposition: form-data; name="codCla"
-
-3
---boundary
-Content-Disposition: form-data; name="imagem"; filename="download.jpeg"
-Content-Type: image/jpeg
-
-/home/arthur/Imagens/download.jpeg
---boundary--
-
-### POST wish
-POST {{host}}/usuario/deseja/1
-HEAD 
-
-### POST produto
-POST {{host}}/cadastro/produto
-Content-Type: application/json
-
-{
-    codProd
-    nome
-    descricao
-    estadoUso
-    preco
-    codUsrCr
-    dataCriacao
-    codUsrCp
-    dataCompra
-    codCla
-    marca
-    codMar
-}
-
-### DELETE produto
-DELETE {{host}}/cadastro/produto?codProd=7
-
-### GET produtos
-GET {{host}}/data/produtos
-
-###POST usuario
-POST {{host}}/cadastro/usuario
-Content-Type: application/json
-
-{
-    "eMail": "a",
-    "nome": "a",
-    "senha": "a"
-}
-
-### POST conta
-POST  {{host}}/usuario/deseja/2
-Cookie: codUsr=3; nomeUsr=uia
-
-### DELETE conta
-DELETE {{host}}/cadastro/usuario?codUsr=6
-
-
-### POST login
-POST {{host}}/login
-Content-Type: application/json
-
-{
-    "nome": "luiz",
-    "senha": "senha"
-}
-
-### GET usuarios
-GET {{host}}/usuarios
-
-
-### GET marcas
-GET {{host}}/marcas
+### Patch produto
+PATCH {{host}}/produto/compra/{{codProd}}            
